@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB8ED5542A7D9AB3003B5AD8 /* TeamListDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8ED5532A7D9AB3003B5AD8 /* TeamListDomain.swift */; };
+		CB8ED5572A7D9C3A003B5AD8 /* TeamItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8ED5562A7D9C3A003B5AD8 /* TeamItemView.swift */; };
+		CB8ED5592A7D9C66003B5AD8 /* TeamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8ED5582A7D9C66003B5AD8 /* TeamDetailView.swift */; };
+		CBED3E6B2A7D6F1300680953 /* MatchScoresClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBED3E6A2A7D6F1300680953 /* MatchScoresClient.swift */; };
+		CBED3E6E2A7D6FB400680953 /* Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBED3E6D2A7D6FB400680953 /* Teams.swift */; };
 		CBF91C432A7D532200F0AC33 /* MatchScoresTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C422A7D532200F0AC33 /* MatchScoresTCAApp.swift */; };
 		CBF91C452A7D532200F0AC33 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C442A7D532200F0AC33 /* ContentView.swift */; };
 		CBF91C472A7D532300F0AC33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF91C462A7D532300F0AC33 /* Assets.xcassets */; };
@@ -14,6 +19,9 @@
 		CBF91C542A7D532300F0AC33 /* MatchScoresTCATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C532A7D532300F0AC33 /* MatchScoresTCATests.swift */; };
 		CBF91C5E2A7D532300F0AC33 /* MatchScoresTCAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C5D2A7D532300F0AC33 /* MatchScoresTCAUITests.swift */; };
 		CBF91C602A7D532300F0AC33 /* MatchScoresTCAUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C5F2A7D532300F0AC33 /* MatchScoresTCAUITestsLaunchTests.swift */; };
+		CBF91C6F2A7D539B00F0AC33 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */; };
+		CBF91C712A7D53AE00F0AC33 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C702A7D53AE00F0AC33 /* Endpoint.swift */; };
+		CBF91C742A7D544200F0AC33 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = CBF91C732A7D544200F0AC33 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB8ED5512A7D8CBB003B5AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CB8ED5532A7D9AB3003B5AD8 /* TeamListDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListDomain.swift; sourceTree = "<group>"; };
+		CB8ED5562A7D9C3A003B5AD8 /* TeamItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamItemView.swift; sourceTree = "<group>"; };
+		CB8ED5582A7D9C66003B5AD8 /* TeamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailView.swift; sourceTree = "<group>"; };
+		CBED3E6A2A7D6F1300680953 /* MatchScoresClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresClient.swift; sourceTree = "<group>"; };
+		CBED3E6D2A7D6FB400680953 /* Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Teams.swift; sourceTree = "<group>"; };
 		CBF91C3F2A7D532200F0AC33 /* MatchScoresTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchScoresTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF91C422A7D532200F0AC33 /* MatchScoresTCAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresTCAApp.swift; sourceTree = "<group>"; };
 		CBF91C442A7D532200F0AC33 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +58,8 @@
 		CBF91C592A7D532300F0AC33 /* MatchScoresTCAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchScoresTCAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF91C5D2A7D532300F0AC33 /* MatchScoresTCAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresTCAUITests.swift; sourceTree = "<group>"; };
 		CBF91C5F2A7D532300F0AC33 /* MatchScoresTCAUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresTCAUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		CBF91C702A7D53AE00F0AC33 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBF91C742A7D544200F0AC33 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +88,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB8ED5522A7D9A84003B5AD8 /* TeamList */ = {
+			isa = PBXGroup;
+			children = (
+				CB8ED5532A7D9AB3003B5AD8 /* TeamListDomain.swift */,
+			);
+			path = TeamList;
+			sourceTree = "<group>";
+		};
+		CB8ED5552A7D9C2D003B5AD8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CB8ED5562A7D9C3A003B5AD8 /* TeamItemView.swift */,
+				CB8ED5582A7D9C66003B5AD8 /* TeamDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CBED3E6C2A7D6FA900680953 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				CB8ED5552A7D9C2D003B5AD8 /* Views */,
+				CB8ED5522A7D9A84003B5AD8 /* TeamList */,
+				CBED3E6D2A7D6FB400680953 /* Teams.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
 		CBF91C362A7D532200F0AC33 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +138,9 @@
 		CBF91C412A7D532200F0AC33 /* MatchScoresTCA */ = {
 			isa = PBXGroup;
 			children = (
+				CB8ED5512A7D8CBB003B5AD8 /* Info.plist */,
+				CBED3E6C2A7D6FA900680953 /* Teams */,
+				CBF91C6C2A7D538400F0AC33 /* Base */,
 				CBF91C422A7D532200F0AC33 /* MatchScoresTCAApp.swift */,
 				CBF91C442A7D532200F0AC33 /* ContentView.swift */,
 				CBF91C462A7D532300F0AC33 /* Assets.xcassets */,
@@ -127,6 +174,24 @@
 			path = MatchScoresTCAUITests;
 			sourceTree = "<group>";
 		};
+		CBF91C6C2A7D538400F0AC33 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CBF91C6D2A7D538B00F0AC33 /* API */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CBF91C6D2A7D538B00F0AC33 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */,
+				CBF91C702A7D53AE00F0AC33 /* Endpoint.swift */,
+				CBED3E6A2A7D6F1300680953 /* MatchScoresClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +208,9 @@
 			dependencies = (
 			);
 			name = MatchScoresTCA;
+			packageProductDependencies = (
+				CBF91C732A7D544200F0AC33 /* ComposableArchitecture */,
+			);
 			productName = MatchScoresTCA;
 			productReference = CBF91C3F2A7D532200F0AC33 /* MatchScoresTCA.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +283,9 @@
 				Base,
 			);
 			mainGroup = CBF91C362A7D532200F0AC33;
+			packageReferences = (
+				CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = CBF91C402A7D532200F0AC33 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -257,7 +328,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBED3E6E2A7D6FB400680953 /* Teams.swift in Sources */,
+				CBF91C6F2A7D539B00F0AC33 /* NetworkingManager.swift in Sources */,
 				CBF91C452A7D532200F0AC33 /* ContentView.swift in Sources */,
+				CB8ED5592A7D9C66003B5AD8 /* TeamDetailView.swift in Sources */,
+				CBF91C712A7D53AE00F0AC33 /* Endpoint.swift in Sources */,
+				CBED3E6B2A7D6F1300680953 /* MatchScoresClient.swift in Sources */,
+				CB8ED5542A7D9AB3003B5AD8 /* TeamListDomain.swift in Sources */,
+				CB8ED5572A7D9C3A003B5AD8 /* TeamItemView.swift in Sources */,
 				CBF91C432A7D532200F0AC33 /* MatchScoresTCAApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +498,7 @@
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MatchScoresTCA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +528,7 @@
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MatchScoresTCA/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -583,6 +663,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBF91C732A7D544200F0AC33 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CBF91C372A7D532200F0AC33 /* Project object */;
 }
