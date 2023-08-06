@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "atlanta_hawks.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

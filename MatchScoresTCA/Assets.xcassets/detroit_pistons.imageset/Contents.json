@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "detroit_pistons.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

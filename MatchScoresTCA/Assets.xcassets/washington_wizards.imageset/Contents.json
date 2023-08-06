@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "washington_wizards.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -6,12 +6,24 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct MatchScoresTCAApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TeamView(
+                store: Store(initialState: MatchFeature.State()) {
+                    MatchFeature()
+                }
+            )
         }
     }
 }
+
+/*
+ var filteredTeams: [Datum] {
+     guard !searchTerm.isEmpty else { return teams }
+     return teams.filter { $0.fullName.description.localizedCaseInsensitiveContains(searchTerm) }
+ }
+ */

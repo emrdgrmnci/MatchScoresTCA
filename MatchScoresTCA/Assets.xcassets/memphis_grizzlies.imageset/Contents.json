@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "memphis_grizzlies.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "chicago_bulls.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

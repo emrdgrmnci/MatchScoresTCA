@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "miami_heat.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
