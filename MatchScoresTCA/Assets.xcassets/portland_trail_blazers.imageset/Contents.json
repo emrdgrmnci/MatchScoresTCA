@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "portland_trail_blazers.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "orlando_magic.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "sacramento_kings.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

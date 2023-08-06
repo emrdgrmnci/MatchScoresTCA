@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "los_angeles_lakers.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "houston_rockets.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

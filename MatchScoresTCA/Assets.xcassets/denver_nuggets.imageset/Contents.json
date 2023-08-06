@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "denver_nuggets.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
