@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "los_angeles_clippers.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

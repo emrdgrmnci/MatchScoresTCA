@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "boston_celtics.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

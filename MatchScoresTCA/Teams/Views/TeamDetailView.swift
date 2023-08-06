@@ -46,8 +46,8 @@ struct TeamDetailView: View {
                     }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 18)
-                    //                        .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
-                    //                                                                                 style: .continuous))
+                    .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
+                                                                             style: .continuous))
                     
                     Group {
                         Menu {
@@ -68,8 +68,8 @@ struct TeamDetailView: View {
                     }
                     .padding(.horizontal, 8)
                     .padding(.vertical, 18)
-                    //                        .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
-                    //                                                                                 style: .continuous))
+                    .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
+                                                                             style: .continuous))
                     
                 }
                        .padding()
@@ -96,48 +96,48 @@ private extension TeamDetailView {
         VStack(alignment: .leading,
                spacing: 8) {
             
-            //            PillView(id: userId + 1)
+            PillView(id: userId + 1)
             
-            //            Group {
-            //                name
-            //                fullName
-            //                city
-            //            }
-            //            .foregroundColor(Theme.text)
+            Group {
+                name
+                fullName
+//                city
+            }
+            .foregroundColor(Theme.text)
         }
     }
-    //
-    //    @ViewBuilder
-    //    var name: some View {
-    //        Text("Name")
-    //            .font(
-    //                .system(.body, design: .rounded)
-    //                .weight(.heavy)
-    //            )
-    //
-    //        Text(teamsViewModel.teams[userId].name)
-    //            .font(
-    //                .system(.subheadline, design: .rounded)
-    //            )
-    //
-    //        Divider()
-    //    }
-    //
-    //    @ViewBuilder
-    //    var fullName: some View {
-    //        Text("Full Name")
-    //            .font(
-    //                .system(.body, design: .rounded)
-    //                .weight(.heavy)
-    //            )
-    //
-    //        Text(teamsViewModel.teams[userId].fullName)
-    //            .font(
-    //                .system(.subheadline, design: .rounded)
-    //            )
-    //
-    //        Divider()
-    //    }
+    
+        @ViewBuilder
+        var name: some View {
+            Text("Name")
+                .font(
+                    .system(.body, design: .rounded)
+                    .weight(.heavy)
+                )
+    
+//            Text(teamsViewModel.teams[userId].name)
+//                .font(
+//                    .system(.subheadline, design: .rounded)
+//                )
+    
+            Divider()
+        }
+    
+        @ViewBuilder
+        var fullName: some View {
+            Text("Full Name")
+                .font(
+                    .system(.body, design: .rounded)
+                    .weight(.heavy)
+                )
+    
+//            Text(teamsViewModel.teams[userId].fullName)
+//                .font(
+//                    .system(.subheadline, design: .rounded)
+//                )
+    
+            Divider()
+        }
     //
     //    @ViewBuilder
     //    var city: some View {

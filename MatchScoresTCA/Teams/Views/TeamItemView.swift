@@ -11,12 +11,11 @@ struct TeamItemView: View {
     
     let teams: Datum
     
-    
     var body: some View {
         VStack(spacing: .zero) {
             VStack(alignment: .leading) {
                 Text("\(teams.name)")
-                //                    .foregroundColor(Theme.text)
+                    .foregroundColor(Theme.text)
                     .font(
                         .system(.largeTitle, design: .rounded)
                     )
@@ -30,23 +29,22 @@ struct TeamItemView: View {
             .frame(height: 150.0)
             .padding(.horizontal, 8)
             .padding(.vertical, 5)
-            //            .background(Theme.detailBackground)
+            .background(Theme.detailBackground)
             
-            //            VStack {
-            //                PillView(id: teams.id)
-            //                    .padding(.leading, 10)
-            //                    .padding(.top, 10)
-            //            }
+            VStack {
+                PillView(id: teams.id)
+                    .padding(.leading, 10)
+                    .padding(.top, 10)
+            }
             
         }
         .clipShape(
             RoundedRectangle(cornerRadius: 16,
                              style: .continuous)
         )
-        //        .shadow(color: Theme.text.opacity(0.1),
-        //                radius: 2,
-        //                x: 0,
-        //                y: 1)
-        
+        .shadow(color: Theme.text.opacity(0.1),
+                radius: 2,
+                x: 0,
+                y: 1)
     }
 }

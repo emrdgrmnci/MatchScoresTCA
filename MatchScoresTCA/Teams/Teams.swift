@@ -5,16 +5,16 @@
 //  Created by emre.degirmenci on 4.08.2023.
 //
 
-import Foundation
+import SwiftUI
 
 // MARK: - Teams
-struct Teams: Codable, Equatable {
+struct Teams: Decodable, Equatable, Sendable {
     let data: [Datum]
     let meta: Meta
 }
 
 // MARK: - Datum
-struct Datum: Codable, Equatable {
+struct Datum: Decodable, Equatable, Identifiable, Sendable, Hashable {
     let id: Int
     let abbreviation, city: String
     let division, fullName, name: String
@@ -27,7 +27,7 @@ struct Datum: Codable, Equatable {
 }
 
 // MARK: - Meta
-struct Meta: Codable, Equatable {
+struct Meta: Decodable, Equatable {
     let totalPages, currentPage, nextPage, perPage: Int
     let totalCount: Int
 
