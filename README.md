@@ -12,6 +12,12 @@ SwiftUI, UIKit, and more, and on any Apple platform (iOS, macOS, tvOS, and watch
 * [Examples](#examples)
 * [Basic usage](#basic-usage)
 
+### Source 
+
+⚠️ For the all first-hand info:
+
+Please visit: https://github.com/pointfreeco/swift-composable-architecture
+
 ## What is the Composable Architecture?
 
 This library provides a few core tools that can be used to build applications of varying purpose and 
