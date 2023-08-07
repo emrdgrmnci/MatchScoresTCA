@@ -11,10 +11,6 @@ SwiftUI, UIKit, and more, and on any Apple platform (iOS, macOS, tvOS, and watch
 * [Learn more](#learn-more)
 * [Examples](#examples)
 * [Basic usage](#basic-usage)
-* [Documentation](#documentation)
-* [Community](#community)
-* [Installation](#installation)
-* [Translations](#translations)
 
 ## What is the Composable Architecture?
 
