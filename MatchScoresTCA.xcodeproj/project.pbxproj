@@ -25,6 +25,7 @@
 		CBECBE432A812AB000AF97DF /* PlayerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECBE422A812AB000AF97DF /* PlayerFeature.swift */; };
 		CBECBE462A812B4F00AF97DF /* TeamFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECBE452A812B4F00AF97DF /* TeamFeature.swift */; };
 		CBECBE482A81344900AF97DF /* CheckmarkPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECBE472A81344900AF97DF /* CheckmarkPopoverView.swift */; };
+		CBECBE4A2A815FB900AF97DF /* TCA-Diagram.png in Resources */ = {isa = PBXBuildFile; fileRef = CBECBE492A815FB900AF97DF /* TCA-Diagram.png */; };
 		CBED3E6B2A7D6F1300680953 /* MatchScoresClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBED3E6A2A7D6F1300680953 /* MatchScoresClient.swift */; };
 		CBED3E6E2A7D6FB400680953 /* TeamsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBED3E6D2A7D6FB400680953 /* TeamsModel.swift */; };
 		CBF91C432A7D532200F0AC33 /* MatchScoresTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C422A7D532200F0AC33 /* MatchScoresTCAApp.swift */; };
@@ -75,6 +76,7 @@
 		CBECBE422A812AB000AF97DF /* PlayerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFeature.swift; sourceTree = "<group>"; };
 		CBECBE452A812B4F00AF97DF /* TeamFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFeature.swift; sourceTree = "<group>"; };
 		CBECBE472A81344900AF97DF /* CheckmarkPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkPopoverView.swift; sourceTree = "<group>"; };
+		CBECBE492A815FB900AF97DF /* TCA-Diagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TCA-Diagram.png"; sourceTree = "<group>"; };
 		CBED3E6A2A7D6F1300680953 /* MatchScoresClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresClient.swift; sourceTree = "<group>"; };
 		CBED3E6D2A7D6FB400680953 /* TeamsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsModel.swift; sourceTree = "<group>"; };
 		CBF91C3F2A7D532200F0AC33 /* MatchScoresTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchScoresTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 		CBACB3132A7FCF1C0044F570 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CBECBE492A815FB900AF97DF /* TCA-Diagram.png */,
 				CBF91C462A7D532300F0AC33 /* Assets.xcassets */,
 				CBACB3142A7FCF280044F570 /* Symbols.swift */,
 				CBACB3162A7FCF610044F570 /* Theme.swift */,
@@ -394,6 +397,7 @@
 			files = (
 				CBF91C4A2A7D532300F0AC33 /* Preview Assets.xcassets in Resources */,
 				CBF91C472A7D532300F0AC33 /* Assets.xcassets in Resources */,
+				CBECBE4A2A815FB900AF97DF /* TCA-Diagram.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

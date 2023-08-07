@@ -51,18 +51,17 @@ struct RootView: View {
 }
 
 struct RootView_Previews: PreviewProvider {
-  static var previews: some View {
-      RootView(
-          store: Store(
-              initialState: RootDomain.State()
-          ) {
-              RootDomain(
-                fetchTeams: { TeamsModel.sample },
-                fetchPlayers: { PlayersModel.sample },
-                  uuid: { UUID() }
-              )
-          }
-      )
-  }
+    static var previews: some View {
+        RootView(
+            store: Store(
+                initialState: RootDomain.State()
+            ) {
+                RootDomain(
+                    fetchTeams: { TeamsModel.sample },
+                    fetchPlayers: { PlayersModel.sample },
+                    uuid: { UUID() }
+                )
+            }
+        )
+    }
 }
-
