@@ -27,7 +27,7 @@ struct RootDomain: Reducer {
         case playerList(PlayerListFeature.Action)
     }
     
-    var fetchTeams: @Sendable () async throws -> TeamsModel
+    var fetchTeams: () async throws -> TeamsModel
     var fetchPlayers:  @Sendable () async throws -> PlayersModel
     var uuid: @Sendable () -> UUID
     

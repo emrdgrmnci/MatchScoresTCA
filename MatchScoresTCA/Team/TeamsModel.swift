@@ -44,9 +44,7 @@ extension TeamsModel {
     static var sample: TeamsModel {
         .init(data: [
             TeamData(id: 1, abbreviation: "ATL", city: "Atlanta", division: "Southeast", fullName: "Atlanta Hawks", name: "Hawks"),
-            
             TeamData(id: 2, abbreviation: "BOS", city: "Boston", division: "Atlantic", fullName: "Boston Celtics", name: "Celtics"),
-            
             TeamData(id: 3, abbreviation: "BKN", city: "Brooklyn", division: "Atlantic", fullName: "Brooklyn Nets", name: "Nets")
         ],
               meta: Meta(totalPages: 2, currentPage: 1, nextPage: 2, perPage: 30, totalCount: 45))

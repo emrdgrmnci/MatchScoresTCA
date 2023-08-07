@@ -21,6 +21,18 @@ struct PlayerView: View {
                         .font(
                             .system(.largeTitle, design: .rounded)
                         )
+                        .background(
+                            ForEach(avatars, id: \.self) {
+                                let foo = $0.lastIndex(of: "_")!
+                                let bar = $0[foo...]
+                                if let match = bar.firstMatch(of: /^(.*?)\s*_\s*(.*)$/.ignoresCase()),
+                                   match.output.2 == viewStore.state.player.team.name.lowercased() {
+                                    Image($0)
+                                    .opacity(0.6)
+                                    .aspectRatio(contentMode: .fill)
+                                }
+                            }
+                        )
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .frame(height: 150.0)
@@ -53,7 +65,7 @@ struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
         return PlayerView(
             store: Store(
-                initialState: PlayerFeature.State(id: UUID(), player: PlayerData(id: 1, firstName: "Emre", heightFeet: nil, heightInches: nil, lastName: "Degirmenci", position: "G", weightPounds: nil))) {
+                initialState: PlayerFeature.State(id: UUID(), player: PlayerData(id: 1, firstName: "Emre", heightFeet: nil, heightInches: nil, lastName: "Degirmenci", position: "G", team: TeamData(id: 23, abbreviation: "ATL", city: "Atlanta", division: "Southeast", fullName: "Atlanta Hawks", name: "Hawks"), weightPounds: nil))) {
                     
                 }
         )
