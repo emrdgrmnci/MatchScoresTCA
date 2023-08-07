@@ -12,9 +12,10 @@ import ComposableArchitecture
 struct MatchScoresTCAApp: App {
     var body: some Scene {
         WindowGroup {
-            TeamView(
-                store: Store(initialState: MatchFeature.State()) {
-                    MatchFeature()
+            RootView(
+                store: Store(initialState: RootDomain.State()) {
+                    RootDomain(fetchTeams: { TeamsModel.sample}, fetchPlayers: { PlayersModel.sample }, uuid: { UUID() }
+                    )
                 }
             )
         }
