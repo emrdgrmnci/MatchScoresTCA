@@ -21,10 +21,3 @@ struct MatchScoresTCAApp: App {
         }
     }
 }
-
-/*
- var filteredTeams: [Datum] {
-     guard !searchTerm.isEmpty else { return teams }
-     return teams.filter { $0.fullName.description.localizedCaseInsensitiveContains(searchTerm) }
- }
- */

@@ -66,12 +66,12 @@ private extension TeamView {
     var refresh: some View {
         Button {
             Task {
-//                await vm.fetchTeams()
+                // await vm.fetchTeams()
             }
         } label: {
             Symbols.refresh
         }
-//        .disabled(vm.isLoading)
+        // .disabled(vm.isLoading)
     }
 }
 
