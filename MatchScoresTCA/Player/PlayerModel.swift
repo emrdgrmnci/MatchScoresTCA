@@ -19,9 +19,9 @@ struct PlayerData: Decodable, Equatable, Identifiable, Sendable {
     let firstName: String
     let heightFeet, heightInches: Int?
     let lastName, position: String
-//    let team: TeamsModel
+    //    let team: TeamsModel
     let weightPounds: Int?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case firstName = "first_name"
@@ -34,37 +34,15 @@ struct PlayerData: Decodable, Equatable, Identifiable, Sendable {
 }
 
 extension PlayersModel {
-    static var sample: [PlayerData] {
-        [
-            .init(
-                id: 14,
-                firstName: "Ike",
-                heightFeet: nil,
-                heightInches: nil,
-                lastName: "Anigbogu",
-                position: "C",
-                weightPounds: nil
-            ),
-            .init(
-                id: 25,
-                firstName: "Ron",
-                heightFeet: nil,
-                heightInches: nil,
-                lastName: "Baker",
-                position: "G",
-                weightPounds: nil
-            ),
-            .init(
-                id: 47,
-                firstName: "Jabari",
-                heightFeet: nil,
-                heightInches: nil,
-                lastName: "Bird",
-                position: "G",
-                weightPounds: nil
-            )
-        ]
+    static var sample: PlayersModel {
+        .init(
+            data: [
+                PlayerData(id: 14, firstName: "Ike", heightFeet: nil, heightInches: nil, lastName: "Anigbogu", position: "C", weightPounds: nil),
+                
+                PlayerData(id: 25, firstName: "Ron", heightFeet: nil, heightInches: nil, lastName: "Baker", position: "G", weightPounds: nil),
+                
+                PlayerData(id: 47, firstName: "Jabari", heightFeet: nil, heightInches: nil, lastName: "Bird", position: "G", weightPounds: nil)
+            ], meta: Meta(totalPages: 206, currentPage: 1, nextPage: 2, perPage: 25, totalCount: 5130)
+        )
     }
 }
-
-

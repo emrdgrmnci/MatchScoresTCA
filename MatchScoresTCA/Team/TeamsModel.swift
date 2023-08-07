@@ -9,16 +9,16 @@ import SwiftUI
 
 // MARK: - Teams
 struct TeamsModel: Decodable, Equatable, Sendable {
-    let data: [Datum]
+    let data: [TeamData]
     let meta: Meta
 }
 
 // MARK: - Datum
-struct Datum: Decodable, Equatable, Identifiable, Sendable, Hashable {
+struct TeamData: Decodable, Equatable, Identifiable, Sendable {
     let id: Int
     let abbreviation, city: String
     let division, fullName, name: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id, abbreviation, city, division
         case fullName = "full_name"
@@ -30,7 +30,7 @@ struct Datum: Decodable, Equatable, Identifiable, Sendable, Hashable {
 struct Meta: Decodable, Equatable {
     let totalPages, currentPage, nextPage, perPage: Int
     let totalCount: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case totalPages = "total_pages"
         case currentPage = "current_page"
@@ -41,34 +41,15 @@ struct Meta: Decodable, Equatable {
 }
 
 extension TeamsModel {
-    static var sample: [Datum] {
-        [
-            .init(
-                id: 1,
-                abbreviation: "ATL",
-                city: "Atlanta",
-                division: "Southeast",
-                fullName: "Atlanta Hawks",
-                name: "Hawks"
-            ),
-            .init(
-                id: 2,
-                abbreviation: "BOS",
-                city: "Boston",
-                division: "Atlantic",
-                fullName: "Boston Celtics",
-                name: "Celtics"
-            ),
-            .init(
-                id: 3,
-                abbreviation: "BKN",
-                city: "Brooklyn",
-                division: "Atlantic",
-                fullName: "Brooklyn Nets",
-                name: "Nets"
-            )
-        ]
+    static var sample: TeamsModel {
+        .init(data: [
+            TeamData(id: 1, abbreviation: "ATL", city: "Atlanta", division: "Southeast", fullName: "Atlanta Hawks", name: "Hawks"),
+            
+            TeamData(id: 2, abbreviation: "BOS", city: "Boston", division: "Atlantic", fullName: "Boston Celtics", name: "Celtics"),
+            
+            TeamData(id: 3, abbreviation: "BKN", city: "Brooklyn", division: "Atlantic", fullName: "Brooklyn Nets", name: "Nets")
+        ],
+              meta: Meta(totalPages: 2, currentPage: 1, nextPage: 2, perPage: 30, totalCount: 45))
+        
     }
 }
-
-
