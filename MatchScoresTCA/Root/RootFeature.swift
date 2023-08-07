@@ -11,8 +11,8 @@ import Foundation
 struct RootDomain: Reducer {
     struct State: Equatable {
         var selectedTab = Tab.teams
-        var teamListState = TeamFeature.State()
-        var playerListState = PlayerFeature.State()
+        var teamListState = TeamListFeature.State()
+        var playerListState = PlayerListFeature.State()
     }
     
     enum Tab {
@@ -23,12 +23,12 @@ struct RootDomain: Reducer {
     
     enum Action: Equatable {
         case tabSelected(Tab)
-        case teamList(TeamFeature.Action)
-        case playerList(PlayerFeature.Action)
+        case teamList(TeamListFeature.Action)
+        case playerList(PlayerListFeature.Action)
     }
     
-    var fetchTeams: @Sendable () async throws -> [Datum]
-    var fetchPlayers:  @Sendable () async throws -> [PlayerData]
+    var fetchTeams: @Sendable () async throws -> TeamsModel
+    var fetchPlayers:  @Sendable () async throws -> PlayersModel
     var uuid: @Sendable () -> UUID
     
     static let live = Self(
@@ -50,10 +50,10 @@ struct RootDomain: Reducer {
             }
         }
         Scope(state: \.teamListState, action: /RootDomain.Action.teamList) {
-            TeamFeature()
+            TeamListFeature(uuid: uuid)
         }
         Scope(state:  \.playerListState, action: /RootDomain.Action.playerList) {
-            PlayerFeature()
+            PlayerListFeature(uuid: uuid)
         }
     }
 }

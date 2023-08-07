@@ -10,44 +10,52 @@ import ComposableArchitecture
 
 struct PlayerView: View {
     
-    let store: Store<PlayerFeature.State, PlayerFeature.Action>
+    let store: StoreOf<PlayerFeature>
     
-  var body: some View {
-      WithViewStore(self.store, observe: {$0} ) { viewStore in
-      HStack {
-        Spacer()
-        VStack(spacing: 8) {
-            Text(viewStore.resultPlayerRequestInFlight?.firstName ?? "")
-            .font(.title)
-            Text(viewStore.resultPlayerRequestInFlight?.lastName ?? "")
-            .bold()
-            + Text(" Players | ")
-            + Text(viewStore.resultPlayerRequestInFlight?.position ?? "")
-              .bold()
-            + Text(" player")
-          Spacer()
+    var body: some View {
+        WithViewStore(self.store, observe: {$0} ) { viewStore in
+            VStack(spacing: .zero) {
+                VStack(alignment: .leading) {
+                    Text(viewStore.player.firstName)
+                        .foregroundColor(Theme.text)
+                        .font(
+                            .system(.largeTitle, design: .rounded)
+                        )
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 150.0)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 5)
+                .background(Theme.detailBackground)
+                
+                VStack {
+                    PillView(id: viewStore.player.id)
+                        .padding(.leading, 10)
+                        .padding(.top, 10)
+                }
+                
+            }
+            .clipShape(
+                RoundedRectangle(cornerRadius: 16,
+                                 style: .continuous)
+            )
+            .shadow(color: Theme.text.opacity(0.1),
+                    radius: 2,
+                    x: 0,
+                    y: 1)
         }
-        .padding()
-        .onAppear {
-            guard let data = viewStore.resultPlayerRequestInFlight else { return }
-            viewStore.send(.onAppear(data))
-        }
-        Spacer()
-      }
+        .background(Color("launch-screen-background")
+            .edgesIgnoringSafeArea([.top, .leading, .trailing]))
     }
-    .background(Color("launch-screen-background").edgesIgnoringSafeArea([.top, .leading, .trailing]))
-  }
 }
 
-//struct UserView_Previews: PreviewProvider {
-//  static var previews: some View {
-//    return UserView(
-//      store: Store(
-//        initialState: UserState(),
-//        reducer: userReducer,
-//        environment: .dev(
-//          environment: UserEnvironment(
-//            userRequest: dummyUserEffect))))
-//  }
-//}
-
+struct PlayerView_Previews: PreviewProvider {
+    static var previews: some View {
+        return PlayerView(
+            store: Store(
+                initialState: PlayerFeature.State(id: UUID(), player: PlayerData(id: 1, firstName: "Emre", heightFeet: nil, heightInches: nil, lastName: "Degirmenci", position: "G", weightPounds: nil))) {
+                    
+                }
+        )
+    }
+}
