@@ -70,3 +70,11 @@ an alert.
 
 To implement this feature we create a new type that will house the domain and behavior of the 
 feature by conforming to `Reducer`:
+
+
+
+## TCA Data-flow Diagram
+
+
+![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/feature/MatchScoresTCA/Resources/TCA-Diagram.png "TCA Data Flow Diagram")
+
