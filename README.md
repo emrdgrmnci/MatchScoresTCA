@@ -46,11 +46,12 @@ day-to-day when building applications, such as:
   <br> How to accomplish all of the above in a simple API with as few concepts and moving parts as 
   possible.
 
-## Basic Usage
+## TCA Data-flow Diagram
 
-> **Note**
-> For a step-by-step interactive tutorial, be sure to check out [Meet the Composable
-> Architecture][meet-tca].
+![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/feature/MatchScoresTCA/Resources/TCA-Diagram.png "TCA Data Flow Diagram")
+
+
+## Basic Usage
 
 To build a feature using the Composable Architecture you define some types and values that model 
 your domain:
@@ -77,10 +78,158 @@ an alert.
 To implement this feature we create a new type that will house the domain and behavior of the 
 feature by conforming to `Reducer`:
 
+As a basic example, consider a UI that shows a 2-columns grid list along with "#" team/player ids, names and, team logos. When the views appear, there is an API request to fetch NBA teams and players and then displays in a 2-columns grid list.
+
+To implement this parent feature we create a new type that will house the domain and behavior of the feature by conforming to Reducer:
+
+```
+import ComposableArchitecture
+struct TeamListFeature: Reducer {
+}
+```
+In here we need to define a type for the feature's state, which consists of a data loading status, as well as an TeamsModel that is an Identified collection which are designed to solve all of the collection problems by providing data structures for working with collections (teams and meta) of identifiable elements in an ergonomic, performant way:
+
+```
+struct TeamListFeature: Reducer {
+    struct State: Equatable {
+        var dataLoadingStatus = DataLoadingStatus.notStarted
+        var resultTeamRequestInFlight: TeamsModel?
+        var teamList: IdentifiedArrayOf<TeamFeature.State> = []
+        
+        var shouldShowError: Bool {
+            dataLoadingStatus == .error
+        }
+        
+        var isLoading: Bool {
+            dataLoadingStatus == .loading
+        }   
+    }
+}
+```
+We also need to define a type for the feature's actions. There are the obvious action, such as view on appear and the action that occurs when we receive a response from the team/player API request, and define a `team(id: TeamFeature.State.ID, action: TeamFeature.Action)` case to handle actions sent to the child domain `(TeamFeature: Reducer)`:
+
+```
+struct TeamListFeature: Reducer {
+    struct State: Equatable {
+        var dataLoadingStatus = DataLoadingStatus.notStarted
+        var teamList: IdentifiedArrayOf<TeamFeature.State> = []
+        var shouldShowError: Bool {
+            dataLoadingStatus == .error
+        }
+        var isLoading: Bool {
+            dataLoadingStatus == .loading
+        }   
+    }
+    enum Action: Equatable {
+        case fetchTeamResponse(TaskResult<TeamsModel>)
+        case team(id: TeamFeature.State.ID, action: TeamFeature.Action)
+        case onAppear
+    }
+}
+```
+And then we implement the reduce method which is responsible for handling the actual logic and behavior for the feature. It describes how to change the current state to the next state, and describes what effects need to be executed. Some actions don't need to execute effects, and they can return .none to represent that:
+
+```
+struct TeamListFeature: Reducer {
+  struct State: Equatable { /* ... */ }
+  enum Action: Equatable { /* ... */ }
+
+func reduce(into state: inout State, action: Action) -> Effect<Action> {
+        switch action {
+        case .fetchTeamResponse(.failure(let error)):
+            state.dataLoadingStatus = .error
+            print(error)
+            print("Error getting products, try again later.")
+            return .none
+            
+        case let .fetchTeamResponse(.success(teamData)):
+            state.teamList = IdentifiedArrayOf(
+                uniqueElements: teamData.data.map {
+                    TeamFeature.State(
+                        id: uuid(),
+                        team: $0
+                    )
+                }
+            )
+            state.dataLoadingStatus = .loading
+            return .none
+            
+        case .onAppear:
+            return .run { send in
+                await send (
+                    .fetchTeamResponse(
+                        TaskResult { try await MatchScoresClient.liveValue.fetchTeams()
+                        }
+                    )
+                )
+            }
+        case .team:
+            return .none
+        }
+    }
+}
+```
+And then finally we define the view that displays the feature. It holds onto a `StoreOf<TeamListFeature>` so that it can observe all changes to the state and re-render, and we can send all user actions to the store so that state changes. `ForEachStore` loops over a store’s collection with a store scoped to the domain of each element. This allows us to extract and modularize an element’s view and avoid concerns around collection index math and parent-child store communication:
+
+```
+struct TeamListView: View {
+    let store: StoreOf<TeamListFeature>
+    
+    private let columns = Array(
+        repeating: GridItem( .flexible()),
+        count: 2
+    )
+    
+    var body: some View {
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            ZStack{
+                ScrollView {
+                    LazyVGrid(columns: columns,
+                              spacing: 16) {
+                        ForEachStore(
+                            self.store.scope(
+                                state: \.teamList,
+                                action: TeamListFeature.Action.team(id:action:)
+                            )
+                        ) {
+                            TeamView(store: $0)
+                        }
+                    }
+                              .padding()
+                              .accessibilityIdentifier("peopleGrid")
+                }
+                .refreshable {
+                    viewStore.send(.onAppear)
+                }
+            }
+            .navigationTitle("Teams")
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
+        }
+    }
+}
+```
+Once we are ready to display this view, for example in the app's entry point, we can construct a store. This can be done by specifying the initial state to start the application in, as well as the reducer that will power the application:
+
+```
+import SwiftUI
+import ComposableArchitecture
+
+@main
+struct MatchScoresTCAApp: App {
+    var body: some Scene {
+        WindowGroup {
+            RootView(
+                store: Store(initialState: RootDomain.State()) {
+                    RootDomain(fetchTeams: { TeamsModel.sample}, fetchPlayers: { PlayersModel.sample }, uuid: { UUID() }
+                    )
+                }
+            )
+        }
+    }
+}
+```
 
 
-## TCA Data-flow Diagram
-
-
-![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/feature/MatchScoresTCA/Resources/TCA-Diagram.png "TCA Data Flow Diagram")
 
