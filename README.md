@@ -394,16 +394,9 @@ struct TeamFeature: Reducer {
         let id: UUID
         let team: TeamData
     }
-    enum Action: Equatable {
-        case onAppear
-    }
+    enum Action: Equatable { }
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case .onAppear:
-            return .none
-        }
-    }
+    func reduce(into state: inout State, action: Action) -> Effect<Action> { }
 }
 ```
 And then we define the view that displays the feature. It holds onto a `StoreOf<TeamFeature>` so that it can observe all changes to the state and re-render, and we can send all user actions to the store so that state changes. `WithViewStore` is a view helper that transforms a `Store` into a `ViewStore` so that its state can be observed by a view builder:
