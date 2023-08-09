@@ -13,7 +13,7 @@ struct TeamListFeature: Reducer {
         var dataLoadingStatus = DataLoadingStatus.notStarted
         var results: [TeamData] = []
         var resultTeamRequestInFlight: TeamsModel?
-        var teamList: IdentifiedArrayOf<TeamFeature.State> = []
+        var teamList: IdentifiedArrayOf<TeamData> = []
         
         var shouldShowError: Bool {
             dataLoadingStatus == .error
@@ -27,7 +27,6 @@ struct TeamListFeature: Reducer {
     
     enum Action: Equatable {
         case fetchTeamResponse(TaskResult<TeamsModel>)
-        case team(id: TeamFeature.State.ID, action: TeamFeature.Action)
         case onAppear
         
     }
@@ -45,12 +44,7 @@ struct TeamListFeature: Reducer {
             
         case let .fetchTeamResponse(.success(teamData)):
             state.teamList = IdentifiedArrayOf(
-                uniqueElements: teamData.data.map {
-                    TeamFeature.State(
-                        id: uuid(),
-                        team: $0
-                    )
-                }
+                uniqueElements: teamData.data
             )
             state.dataLoadingStatus = .loading
             return .none
@@ -64,8 +58,6 @@ struct TeamListFeature: Reducer {
                     )
                 )
             }
-        case .team:
-            return .none
         }
     }
 }

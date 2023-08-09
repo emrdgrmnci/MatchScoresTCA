@@ -20,13 +20,8 @@ struct TeamListView: View {
                 ScrollView {
                     LazyVGrid(columns: columns,
                               spacing: 16) {
-                        ForEachStore(
-                            self.store.scope(
-                                state: \.teamList,
-                                action: TeamListFeature.Action.team(id:action:)
-                            )
-                        ) {
-                            TeamView(store: $0)
+                        ForEach(viewStore.teamList) {
+                            TeamView(team: $0)
                         }
                     }
                               .padding()
