@@ -1,10 +1,3 @@
-//
-//  TeamFeature.swift
-//  MatchScoresTCA
-//
-//  Created by emre.degirmenci on 7.08.2023.
-//
-
 import ComposableArchitecture
 import SwiftUI
 
@@ -14,14 +7,7 @@ struct TeamFeature: Reducer {
         let team: TeamData
     }
     
-    enum Action: Equatable {
-        case onAppear
-    }
+    enum Action: Equatable { }
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case .onAppear:
-            return .none
-        }
-    }
+    func reduce(into state: inout State, action: Action) -> Effect<Action> { }
 }

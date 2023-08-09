@@ -8,9 +8,15 @@
 import SwiftUI
 
 // MARK: - Teams
-struct TeamsModel: Decodable, Equatable, Sendable {
+struct TeamsModel: Decodable, Equatable, Identifiable, Sendable {
+    var id = UUID()
+    
     let data: [TeamData]
     let meta: Meta
+    
+    enum CodingKeys: String, CodingKey {
+        case data, meta
+    }
 }
 
 // MARK: - Datum

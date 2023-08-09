@@ -13,8 +13,8 @@ struct MatchScoresTCAApp: App {
     var body: some Scene {
         WindowGroup {
             RootView(
-                store: Store(initialState: RootDomain.State()) {
-                    RootDomain(fetchTeams: { TeamsModel.sample}, fetchPlayers: { PlayersModel.sample }, uuid: { UUID() }
+                store: Store(initialState: RootFeature.State()) {
+                    RootFeature(fetchTeams: { TeamsModel.sample}, fetchPlayers: { PlayersModel.sample }, uuid: { UUID() }
                     )
                 }
             )
