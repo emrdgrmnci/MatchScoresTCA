@@ -8,7 +8,7 @@
 import ComposableArchitecture
 import Foundation
 
-struct RootDomain: Reducer {
+struct RootFeature: Reducer {
     struct State: Equatable {
         var selectedTab = Tab.teams
         var teamListState = TeamListFeature.State()
@@ -49,10 +49,10 @@ struct RootDomain: Reducer {
                 return .none
             }
         }
-        Scope(state: \.teamListState, action: /RootDomain.Action.teamList) {
+        Scope(state: \.teamListState, action: /RootFeature.Action.teamList) {
             TeamListFeature(uuid: uuid)
         }
-        Scope(state:  \.playerListState, action: /RootDomain.Action.playerList) {
+        Scope(state:  \.playerListState, action: /RootFeature.Action.playerList) {
             PlayerListFeature(uuid: uuid)
         }
     }
