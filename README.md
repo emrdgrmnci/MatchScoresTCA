@@ -47,7 +47,7 @@ day-to-day when building applications, such as:
 
 ## TCA Data-flow Diagram
 
-![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/feature/MatchScoresTCA/Resources/TCA-Diagram.png "TCA Data Flow Diagram")
+![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/TCA-Diagram.png "TCA Data Flow Diagram")
 
 
 ## Basic Usage
