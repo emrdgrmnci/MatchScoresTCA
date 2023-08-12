@@ -23,7 +23,6 @@
 		CBACB33B2A8027BA0044F570 /* PlayerListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB33A2A8027BA0044F570 /* PlayerListFeature.swift */; };
 		CBECBE402A812A3E00AF97DF /* DataLoadingStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECBE3F2A812A3E00AF97DF /* DataLoadingStatus.swift */; };
 		CBECBE432A812AB000AF97DF /* PlayerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECBE422A812AB000AF97DF /* PlayerFeature.swift */; };
-		CBECBE462A812B4F00AF97DF /* TeamFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECBE452A812B4F00AF97DF /* TeamFeature.swift */; };
 		CBECBE482A81344900AF97DF /* CheckmarkPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBECBE472A81344900AF97DF /* CheckmarkPopoverView.swift */; };
 		CBECBE4A2A815FB900AF97DF /* TCA-Diagram.png in Resources */ = {isa = PBXBuildFile; fileRef = CBECBE492A815FB900AF97DF /* TCA-Diagram.png */; };
 		CBED3E6B2A7D6F1300680953 /* MatchScoresClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBED3E6A2A7D6F1300680953 /* MatchScoresClient.swift */; };
@@ -74,7 +73,6 @@
 		CBACB33A2A8027BA0044F570 /* PlayerListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListFeature.swift; sourceTree = "<group>"; };
 		CBECBE3F2A812A3E00AF97DF /* DataLoadingStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingStatus.swift; sourceTree = "<group>"; };
 		CBECBE422A812AB000AF97DF /* PlayerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerFeature.swift; sourceTree = "<group>"; };
-		CBECBE452A812B4F00AF97DF /* TeamFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamFeature.swift; sourceTree = "<group>"; };
 		CBECBE472A81344900AF97DF /* CheckmarkPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkPopoverView.swift; sourceTree = "<group>"; };
 		CBECBE492A815FB900AF97DF /* TCA-Diagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TCA-Diagram.png"; sourceTree = "<group>"; };
 		CBED3E6A2A7D6F1300680953 /* MatchScoresClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresClient.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				CBECBE442A812B3E00AF97DF /* TeamList */,
 				CBED3E6D2A7D6FB400680953 /* TeamsModel.swift */,
 				CBACB32F2A8023290044F570 /* TeamView.swift */,
-				CBECBE452A812B4F00AF97DF /* TeamFeature.swift */,
 			);
 			path = Team;
 			sourceTree = "<group>";
@@ -434,7 +431,6 @@
 				CBACB3372A80240C0044F570 /* FavoriteListView.swift in Sources */,
 				CBECBE482A81344900AF97DF /* CheckmarkPopoverView.swift in Sources */,
 				CBACB31D2A801AFE0044F570 /* RootFeature.swift in Sources */,
-				CBECBE462A812B4F00AF97DF /* TeamFeature.swift in Sources */,
 				CBACB3172A7FCF610044F570 /* Theme.swift in Sources */,
 				CBF91C712A7D53AE00F0AC33 /* Endpoint.swift in Sources */,
 				CBACB3152A7FCF280044F570 /* Symbols.swift in Sources */,
