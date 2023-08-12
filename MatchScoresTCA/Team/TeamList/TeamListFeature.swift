@@ -11,9 +11,8 @@ import SwiftUI
 struct TeamListFeature: Reducer {
     struct State: Equatable {
         var dataLoadingStatus = DataLoadingStatus.notStarted
-        var results: [TeamData] = []
-        var resultTeamRequestInFlight: TeamsModel?
         var teamList: IdentifiedArrayOf<TeamData> = []
+        var searchQuery = ""
         
         var shouldShowError: Bool {
             dataLoadingStatus == .error
@@ -23,23 +22,31 @@ struct TeamListFeature: Reducer {
             dataLoadingStatus == .loading
         }
         
+        var searchResults: IdentifiedArrayOf<TeamData> {
+            guard !searchQuery.isEmpty else {
+                return teamList
+            }
+            return teamList.filter { $0.fullName.lowercased().contains(searchQuery.lowercased()) }
+        }
     }
     
     enum Action: Equatable {
         case fetchTeamResponse(TaskResult<TeamsModel>)
+        case searchQueryChanged(String)
+        //        case searchResultTapped(IdentifiedArrayOf<TeamData>)
         case onAppear
-        
     }
     
     var uuid: @Sendable () -> UUID
     
+    private enum CancelID { case team }
+    
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-            
         case .fetchTeamResponse(.failure(let error)):
             state.dataLoadingStatus = .error
             print(error)
-            print("Error getting products, try again later.")
+            print("Error getting players, try again later.")
             return .none
             
         case let .fetchTeamResponse(.success(teamData)):
@@ -58,11 +65,13 @@ struct TeamListFeature: Reducer {
                     )
                 )
             }
+            
+        case let .searchQueryChanged(query):
+            state.searchQuery = query
+            guard !query.isEmpty else {
+                return .cancel(id: CancelID.team)
+            }
+            return .none
         }
     }
 }
-
-/*
- Reducer/Feature that contains the state and handles actions for 3 separate screens (Teams, Players, Favorites). These would be the next logical steps:
- Create an explicit Action and State  for each screen
- */

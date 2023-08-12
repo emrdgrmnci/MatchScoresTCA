@@ -16,22 +16,44 @@ struct TeamListView: View {
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            ZStack{
-                ScrollView {
-                    LazyVGrid(columns: columns,
-                              spacing: 16) {
-                        ForEach(viewStore.teamList) {
-                            TeamView(team: $0)
+            NavigationStack {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField(
+                        "Search NBA Teams",
+                        text: viewStore.binding(
+                            get: \.searchQuery, send: TeamListFeature.Action.searchQueryChanged
+                        )
+                    )
+                    .textFieldStyle(.roundedBorder)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                }
+                .padding(.horizontal, 16)
+                
+                ZStack{
+                    ScrollView {
+                        LazyVGrid(columns: columns,
+                                  spacing: 16) {
+                            ForEach(viewStore.searchResults) {
+//                                NavigationLink {
+//                                    TeamDetailView(userId: team.id - 1).environmentObject(vm)
+//                                } label: {
+//                                    TeamItemView(teams: team)
+//                                        .accessibilityIdentifier("item_\(team.id)")
+//                                }
+                                TeamView(team: $0)
+                            }
                         }
+                                  .padding()
+                                  .accessibilityIdentifier("peopleGrid")
                     }
-                              .padding()
-                              .accessibilityIdentifier("peopleGrid")
+                    .refreshable {
+                        viewStore.send(.onAppear)
+                    }
                 }
-                .refreshable {
-                    viewStore.send(.onAppear)
-                }
+                .navigationTitle("Teams")
             }
-            .navigationTitle("Teams")
             .onAppear {
                 viewStore.send(.onAppear)
             }

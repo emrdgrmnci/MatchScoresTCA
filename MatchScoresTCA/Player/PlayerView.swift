@@ -10,64 +10,71 @@ import ComposableArchitecture
 
 struct PlayerView: View {
     
-    let store: StoreOf<PlayerFeature>
+    let player: PlayerData
     
     var body: some View {
-        WithViewStore(self.store, observe: {$0} ) { viewStore in
-            VStack(spacing: .zero) {
-                VStack(alignment: .leading) {
-                    Text(viewStore.player.firstName)
-                        .foregroundColor(Theme.text)
-                        .font(
-                            .system(.largeTitle, design: .rounded)
-                        )
-                        .background(
-                            ForEach(avatars, id: \.self) {
-                                let foo = $0.lastIndex(of: "_")!
-                                let bar = $0[foo...]
-                                if let match = bar.firstMatch(of: /^(.*?)\s*_\s*(.*)$/.ignoresCase()),
-                                   match.output.2 == viewStore.state.player.team.name.lowercased() {
-                                    Image($0)
-                                    .opacity(0.6)
-                                    .aspectRatio(contentMode: .fill)
-                                }
-                            }
-                        )
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .frame(height: 150.0)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 5)
-                .background(Theme.detailBackground)
-                
-                VStack {
-                    PillView(id: viewStore.player.id)
-                        .padding(.leading, 10)
-                        .padding(.top, 10)
-                }
-                
+        VStack(spacing: .zero) {
+            
+            background
+            
+            VStack(alignment: .leading) {
+                Text("\(player.firstName) \(player.lastName)")
+                    .foregroundColor(Theme.text)
+                    .font(
+                        .system(.largeTitle, design: .rounded)
+                    )
+//                    .background(
+//                        Image(avatars[player.id - 1])
+//                            .opacity(0.4)
+//                            .aspectRatio(contentMode: .fill)
+//                    )
             }
-            .clipShape(
-                RoundedRectangle(cornerRadius: 16,
-                                 style: .continuous)
-            )
-            .shadow(color: Theme.text.opacity(0.1),
-                    radius: 2,
-                    x: 0,
-                    y: 1)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(height: 150.0)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 5)
+            .background(Theme.detailBackground)
+            
+            VStack {
+                PillView(id: player.id)
+                    .padding(.leading, 10)
+                    .padding(.top, 10)
+            }
+            
         }
-        .background(Color("launch-screen-background")
-            .edgesIgnoringSafeArea([.top, .leading, .trailing]))
+        .clipShape(
+            RoundedRectangle(cornerRadius: 16,
+                             style: .continuous)
+        )
+        .shadow(color: Theme.text.opacity(0.1),
+                radius: 2,
+                x: 0,
+                y: 1)
+        .edgesIgnoringSafeArea([.top, .leading, .trailing])
+    }
+}
+
+private extension PlayerView {
+    
+    var background: some View {
+        Theme.background
+            .ignoresSafeArea(edges: .top)
+    }
+    
+    var refresh: some View {
+        Button {
+            Task {
+                // await vm.fetchTeams()
+            }
+        } label: {
+            Symbols.refresh
+        }
+        // .disabled(vm.isLoading)
     }
 }
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        return PlayerView(
-            store: Store(
-                initialState: PlayerFeature.State(id: UUID(), player: PlayerData(id: 1, firstName: "Emre", heightFeet: nil, heightInches: nil, lastName: "Degirmenci", position: "G", team: TeamData(id: 23, abbreviation: "ATL", city: "Atlanta", division: "Southeast", fullName: "Atlanta Hawks", name: "Hawks"), weightPounds: nil))) {
-                    
-                }
-        )
+        return PlayerView(player: PlayerData(id: 14, firstName: "Ike", heightFeet: nil, heightInches: nil, lastName: "Anigbogu", position: "C", team: TeamData(id: 12, abbreviation: "IND", city: "Indiana", division: "Central", fullName: "Indiana Pacers", name: "Pacers"), weightPounds: nil))
     }
 }

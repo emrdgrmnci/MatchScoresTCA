@@ -11,9 +11,8 @@ import SwiftUI
 struct PlayerListFeature: Reducer { 
     struct State: Equatable {
         var dataLoadingStatus = DataLoadingStatus.notStarted
-        var results: [PlayerData] = []
-        var resultPlayerRequestInFlight: PlayersModel?
-        var playerList: IdentifiedArrayOf<PlayerFeature.State> = []
+        var playerList: IdentifiedArrayOf<PlayerData> = []
+        var searchQuery = ""
         
         var shouldShowError: Bool {
             dataLoadingStatus == .error
@@ -23,17 +22,25 @@ struct PlayerListFeature: Reducer {
             dataLoadingStatus == .loading
         }
         
-    }
-    
-    enum Action: Equatable {
-//        case fetchPlayers
-        case fetchPlayerResponse(TaskResult<PlayersModel>)
-        case player(id: PlayerFeature.State.ID, action: PlayerFeature.Action)
-        case onAppear
+        var searchResults: IdentifiedArrayOf<PlayerData> {
+            guard !searchQuery.isEmpty else {
+                return playerList
+            }
+            return playerList.filter { "\($0.firstName)\($0.lastName)".lowercased().contains(searchQuery.lowercased())
+            }
+        }
         
     }
     
+    enum Action: Equatable {
+        case fetchPlayerResponse(TaskResult<PlayersModel>)
+        case searchQueryChanged(String)
+        case onAppear
+    }
+    
     var uuid: @Sendable () -> UUID
+    
+    private enum CancelID { case player }
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
@@ -41,17 +48,12 @@ struct PlayerListFeature: Reducer {
         case .fetchPlayerResponse(.failure(let error)):
             state.dataLoadingStatus = .error
             print(error)
-            print("Error getting products, try again later.")
+            print("Error getting players, try again later.")
             return .none
             
         case let .fetchPlayerResponse(.success(playerData)):
             state.playerList = IdentifiedArrayOf(
-                uniqueElements: playerData.data.map {
-                    PlayerFeature.State(
-                        id: uuid(),
-                        player: $0
-                    )
-                }
+                uniqueElements: playerData.data
             )
             state.dataLoadingStatus = .loading
             return .none
@@ -65,43 +67,13 @@ struct PlayerListFeature: Reducer {
                     )
                 )
             }
-        case .player:
+            
+        case let .searchQueryChanged(query):
+            state.searchQuery = query
+            guard !query.isEmpty else {
+                return .cancel(id: CancelID.player)
+            }
             return .none
         }
     }
 }
-
-/*
- Reducer/Feature that contains the state and handles actions for 3 separate screens (Teams, Players, Favorites). These would be the next logical steps:
- Create an explicit Action and State  for each screen
- */
-
-/*
- case .fetchProducts:
- if state.dataLoadingStatus == .success || state.dataLoadingStatus == .loading {
- return .none
- }
- 
- state.dataLoadingStatus = .loading
- return .task {
- await .fetchProductsResponse(
- TaskResult { try await fetchProducts() }
- )
- }
- case .fetchProductsResponse(.success(let products)):
- state.dataLoadingStatus = .success
- state.productList = IdentifiedArrayOf(
- uniqueElements: products.map {
- ProductDomain.State(
- id: uuid(),
- product: $0
- )
- }
- )
- return .none
- case .fetchProductsResponse(.failure(let error)):
- state.dataLoadingStatus = .error
- print(error)
- print("Error getting products, try again later.")
- return .none
- */
