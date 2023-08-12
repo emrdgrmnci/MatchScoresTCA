@@ -8,13 +8,13 @@
 import Foundation
 
 // MARK: - Players
-struct PlayersModel: Decodable, Equatable, Sendable {
+struct PlayersModel: Codable, Equatable, Sendable {
     let data: [PlayerData]
     let meta: Meta
 }
 
 // MARK: - Datum
-struct PlayerData: Decodable, Equatable, Identifiable, Sendable {
+struct PlayerData: Codable, Equatable, Identifiable, Sendable {
     let id: Int
     let firstName: String
     let heightFeet, heightInches: Int?

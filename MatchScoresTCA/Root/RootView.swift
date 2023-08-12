@@ -59,6 +59,7 @@ struct RootView_Previews: PreviewProvider {
                 RootFeature(
                     fetchTeams: { TeamsModel.sample },
                     fetchPlayers: { PlayersModel.sample },
+                    fetchGames: { GamesModel.sample },
                     uuid: { UUID() }
                 )
             }

@@ -8,8 +8,7 @@
 import Foundation
 
 enum Endpoint {
-    case teams(page: Int)
-    case detail(Int)
+    case teams
     case games
     case players
 }
@@ -29,8 +28,6 @@ extension Endpoint {
         switch self {
         case .teams:
             return "/api/v1/teams"
-        case .detail(_):
-            return ""
         case .games:
             return "/api/v1/games"
         case .players:
@@ -41,8 +38,6 @@ extension Endpoint {
     var methodType: MethodType {
         switch self {
         case .teams:
-            return .GET
-        case .detail:
             return .GET
         case .games:
             return .GET

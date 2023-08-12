@@ -10,24 +10,25 @@ import ComposableArchitecture
 
 struct MatchScoresClient {
     var fetchTeams: () async throws -> TeamsModel
-//    var search: @Sendable (String) async throws -> TeamsModel
-    var fetchPlayers: @Sendable () async throws -> PlayersModel
+    var fetchPlayers: () async throws -> PlayersModel
+    var fetchGames: () async throws -> GamesModel
+    var error: NetworkingManager.NetworkingError?
 }
+
 extension MatchScoresClient: DependencyKey {
-    static let liveValue = Self( fetchTeams: {
-        
-        let (data, _) = try await URLSession.shared.data(
-            from: URL(string: "https://www.balldontlie.io/api/v1/teams")!
-        )
-        let teams = try JSONDecoder().decode(TeamsModel.self, from: data)
-        return teams
-    },
+    static let liveValue = Self(
+        fetchTeams: {
+            let response = try await NetworkingManager.shared.request(session: .shared, .teams, type: TeamsModel.self)
+            return response
+        },
         fetchPlayers: {
-        let (data, _) = try await URLSession.shared
-            .data(from: URL(string: "https://www.balldontlie.io/api/v1/players")!)
-        let player = try JSONDecoder().decode(PlayersModel.self, from: data)
-        return player
-    }
+            let response = try await NetworkingManager.shared.request(session: .shared, .players, type: PlayersModel.self)
+            return response
+        },
+        fetchGames: {
+            let response = try await NetworkingManager.shared.request(session: .shared, .games, type: GamesModel.self)
+            return response
+        }
     )
 }
 extension DependencyValues {
