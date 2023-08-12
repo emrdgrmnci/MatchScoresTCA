@@ -14,22 +14,43 @@ struct PlayerListView: View {
                                 count: 2)
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            
-            ScrollView {
-                LazyVGrid(columns: columns,
-                          spacing: 16) {
-                    ForEachStore(
-                        self.store.scope(
-                            state: \.playerList,
-                            action: PlayerListFeature.Action
-                                .player(id: action:)
+            NavigationStack {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    TextField(
+                        "Search NBA Players",
+                        text: viewStore.binding(
+                            get: \.searchQuery, send: PlayerListFeature.Action.searchQueryChanged
                         )
-                    ) {
-                        PlayerView(store: $0)
+                    )
+                    .textFieldStyle(.roundedBorder)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                }
+                .padding(.horizontal, 16)
+                
+                ZStack{
+                    ScrollView {
+                        LazyVGrid(columns: columns,
+                                  spacing: 16) {
+                            ForEach(viewStore.searchResults) {
+                                //                                NavigationLink {
+                                //                                    TeamDetailView(userId: team.id - 1).environmentObject(vm)
+                                //                                } label: {
+                                //                                    TeamItemView(teams: team)
+                                //                                        .accessibilityIdentifier("item_\(team.id)")
+                                //                                }
+                                PlayerView(player: $0)
+                            }
+                        }
+                                  .padding()
+                                  .accessibilityIdentifier("peopleGrid")
+                    }
+                    .refreshable {
+                        viewStore.send(.onAppear)
                     }
                 }
-                          .padding()
-                          .accessibilityIdentifier("peopleGrid")
+                .navigationTitle("Players")
             }
             .onAppear {
                 viewStore.send(.onAppear)
