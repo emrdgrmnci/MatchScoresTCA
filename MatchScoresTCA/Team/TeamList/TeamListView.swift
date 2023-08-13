@@ -19,12 +19,14 @@ struct TeamListView: View {
                 ScrollView {
                     LazyVGrid(columns: columns,
                               spacing: 16) {
-                        ForEach(viewStore.searchResults) { team in
-                            NavigationLink {
-                                TeamDetailView(team: team)
-                            } label: {
-                                TeamView(team: team)
-                                    .accessibilityIdentifier("item_\(team.id)")
+                        ForEach(viewStore.searchResults, id: \.id) { team in
+                            ForEach(viewStore.gameResults
+                                    , id: \.id) { game in
+                                NavigationLink {
+                                    TeamDetailView(userId: team.id, team: team, gameData: game).id(game.id)
+                                } label: {
+                                    TeamView(team: team).id(team.id)
+                                }
                             }
                         }
                     }
@@ -32,7 +34,7 @@ struct TeamListView: View {
                               .accessibilityIdentifier("peopleGrid")
                 }
                 .refreshable {
-                    viewStore.send(.onAppear)
+                    viewStore.send(.onAppearTeamList)
                 }
                 .searchable(text: viewStore.binding(
                     get: \.searchQuery, send: TeamListFeature.Action.searchQueryChanged
@@ -40,7 +42,10 @@ struct TeamListView: View {
             }
             .navigationTitle("Teams")
             .onAppear {
-                viewStore.send(.onAppear)
+                viewStore.send(.onAppearTeamList)
+            }
+            .onAppear {
+                viewStore.send(.onAppearGameList)
             }
         }
         .embedInNavigation()

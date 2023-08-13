@@ -9,8 +9,8 @@ import SwiftUI
 
 // MARK: - Teams
 struct TeamsModel: Codable, Equatable, Identifiable, Sendable {
-    var id = UUID()
     
+    var id = UUID().uuidString
     let data: [TeamData]
     let meta: Meta
     
@@ -19,8 +19,8 @@ struct TeamsModel: Codable, Equatable, Identifiable, Sendable {
     }
 }
 
-// MARK: - Datum
-struct TeamData: Codable, Equatable, Identifiable, Sendable {
+// MARK: - TeamData
+struct TeamData: Codable, Equatable, Identifiable, Sendable, Hashable {
     let id: Int
     let abbreviation, city: String
     let division, fullName, name: String
@@ -29,6 +29,10 @@ struct TeamData: Codable, Equatable, Identifiable, Sendable {
         case id, abbreviation, city, division
         case fullName = "full_name"
         case name
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 

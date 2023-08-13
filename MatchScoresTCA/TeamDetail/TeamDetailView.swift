@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct TeamDetailView: View {
     
+    let userId: Int
     let team: TeamData
+    let gameData: GameData
+    
+    let seasonId = 0
+    let user = 0
+    
+    let columns = Array(repeating: GridItem(.flexible()),
+                        count: 3)
+    
+    @State var selectedSeason = 1949
     
     var body: some View {
         ZStack {
@@ -25,34 +36,29 @@ struct TeamDetailView: View {
                     .padding(.vertical, 18)
                     .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
                                                                              style: .continuous))
-                    // TODO: - Complete Picker
-                    //                    Group {
-                    //                        Menu {
-                    //                            Picker(selection: $selectedSeason) {
-                    //                                ForEach(1949...2023, id:\.self) {
-                    //                                    Text("\($0)")
-                    //                                        .tag($0)
-                    //                                }
-                    //                            } label: {}
-                    //                        } label: {
-                    //                            VStack(alignment: .leading) {
-                    //                                Text("Select a season")
-                    //                                Divider()
-                    //                                Text("Season \(selectedSeason)")
-                    //                            }
-                    //                        }
-                    //                        MatchView(season: selectedSeason, userId: userId)
-                    //                    }
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 18)
-                    .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
-                                                                             style: .continuous))
-                    
                 }
                        .padding()
             }
         }
         .navigationTitle(team.abbreviation)
+        
+        ZStack {
+            background
+            
+            ScrollView {
+                VStack(alignment: .leading,
+                       spacing: 18) {
+                    Group {
+                        game
+                    }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 18)
+                    .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
+                                                                             style: .continuous))
+                }
+                       .padding()
+            }
+        }
     }
 }
 
@@ -125,5 +131,49 @@ private extension TeamDetailView {
             .font(
                 .system(.subheadline, design: .rounded)
             )
+    }
+    @ViewBuilder
+    var game: some View {
+        ScrollView {
+            LazyVGrid(columns: columns,
+                      spacing: 16) {
+                Group {
+                    Text("Home")
+                        .font(
+                            .system(.callout, design: .rounded)
+                            .weight(.heavy)
+                        )
+                    
+                    
+                    Text("Score")
+                        .font(
+                            .system(.callout, design: .rounded)
+                            .weight(.heavy)
+                        )
+                    Text("Away")
+                        .font(
+                            .system(.callout, design: .rounded)
+                            .weight(.heavy)
+                        )
+                }
+                
+                Text(gameData.homeTeam.abbreviation)
+                    .font(
+                        .system(.subheadline, design: .rounded)
+                    )
+                
+                Text("\(gameData.homeTeamScore) - \(gameData.visitorTeamScore)")
+                    .font(
+                        .system(.subheadline, design: .rounded)
+                    )
+                
+                Text(gameData.visitorTeam.abbreviation)
+                    .font(
+                        .system(.subheadline, design: .rounded)
+                    )
+            }
+                      .padding()
+                      .accessibilityIdentifier("peopleGrid")
+        }
     }
 }

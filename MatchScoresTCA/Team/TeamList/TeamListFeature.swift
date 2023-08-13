@@ -12,6 +12,7 @@ struct TeamListFeature: Reducer {
     struct State: Equatable {
         var dataLoadingStatus = DataLoadingStatus.notStarted
         var teamList: IdentifiedArrayOf<TeamData> = []
+        var gameList: IdentifiedArrayOf<GameData> = []
         var searchQuery = ""
         
         var shouldShowError: Bool {
@@ -28,12 +29,18 @@ struct TeamListFeature: Reducer {
             }
             return teamList.filter { $0.fullName.lowercased().contains(searchQuery.lowercased()) }
         }
+        
+        var gameResults: IdentifiedArrayOf<GameData> {
+            return gameList
+        }
     }
     
     enum Action: Equatable {
         case fetchTeamResponse(TaskResult<TeamsModel>)
+        case fetchGameResponse(TaskResult<GamesModel>)
         case searchQueryChanged(String)
-        case onAppear
+        case onAppearTeamList
+        case onAppearGameList
     }
     
     var uuid: @Sendable () -> UUID
@@ -44,7 +51,7 @@ struct TeamListFeature: Reducer {
         case let .fetchTeamResponse(.failure(error)):
             state.dataLoadingStatus = .error
             print(error)
-            print("Error getting players, try again later.")
+            print("Error getting teams, try again later.")
             return .none
             
         case let .fetchTeamResponse(.success(teamData)):
@@ -54,11 +61,21 @@ struct TeamListFeature: Reducer {
             state.dataLoadingStatus = .loading
             return .none
             
-        case .onAppear:
+        case .onAppearTeamList:
             return .run { send in
                 await send (
                     .fetchTeamResponse(
                         TaskResult { try await MatchScoresClient.liveValue.fetchTeams()
+                        }
+                    )
+                )
+            }
+            
+        case .onAppearGameList:
+            return .run { send in
+                await send (
+                    .fetchGameResponse(
+                        TaskResult { try await MatchScoresClient.liveValue.fetchGames()
                         }
                     )
                 )
@@ -69,6 +86,19 @@ struct TeamListFeature: Reducer {
             guard !query.isEmpty else {
                 return .cancel(id: CancelID.team)
             }
+            return .none
+            
+        case let .fetchGameResponse(.failure(error)):
+            state.dataLoadingStatus = .error
+            print(error)
+            print("Error getting games, try again later.")
+            return .none
+            
+        case let .fetchGameResponse(.success(gameData)):
+            state.gameList = IdentifiedArrayOf(
+                uniqueElements: gameData.data
+            )
+            state.dataLoadingStatus = .loading
             return .none
         }
     }

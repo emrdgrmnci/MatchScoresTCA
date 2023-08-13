@@ -12,7 +12,7 @@ struct RootFeature: Reducer {
     struct State: Equatable {
         var selectedTab = Tab.teams
         var teamListState = TeamListFeature.State()
-        var gameListState = GameListFeature.State()
+//        var gameListState = GameListFeature.State()
         var playerListState = PlayerListFeature.State()
     }
     
@@ -25,7 +25,7 @@ struct RootFeature: Reducer {
     enum Action: Equatable {
         case tabSelected(Tab)
         case teamList(TeamListFeature.Action)
-        case gameList(GameListFeature.Action)
+//        case gameList(GameListFeature.Action)
         case playerList(PlayerListFeature.Action)
     }
     
@@ -48,8 +48,8 @@ struct RootFeature: Reducer {
                 return .none
             case .playerList:
                 return .none
-            case .gameList:
-                return .none
+//            case .gameList:
+//                return .none
             case .tabSelected(let tab):
                 state.selectedTab = tab
                 return .none
@@ -58,9 +58,9 @@ struct RootFeature: Reducer {
         Scope(state: \.teamListState, action: /RootFeature.Action.teamList) {
             TeamListFeature(uuid: uuid)
         }
-        Scope(state: \.gameListState, action: /RootFeature.Action.gameList) {
-            GameListFeature(uuid: uuid)
-        }
+//        Scope(state: \.gameListState, action: /RootFeature.Action.gameList) {
+//            GameListFeature(uuid: uuid)
+//        }
         Scope(state:  \.playerListState, action: /RootFeature.Action.playerList) {
             PlayerListFeature(uuid: uuid)
         }
