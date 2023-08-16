@@ -69,14 +69,6 @@ so that you can update UI.
 The benefits of doing this are that you will instantly unlock testability of your feature, and you 
 will be able to break large, complex features into smaller domains that can be glued together.
 
-As a basic example, consider a UI that shows a number along with "+" and "−" buttons that increment 
-and decrement the number. To make things interesting, suppose there is also a button that when 
-tapped makes an API request to fetch a random fact about that number and then displays the fact in 
-an alert.
-
-To implement this feature we create a new type that will house the domain and behavior of the 
-feature by conforming to `Reducer`:
-
 As a basic example, consider a UI that shows a 2-columns grid list along with "#" team/player ids, names and, team logos. When the views appear, there is an API request to fetch NBA teams and players and then displays in a 2-columns grid list.
 
 🧑🏼‍🦳👨🏼‍🦳 To implement this root (grand-parent) feature we create a new type that will house the root domain and behavior of the feature by conforming to Reducer:
