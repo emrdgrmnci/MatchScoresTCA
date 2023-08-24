@@ -25,29 +25,6 @@ struct PlayerDetailView: View {
                     .padding(.vertical, 18)
                     .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
                                                                              style: .continuous))
-                    
-                    //                    Group {
-                    //                        Menu {
-                    //                            Picker(selection: $selectedSeason) {
-                    //                                ForEach(1949...2023, id:\.self) {
-                    //                                    Text("\($0)")
-                    //                                        .tag($0)
-                    //                                }
-                    //                            } label: {}
-                    //                        } label: {
-                    //                            VStack(alignment: .leading) {
-                    //                                Text("Select a season")
-                    //                                Divider()
-                    //                                Text("Season \(selectedSeason)")
-                    //                            }
-                    //                        }
-                    //                        MatchView(season: selectedSeason, userId: userId)
-                    //                    }
-                    //                    .padding(.horizontal, 8)
-                    //                    .padding(.vertical, 18)
-                    //                    .background(Theme.detailBackground, in: RoundedRectangle(cornerRadius: 16,
-                    //                                                                             style: .continuous))
-                    
                 }
                        .padding()
             }

@@ -10,17 +10,8 @@ import ComposableArchitecture
 
 struct GameListView: View {
     let store: StoreOf<GameListFeature>
-    
-//    let season: Int
-//    let userId: Int
-    
     let columns = Array(repeating: GridItem(.flexible()),
                         count: 3)
-    
-//    init(season: Int, userId: Int) {
-//        self.season = season
-//        self.userId = userId
-//    }
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) {
@@ -51,25 +42,6 @@ struct GameListView: View {
                     ForEach(viewStore.gameList) { game in
                         Text(game.date)
                     }
-                    
-//                    ForEach(viewStore.gameList) { game in
-//                        //                        ForEach(game.homeTeam.data) { data in
-//                        //                        Text(game.homeTeam.data.first!.abbreviation)
-//                        //                            .font(
-//                        //                                .system(.subheadline, design: .rounded)
-//                        //                            )
-//
-//                        //                        Text("\(game.homeTeamScore) - \(game.visitorTeamScore)")
-//                        //                            .font(
-//                        //                                .system(.subheadline, design: .rounded)
-//                        //                            )
-//
-//                        Text(game.visitorTeam.abbreviation)
-//                            .font(
-//                                .system(.subheadline, design: .rounded)
-//                            )
-//                        //                    }
-//                    }
                 }
                           .padding()
                           .accessibilityIdentifier("peopleGrid")
