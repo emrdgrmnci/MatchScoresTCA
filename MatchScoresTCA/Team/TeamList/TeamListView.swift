@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 import ComposableArchitecture
 
 struct TeamListView: View {
@@ -16,46 +15,48 @@ struct TeamListView: View {
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            NavigationStack {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                    TextField(
-                        "Search NBA Teams",
-                        text: viewStore.binding(
-                            get: \.searchQuery, send: TeamListFeature.Action.searchQueryChanged
-                        )
-                    )
-                    .textFieldStyle(.roundedBorder)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                }
-                .padding(.horizontal, 16)
-                
-                ZStack{
-                    ScrollView {
-                        LazyVGrid(columns: columns,
-                                  spacing: 16) {
-                            ForEach(viewStore.searchResults) {
-//                                NavigationLink {
-//                                    TeamDetailView(userId: team.id - 1).environmentObject(vm)
-//                                } label: {
-//                                    TeamItemView(teams: team)
-//                                        .accessibilityIdentifier("item_\(team.id)")
-//                                }
-                                TeamView(team: $0)
+            ZStack {
+                ScrollView {
+                    LazyVGrid(columns: columns,
+                              spacing: 16) {
+                        ForEach(viewStore.searchResults) { team in
+                            NavigationLink {
+                                TeamDetailView(team: team)
+                            } label: {
+                                TeamView(team: team)
+                                    .accessibilityIdentifier("item_\(team.id)")
                             }
                         }
-                                  .padding()
-                                  .accessibilityIdentifier("peopleGrid")
                     }
-                    .refreshable {
-                        viewStore.send(.onAppear)
-                    }
+                              .padding()
+                              .accessibilityIdentifier("peopleGrid")
                 }
-                .navigationTitle("Teams")
+                .refreshable {
+                    viewStore.send(.onAppear)
+                }
+                .searchable(text: viewStore.binding(
+                    get: \.searchQuery, send: TeamListFeature.Action.searchQueryChanged
+                ), placement: .automatic, prompt: "Search NBA Teams")
             }
+            .navigationTitle("Teams")
             .onAppear {
                 viewStore.send(.onAppear)
+            }
+        }
+        .embedInNavigation()
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func embedInNavigation() -> some View {
+        if #available(iOS 16.0, *) {
+            NavigationStack {
+                self
+            }
+        } else {
+            NavigationView {
+                self
             }
         }
     }

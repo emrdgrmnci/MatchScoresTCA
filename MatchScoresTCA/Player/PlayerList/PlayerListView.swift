@@ -14,47 +14,33 @@ struct PlayerListView: View {
                                 count: 2)
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            NavigationStack {
-                HStack {
-                    Image(systemName: "magnifyingglass")
-                    TextField(
-                        "Search NBA Players",
-                        text: viewStore.binding(
-                            get: \.searchQuery, send: PlayerListFeature.Action.searchQueryChanged
-                        )
-                    )
-                    .textFieldStyle(.roundedBorder)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                }
-                .padding(.horizontal, 16)
-                
-                ZStack{
-                    ScrollView {
-                        LazyVGrid(columns: columns,
-                                  spacing: 16) {
-                            ForEach(viewStore.searchResults) {
-                                //                                NavigationLink {
-                                //                                    TeamDetailView(userId: team.id - 1).environmentObject(vm)
-                                //                                } label: {
-                                //                                    TeamItemView(teams: team)
-                                //                                        .accessibilityIdentifier("item_\(team.id)")
-                                //                                }
-                                PlayerView(player: $0)
+            ZStack {
+                ScrollView {
+                    LazyVGrid(columns: columns,
+                              spacing: 16) {
+                        ForEach(viewStore.searchResults) { player in
+                            NavigationLink {
+                                PlayerDetailView(player: player)
+                            } label: {
+                                PlayerView(player: player)
                             }
                         }
-                                  .padding()
-                                  .accessibilityIdentifier("peopleGrid")
                     }
-                    .refreshable {
-                        viewStore.send(.onAppear)
-                    }
+                              .padding()
+                              .accessibilityIdentifier("peopleGrid")
                 }
-                .navigationTitle("Players")
+                .refreshable {
+                    viewStore.send(.onAppear)
+                }
+                .searchable(text: viewStore.binding(
+                    get: \.searchQuery, send: PlayerListFeature.Action.searchQueryChanged
+                ), placement: .automatic, prompt: "Search NBA Players")
             }
+            .navigationTitle("Players")
             .onAppear {
                 viewStore.send(.onAppear)
             }
         }
+        .embedInNavigation()
     }
 }

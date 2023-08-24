@@ -33,17 +33,15 @@ struct TeamListFeature: Reducer {
     enum Action: Equatable {
         case fetchTeamResponse(TaskResult<TeamsModel>)
         case searchQueryChanged(String)
-        //        case searchResultTapped(IdentifiedArrayOf<TeamData>)
         case onAppear
     }
     
     var uuid: @Sendable () -> UUID
-    
     private enum CancelID { case team }
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-        case .fetchTeamResponse(.failure(let error)):
+        case let .fetchTeamResponse(.failure(error)):
             state.dataLoadingStatus = .error
             print(error)
             print("Error getting players, try again later.")

@@ -14,7 +14,17 @@ struct MatchScoresTCAApp: App {
         WindowGroup {
             RootView(
                 store: Store(initialState: RootFeature.State()) {
-                    RootFeature(fetchTeams: { TeamsModel.sample}, fetchPlayers: { PlayersModel.sample }, uuid: { UUID() }
+                    RootFeature(
+                        fetchTeams: {
+                            TeamsModel.sample
+                        },
+                        fetchPlayers: {
+                            PlayersModel.sample
+                        },
+                        fetchGames: {
+                            GamesModel.sample
+                        },
+                        uuid: { UUID() }
                     )
                 }
             )

@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: - Teams
-struct TeamsModel: Decodable, Equatable, Identifiable, Sendable {
+struct TeamsModel: Codable, Equatable, Identifiable, Sendable {
     var id = UUID()
     
     let data: [TeamData]
@@ -20,7 +20,7 @@ struct TeamsModel: Decodable, Equatable, Identifiable, Sendable {
 }
 
 // MARK: - Datum
-struct TeamData: Decodable, Equatable, Identifiable, Sendable {
+struct TeamData: Codable, Equatable, Identifiable, Sendable {
     let id: Int
     let abbreviation, city: String
     let division, fullName, name: String
@@ -33,7 +33,7 @@ struct TeamData: Decodable, Equatable, Identifiable, Sendable {
 }
 
 // MARK: - Meta
-struct Meta: Decodable, Equatable {
+struct Meta: Codable, Equatable {
     let totalPages, currentPage, nextPage, perPage: Int
     let totalCount: Int
     
