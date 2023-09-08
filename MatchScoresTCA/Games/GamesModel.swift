@@ -9,8 +9,7 @@ import SwiftUI
 
 // MARK: - Games
 struct GamesModel: Codable, Equatable, Identifiable, Sendable {
-    var id = UUID()
-    
+    var id = UUID(uuidString: "3971cc04-4e50-11ee-be56-0242ac120002")
     let data: [GameData]
     let meta: Meta
 }
@@ -19,14 +18,14 @@ struct GamesModel: Codable, Equatable, Identifiable, Sendable {
 struct GameData: Codable, Equatable, Identifiable, Sendable {
     let id: Int
     let date: String
-    let homeTeam: TeamsModel
+    let homeTeam: TeamData
     let homeTeamScore, period: Int
     let postseason: Bool
     let season: Int
     let status: Status
-    let visitorTeam: TeamsModel
+    let visitorTeam: TeamData
     let visitorTeamScore: Int
-
+    
     enum CodingKeys: String, CodingKey {
         case id, date
         case homeTeam = "home_team"
@@ -60,6 +59,39 @@ enum Status: String, Codable {
 
 extension GamesModel {
     static var sample: GamesModel {
-        .init(data: [GameData(id: 9, date: "12.03.2023", homeTeam: TeamsModel(data: [TeamData(id: 3, abbreviation: "LAK", city: "Los Angeles", division: "East", fullName: "Los Angeles Laker", name: "Lakers")], meta: Meta(totalPages: 206, currentPage: 1, nextPage: 2, perPage: 25, totalCount: 5130)), homeTeamScore: 100, period: 2, postseason: false, season: 20, status: Status.statusFinal, visitorTeam: TeamsModel(data: [TeamData(id: 6, abbreviation: "ORL", city: "Orlando", division: "Souteast", fullName: "Orlando Magic", name: "Orlando")], meta: Meta(totalPages: 206, currentPage: 1, nextPage: 2, perPage: 25, totalCount: 5130)), visitorTeamScore: 99)], meta: Meta(totalPages: 206, currentPage: 1, nextPage: 2, perPage: 25, totalCount: 5130))
+        .init(data: [
+            GameData(
+                id: 2,
+                date: "12.02.2019",
+                homeTeam: TeamData(
+                    id: 1,
+                    abbreviation: "ATL",
+                    city: "Atlanta",
+                    division: "Southeast",
+                    fullName: "Atlanta Hawks",
+                    name: "Hawks"
+                ),
+                homeTeamScore: 102,
+                period: 2,
+                postseason: true,
+                season: 4,
+                status: Status.statusFinal,
+                visitorTeam: TeamData(
+                    id: 2,
+                    abbreviation: "BOS",
+                    city: "Boston",
+                    division: "Atlantic",
+                    fullName: "Boston Celtics",
+                    name: "Celtics"
+                ),
+                visitorTeamScore: 99)
+        ],
+              meta: Meta(
+                totalPages: 2,
+                currentPage: 1,
+                nextPage: 2,
+                perPage: 30,
+                totalCount: 45
+              ))
     }
 }

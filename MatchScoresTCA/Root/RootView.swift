@@ -28,10 +28,22 @@ struct RootView: View {
                     )
                 )
                 .tabItem {
-                    Image(systemName: "list.bullet")
+                    Image(systemName: "tshirt.fill")
                     Text("Teams")
                 }
                 .tag(RootFeature.Tab.teams)
+                
+                GameListView(
+                    store: self.store.scope(
+                    state: \.gameListState,
+                    action: RootFeature.Action.gameList
+                )
+                )
+                .tabItem {
+                    Image(systemName: "sportscourt.fill")
+                    Text("Games")
+                }
+                .tag(RootFeature.Tab.games)
                 
                 PlayerListView(
                     store: self.store.scope(
@@ -58,8 +70,8 @@ struct RootView_Previews: PreviewProvider {
             ) {
                 RootFeature(
                     fetchTeams: { TeamsModel.sample },
-                    fetchPlayers: { PlayersModel.sample },
                     fetchGames: { GamesModel.sample },
+                    fetchPlayers: { PlayersModel.sample },
                     uuid: { UUID() }
                 )
             }

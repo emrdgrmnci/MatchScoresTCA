@@ -35,7 +35,7 @@ struct GameListFeature: Reducer {
         case let .fetchGameResponse(.failure(error)):
             state.dataLoadingStatus = .error
             print(error)
-            print("Error getting players, try again later.")
+            print("DEBUG: Error getting games, try again later.")
             return .none
             
         case let .fetchGameResponse(.success(gameData)):

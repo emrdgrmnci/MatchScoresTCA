@@ -12,6 +12,7 @@
 		CB13BD182A87D406001188AE /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD172A87D406001188AE /* GameListView.swift */; };
 		CB13BD1A2A87D43F001188AE /* GamesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD192A87D43F001188AE /* GamesModel.swift */; };
 		CB13BD1C2A87D4B6001188AE /* GameListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD1B2A87D4B6001188AE /* GameListFeature.swift */; };
+		CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5416882AAB49E4004CAB22 /* GameView.swift */; };
 		CBACB3152A7FCF280044F570 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB3142A7FCF280044F570 /* Symbols.swift */; };
 		CBACB3172A7FCF610044F570 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB3162A7FCF610044F570 /* Theme.swift */; };
 		CBACB31A2A7FCFCF0044F570 /* PillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB3192A7FCFCF0044F570 /* PillView.swift */; };
@@ -66,6 +67,7 @@
 		CB13BD172A87D406001188AE /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 		CB13BD192A87D43F001188AE /* GamesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesModel.swift; sourceTree = "<group>"; };
 		CB13BD1B2A87D4B6001188AE /* GameListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListFeature.swift; sourceTree = "<group>"; };
+		CB5416882AAB49E4004CAB22 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CB8ED5512A7D8CBB003B5AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CBACB3142A7FCF280044F570 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		CBACB3162A7FCF610044F570 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				CB13BD172A87D406001188AE /* GameListView.swift */,
 				CB13BD192A87D43F001188AE /* GamesModel.swift */,
 				CB13BD1B2A87D4B6001188AE /* GameListFeature.swift */,
+				CB5416882AAB49E4004CAB22 /* GameView.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				CBACB3342A80233E0044F570 /* PlayerListView.swift in Sources */,
 				CB13BD152A87D190001188AE /* PlayerDetailView.swift in Sources */,
 				CBACB32E2A801FED0044F570 /* PlayerView.swift in Sources */,
+				CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */,
 				CBACB3302A8023290044F570 /* TeamView.swift in Sources */,
 				CBECBE402A812A3E00AF97DF /* DataLoadingStatus.swift in Sources */,
 				CBACB3392A8026470044F570 /* TeamListFeature.swift in Sources */,

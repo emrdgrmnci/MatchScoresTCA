@@ -1,54 +1,95 @@
-//
-//  GameListView.swift
-//  MatchScoresTCA
-//
-//  Created by emre.degirmenci on 12.08.2023.
-//
-
 import SwiftUI
 import ComposableArchitecture
 
 struct GameListView: View {
     let store: StoreOf<GameListFeature>
-    let columns = Array(repeating: GridItem(.flexible()),
-                        count: 3)
     
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) {
-            viewStore in
-            ScrollView {
-                LazyVGrid(columns: columns,
-                          spacing: 16) {
-                    Group {
-                        Text("Home")
-                            .font(
-                                .system(.callout, design: .rounded)
-                                .weight(.heavy)
-                            )
-                        
-                        
-                        Text("Score")
-                            .font(
-                                .system(.callout, design: .rounded)
-                                .weight(.heavy)
-                            )
-                        Text("Away")
-                            .font(
-                                .system(.callout, design: .rounded)
-                                .weight(.heavy)
-                            )
-                    }
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            NavigationView {
+                List(viewStore.gameList) { game in
                     
-                    ForEach(viewStore.gameList) { game in
-                        Text(game.date)
+                    VStack(alignment: .center) {
+                        Text(dateFormatter(inputDate: game.date))
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
                     }
+                    .listRowSeparator(.hidden)
+                    
+                    HStack {
+                        HStack {
+                            Image(systemName: "basketball.circle.fill")
+                                .resizable()
+                                .padding(.trailing, 0)
+                                .frame(width: 50, height: 50)
+                            
+                            Text(game.visitorTeam.name)
+                                .font(.callout)
+                            
+                            Text("\(game.visitorTeamScore)")
+                                .font(.callout)
+                        }
+                        .padding()
+                        
+                        Text("-")
+                            .font(.callout)
+                        
+                        HStack {
+                            Text("\(game.homeTeamScore)")
+                                .font(.callout)
+                            
+                            Text(game.homeTeam.name)
+                                .font(.callout)
+                            
+                            Image(systemName: "basketball.circle")
+                                .resizable()
+                                .padding(.leading, 0)
+                                .frame(width: 50, height: 50)
+                            
+                        }
+                    }
+                    .padding()
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .strokeBorder(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.blue, .green, .red]),
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                ),
+                                lineWidth: 1
+                            )
+                    )
+                    .padding()
                 }
-                          .padding()
-                          .accessibilityIdentifier("peopleGrid")
-            }
-            .onAppear {
-                viewStore.send(.onAppear)
+                .refreshable {
+                    viewStore.send(.onAppear)
+                }
+                .navigationTitle("Games")
+                .listRowSeparator(.hidden)
+                .onAppear {
+                    viewStore.send(.onAppear)
+                }
             }
         }
+    }
+}
+
+private extension GameListView {
+    
+    var background: some View {
+        Theme.background
+            .ignoresSafeArea(edges: .top)
+    }
+    
+    var refresh: some View {
+        Button {
+            Task {
+                // await vm.fetchTeams()
+            }
+        } label: {
+            Symbols.refresh
+        }
+        // .disabled(vm.isLoading)
     }
 }

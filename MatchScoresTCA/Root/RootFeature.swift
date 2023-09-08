@@ -18,8 +18,9 @@ struct RootFeature: Reducer {
     
     enum Tab {
         case teams
-        case favorites
+        case games
         case players
+        case favorites
     }
     
     enum Action: Equatable {
@@ -30,14 +31,14 @@ struct RootFeature: Reducer {
     }
     
     var fetchTeams: () async throws -> TeamsModel
-    var fetchPlayers:  @Sendable () async throws -> PlayersModel
     var fetchGames: () async throws -> GamesModel
+    var fetchPlayers:  @Sendable () async throws -> PlayersModel
     var uuid: @Sendable () -> UUID
     
     static let live = Self(
         fetchTeams: MatchScoresClient.liveValue.fetchTeams,
-        fetchPlayers: MatchScoresClient.liveValue.fetchPlayers,
         fetchGames: MatchScoresClient.liveValue.fetchGames,
+        fetchPlayers: MatchScoresClient.liveValue.fetchPlayers,
         uuid: { UUID() }
     )
     

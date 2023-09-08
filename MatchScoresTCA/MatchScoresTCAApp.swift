@@ -18,11 +18,11 @@ struct MatchScoresTCAApp: App {
                         fetchTeams: {
                             TeamsModel.sample
                         },
-                        fetchPlayers: {
-                            PlayersModel.sample
-                        },
                         fetchGames: {
                             GamesModel.sample
+                        },
+                        fetchPlayers: {
+                            PlayersModel.sample
                         },
                         uuid: { UUID() }
                     )

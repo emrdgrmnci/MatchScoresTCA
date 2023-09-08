@@ -44,7 +44,7 @@ struct TeamListFeature: Reducer {
         case let .fetchTeamResponse(.failure(error)):
             state.dataLoadingStatus = .error
             print(error)
-            print("Error getting players, try again later.")
+            print("DEBUG: getting teams, try again later.")
             return .none
             
         case let .fetchTeamResponse(.success(teamData)):
