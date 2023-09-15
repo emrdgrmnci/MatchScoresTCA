@@ -12,6 +12,21 @@
 		CB13BD182A87D406001188AE /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD172A87D406001188AE /* GameListView.swift */; };
 		CB13BD1A2A87D43F001188AE /* GamesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD192A87D43F001188AE /* GamesModel.swift */; };
 		CB13BD1C2A87D4B6001188AE /* GameListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD1B2A87D4B6001188AE /* GameListFeature.swift */; };
+		CB50DABB2AB4A4BE007CFB3D /* NetworkingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DABA2AB4A4BE007CFB3D /* NetworkingManagerTests.swift */; };
+		CB50DAC12AB4A52F007CFB3D /* NetworkingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC02AB4A52F007CFB3D /* NetworkingEndpointTests.swift */; };
+		CB50DAC32AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */; };
+		CB50DAC52AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */; };
+		CB50DAC62AB4A5F3007CFB3D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */; };
+		CB50DAC72AB4A601007CFB3D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C702A7D53AE00F0AC33 /* Endpoint.swift */; };
+		CB50DACC2AB4A6A1007CFB3D /* NetworkingManagerTeamsSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DACB2AB4A6A1007CFB3D /* NetworkingManagerTeamsSuccessMock.swift */; };
+		CB50DACE2AB4A6C8007CFB3D /* NetworkingManagerUserDetailsResponseFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DACD2AB4A6C8007CFB3D /* NetworkingManagerUserDetailsResponseFailureMock.swift */; };
+		CB50DAD02AB4A6FE007CFB3D /* NetworkingManagerPlayersResponseFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DACF2AB4A6FE007CFB3D /* NetworkingManagerPlayersResponseFailureMock.swift */; };
+		CB50DAD22AB4A712007CFB3D /* NetworkingManagerUserResponseSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAD12AB4A712007CFB3D /* NetworkingManagerUserResponseSuccessMock.swift */; };
+		CB50DAD42AB4A73D007CFB3D /* MockURLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAD32AB4A73D007CFB3D /* MockURLSessionProtocol.swift */; };
+		CB50DAD72AB4A786007CFB3D /* StaticJSONMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAD62AB4A786007CFB3D /* StaticJSONMapper.swift */; };
+		CB50DADA2AB4A7F6007CFB3D /* SingleTeamData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB50DAD92AB4A7F6007CFB3D /* SingleTeamData.json */; };
+		CB50DADC2AB4AA1E007CFB3D /* PlayersStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB50DADB2AB4AA1E007CFB3D /* PlayersStaticData.json */; };
+		CB50DADE2AB4AA44007CFB3D /* TeamsStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB50DADD2AB4AA44007CFB3D /* TeamsStaticData.json */; };
 		CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5416882AAB49E4004CAB22 /* GameView.swift */; };
 		CBACB3152A7FCF280044F570 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB3142A7FCF280044F570 /* Symbols.swift */; };
 		CBACB3172A7FCF610044F570 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB3162A7FCF610044F570 /* Theme.swift */; };
@@ -67,6 +82,19 @@
 		CB13BD172A87D406001188AE /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 		CB13BD192A87D43F001188AE /* GamesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesModel.swift; sourceTree = "<group>"; };
 		CB13BD1B2A87D4B6001188AE /* GameListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListFeature.swift; sourceTree = "<group>"; };
+		CB50DABA2AB4A4BE007CFB3D /* NetworkingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerTests.swift; sourceTree = "<group>"; };
+		CB50DAC02AB4A52F007CFB3D /* NetworkingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingEndpointTests.swift; sourceTree = "<group>"; };
+		CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerCreateFailureMock.swift; sourceTree = "<group>"; };
+		CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerCreateSuccessMock.swift; sourceTree = "<group>"; };
+		CB50DACB2AB4A6A1007CFB3D /* NetworkingManagerTeamsSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerTeamsSuccessMock.swift; sourceTree = "<group>"; };
+		CB50DACD2AB4A6C8007CFB3D /* NetworkingManagerUserDetailsResponseFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerUserDetailsResponseFailureMock.swift; sourceTree = "<group>"; };
+		CB50DACF2AB4A6FE007CFB3D /* NetworkingManagerPlayersResponseFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerPlayersResponseFailureMock.swift; sourceTree = "<group>"; };
+		CB50DAD12AB4A712007CFB3D /* NetworkingManagerUserResponseSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerUserResponseSuccessMock.swift; sourceTree = "<group>"; };
+		CB50DAD32AB4A73D007CFB3D /* MockURLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionProtocol.swift; sourceTree = "<group>"; };
+		CB50DAD62AB4A786007CFB3D /* StaticJSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticJSONMapper.swift; sourceTree = "<group>"; };
+		CB50DAD92AB4A7F6007CFB3D /* SingleTeamData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SingleTeamData.json; sourceTree = "<group>"; };
+		CB50DADB2AB4AA1E007CFB3D /* PlayersStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlayersStaticData.json; sourceTree = "<group>"; };
+		CB50DADD2AB4AA44007CFB3D /* TeamsStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TeamsStaticData.json; sourceTree = "<group>"; };
 		CB5416882AAB49E4004CAB22 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CB8ED5512A7D8CBB003B5AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CBACB3142A7FCF280044F570 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
@@ -155,9 +183,112 @@
 			path = Games;
 			sourceTree = "<group>";
 		};
+		CB50DAB62AB4A479007CFB3D /* DetailsTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DetailsTests;
+			sourceTree = "<group>";
+		};
+		CB50DAB72AB4A482007CFB3D /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		CB50DAB82AB4A488007CFB3D /* NetworkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DABF2AB4A50C007CFB3D /* Mocks */,
+				CB50DABE2AB4A505007CFB3D /* Endpoints */,
+				CB50DABD2AB4A4F4007CFB3D /* NetworkingManagerTests */,
+			);
+			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
+		CB50DAB92AB4A498007CFB3D /* PlayersTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PlayersTests;
+			sourceTree = "<group>";
+		};
+		CB50DABD2AB4A4F4007CFB3D /* NetworkingManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DABA2AB4A4BE007CFB3D /* NetworkingManagerTests.swift */,
+			);
+			path = NetworkingManagerTests;
+			sourceTree = "<group>";
+		};
+		CB50DABE2AB4A505007CFB3D /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DAC02AB4A52F007CFB3D /* NetworkingEndpointTests.swift */,
+			);
+			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		CB50DABF2AB4A50C007CFB3D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */,
+				CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		CB50DAC82AB4A654007CFB3D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DACA2AB4A664007CFB3D /* PlayersResponse */,
+				CB50DAC92AB4A65C007CFB3D /* PlayersDetails */,
+				CB50DAD32AB4A73D007CFB3D /* MockURLSessionProtocol.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		CB50DAC92AB4A65C007CFB3D /* PlayersDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DACB2AB4A6A1007CFB3D /* NetworkingManagerTeamsSuccessMock.swift */,
+				CB50DACD2AB4A6C8007CFB3D /* NetworkingManagerUserDetailsResponseFailureMock.swift */,
+			);
+			path = PlayersDetails;
+			sourceTree = "<group>";
+		};
+		CB50DACA2AB4A664007CFB3D /* PlayersResponse */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DACF2AB4A6FE007CFB3D /* NetworkingManagerPlayersResponseFailureMock.swift */,
+				CB50DAD12AB4A712007CFB3D /* NetworkingManagerUserResponseSuccessMock.swift */,
+			);
+			path = PlayersResponse;
+			sourceTree = "<group>";
+		};
+		CB50DAD52AB4A772007CFB3D /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DAD62AB4A786007CFB3D /* StaticJSONMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		CB50DAD82AB4A7E2007CFB3D /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				CB50DAD92AB4A7F6007CFB3D /* SingleTeamData.json */,
+				CB50DADB2AB4AA1E007CFB3D /* PlayersStaticData.json */,
+				CB50DADD2AB4AA44007CFB3D /* TeamsStaticData.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		CBACB3132A7FCF1C0044F570 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CB50DAD82AB4A7E2007CFB3D /* JSON */,
 				CBECBE492A815FB900AF97DF /* TCA-Diagram.png */,
 				CBF91C462A7D532300F0AC33 /* Assets.xcassets */,
 				CBACB3142A7FCF280044F570 /* Symbols.swift */,
@@ -262,6 +393,7 @@
 		CBF91C412A7D532200F0AC33 /* MatchScoresTCA */ = {
 			isa = PBXGroup;
 			children = (
+				CB50DAC82AB4A654007CFB3D /* Mocks */,
 				CB13BD162A87D3D9001188AE /* Games */,
 				CB13BD132A87D184001188AE /* PlayerDetail */,
 				CB13BD0C2A87BB4D001188AE /* TeamDetail */,
@@ -290,6 +422,10 @@
 		CBF91C522A7D532300F0AC33 /* MatchScoresTCATests */ = {
 			isa = PBXGroup;
 			children = (
+				CB50DAB92AB4A498007CFB3D /* PlayersTests */,
+				CB50DAB82AB4A488007CFB3D /* NetworkingTests */,
+				CB50DAB72AB4A482007CFB3D /* Mapper */,
+				CB50DAB62AB4A479007CFB3D /* DetailsTests */,
 				CBF91C532A7D532300F0AC33 /* MatchScoresTCATests.swift */,
 			);
 			path = MatchScoresTCATests;
@@ -307,6 +443,7 @@
 		CBF91C6C2A7D538400F0AC33 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				CB50DAD52AB4A772007CFB3D /* Mapper */,
 				CBACB3182A7FCFC00044F570 /* Views */,
 				CBF91C6D2A7D538B00F0AC33 /* API */,
 			);
@@ -436,6 +573,9 @@
 			files = (
 				CBF91C4A2A7D532300F0AC33 /* Preview Assets.xcassets in Resources */,
 				CBF91C472A7D532300F0AC33 /* Assets.xcassets in Resources */,
+				CB50DADA2AB4A7F6007CFB3D /* SingleTeamData.json in Resources */,
+				CB50DADC2AB4AA1E007CFB3D /* PlayersStaticData.json in Resources */,
+				CB50DADE2AB4AA44007CFB3D /* TeamsStaticData.json in Resources */,
 				CBECBE4A2A815FB900AF97DF /* TCA-Diagram.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,14 +608,18 @@
 				CB13BD152A87D190001188AE /* PlayerDetailView.swift in Sources */,
 				CBACB32E2A801FED0044F570 /* PlayerView.swift in Sources */,
 				CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */,
+				CB50DACE2AB4A6C8007CFB3D /* NetworkingManagerUserDetailsResponseFailureMock.swift in Sources */,
 				CBACB3302A8023290044F570 /* TeamView.swift in Sources */,
+				CB50DACC2AB4A6A1007CFB3D /* NetworkingManagerTeamsSuccessMock.swift in Sources */,
 				CBECBE402A812A3E00AF97DF /* DataLoadingStatus.swift in Sources */,
 				CBACB3392A8026470044F570 /* TeamListFeature.swift in Sources */,
+				CB50DAD72AB4A786007CFB3D /* StaticJSONMapper.swift in Sources */,
 				CBACB31F2A801B030044F570 /* RootView.swift in Sources */,
 				CB13BD182A87D406001188AE /* GameListView.swift in Sources */,
 				CBACB3372A80240C0044F570 /* FavoriteListView.swift in Sources */,
 				CBECBE482A81344900AF97DF /* CheckmarkPopoverView.swift in Sources */,
 				CBACB31D2A801AFE0044F570 /* RootFeature.swift in Sources */,
+				CB50DAD42AB4A73D007CFB3D /* MockURLSessionProtocol.swift in Sources */,
 				CBACB3172A7FCF610044F570 /* Theme.swift in Sources */,
 				CBF91C712A7D53AE00F0AC33 /* Endpoint.swift in Sources */,
 				CBACB3152A7FCF280044F570 /* Symbols.swift in Sources */,
@@ -488,6 +632,8 @@
 				CB13BD1A2A87D43F001188AE /* GamesModel.swift in Sources */,
 				CBF91C432A7D532200F0AC33 /* MatchScoresTCAApp.swift in Sources */,
 				CB13BD1C2A87D4B6001188AE /* GameListFeature.swift in Sources */,
+				CB50DAD22AB4A712007CFB3D /* NetworkingManagerUserResponseSuccessMock.swift in Sources */,
+				CB50DAD02AB4A6FE007CFB3D /* NetworkingManagerPlayersResponseFailureMock.swift in Sources */,
 				CBACB3322A8023320044F570 /* TeamListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,7 +642,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB50DAC72AB4A601007CFB3D /* Endpoint.swift in Sources */,
+				CB50DAC32AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift in Sources */,
+				CB50DAC52AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift in Sources */,
 				CBF91C542A7D532300F0AC33 /* MatchScoresTCATests.swift in Sources */,
+				CB50DAC62AB4A5F3007CFB3D /* NetworkingManager.swift in Sources */,
+				CB50DABB2AB4A4BE007CFB3D /* NetworkingManagerTests.swift in Sources */,
+				CB50DAC12AB4A52F007CFB3D /* NetworkingEndpointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
