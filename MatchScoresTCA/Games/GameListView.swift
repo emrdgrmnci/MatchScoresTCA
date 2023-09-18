@@ -9,70 +9,80 @@ struct GameListView: View {
             NavigationView {
                 List(viewStore.gameList) { game in
                     
-                    VStack(alignment: .center) {
-                        Text(dateFormatter(inputDate: game.date))
-                            .font(.subheadline)
-                            .foregroundColor(.gray)
-                    }
-                    .listRowSeparator(.hidden)
-                    
-                    HStack {
-                        HStack {
-                            Image(systemName: "basketball.circle.fill")
-                                .resizable()
-                                .padding(.trailing, 0)
-                                .frame(width: 50, height: 50)
+                        VStack(alignment: .center) {
+                            Text(dateFormatter(inputDate: game.date))
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .listRowSeparator(.hidden)
+                        
+                        Spacer()
+                        
+                        HStack(spacing: 24) {
+                            VStack {
+                                Image(systemName: "basketball.circle.fill")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                
+                                Text(game.visitorTeam.name)
+                                    .font(.callout)
+                            }
+                            .frame(width: 79)
                             
-                            Text(game.visitorTeam.name)
-                                .font(.callout)
+                            HStack {
+                                Text("\(game.visitorTeamScore)")
+                                    .font(.callout)
+                                
+                                Text("-")
+                                    .font(.callout)
+                                
+                                Text("\(game.homeTeamScore)")
+                                    .font(.callout)
+                            }
                             
-                            Text("\(game.visitorTeamScore)")
-                                .font(.callout)
+                            VStack {
+                                Image(systemName: "basketball.circle")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                
+                                Text(game.homeTeam.name)
+                                    .font(.callout)
+                            }
+                            .frame(width: 79)
                         }
+                        .frame(maxWidth: .infinity)
                         .padding()
-                        
-                        Text("-")
-                            .font(.callout)
-                        
-                        HStack {
-                            Text("\(game.homeTeamScore)")
-                                .font(.callout)
-                            
-                            Text(game.homeTeam.name)
-                                .font(.callout)
-                            
-                            Image(systemName: "basketball.circle")
-                                .resizable()
-                                .padding(.leading, 0)
-                                .frame(width: 50, height: 50)
-                            
-                        }
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .strokeBorder(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [.blue, .green, .red]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    ),
+                                    lineWidth: 1
+                                )
+                        )
                     }
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .strokeBorder(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.blue, .green, .red]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                ),
-                                lineWidth: 1
-                            )
-                    )
-                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical)
+                    .background(Color.white) // Set the background color to white
+                    .cornerRadius(10)
+                    .listRowSeparator(.hidden)
                 }
+                .frame(maxWidth: .infinity)
                 .refreshable {
                     viewStore.send(.onAppear)
                 }
                 .navigationTitle("Games")
-                .listRowSeparator(.hidden)
                 .onAppear {
                     viewStore.send(.onAppear)
                 }
             }
         }
     }
+
 }
 
 private extension GameListView {
