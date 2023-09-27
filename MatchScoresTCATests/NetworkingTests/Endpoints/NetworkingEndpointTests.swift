@@ -21,6 +21,28 @@ class NetworkingEndpointTests: XCTestCase {
         XCTAssertEqual(endpoint.url?.absoluteString, "https://www.balldontlie.io/api/v1/teams?delay=2", "The generated doesn't match our endpoint")
     }
     
+    func test_with_games_endpoint_request_is_valid() {
+        
+        let endpoint = Endpoint.games
+        
+        XCTAssertEqual(endpoint.host, "www.balldontlie.io", "The host should be balldontlie.io")
+        XCTAssertEqual(endpoint.path, "/api/v1/games", "The path should be /api/v1/games")
+        XCTAssertEqual(endpoint.methodType, .GET, "The method type should be GET")
+        
+        XCTAssertEqual(endpoint.url?.absoluteString, "https://www.balldontlie.io/api/v1/games?delay=2", "The generated doesn't match our endpoint")
+    }
+    
+    func test_with_players_endpoint_request_is_valid() {
+        
+        let endpoint = Endpoint.players
+        
+        XCTAssertEqual(endpoint.host, "www.balldontlie.io", "The host should be balldontlie.io")
+        XCTAssertEqual(endpoint.path, "/api/v1/players", "The path should be /api/v1/players")
+        XCTAssertEqual(endpoint.methodType, .GET, "The method type should be GET")
+        
+        XCTAssertEqual(endpoint.url?.absoluteString, "https://www.balldontlie.io/api/v1/players?delay=2", "The generated doesn't match our endpoint")
+    }
+    
 //    func test_with_detail_endpoint_request_is_valid() {
 //
 //        let userId = 1
