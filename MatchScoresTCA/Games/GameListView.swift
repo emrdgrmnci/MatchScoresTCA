@@ -12,7 +12,7 @@ struct GameListView: View {
                         VStack(alignment: .center) {
                             Text(dateFormatter(inputDate: game.date))
                                 .font(.subheadline)
-                                .foregroundColor(.gray)
+                                .background(Color.blue._50)
                         
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .listRowSeparator(.hidden)
@@ -51,6 +51,7 @@ struct GameListView: View {
                             }
                             .frame(width: 79)
                         }
+                        .background(Color.blue._50)
                         .frame(maxWidth: .infinity)
                         .padding()
                         .overlay(
@@ -67,10 +68,11 @@ struct GameListView: View {
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical)
-                    .background(Color.white) // Set the background color to white
+                    .background(Color.blue._50)
                     .cornerRadius(10)
                     .listRowSeparator(.hidden)
                 }
+                .background(Color.blue._50)
                 .frame(maxWidth: .infinity)
                 .refreshable {
                     viewStore.send(.onAppear)
@@ -80,7 +82,9 @@ struct GameListView: View {
                     viewStore.send(.onAppear)
                 }
             }
+            .background(Color.blue._50)
         }
+        .background(Color.blue._50)
     }
 
 }

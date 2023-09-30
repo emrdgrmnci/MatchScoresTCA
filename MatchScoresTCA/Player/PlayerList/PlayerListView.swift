@@ -22,7 +22,7 @@ struct PlayerListView: View {
                             NavigationLink {
                                 PlayerDetailView(player: player)
                             } label: {
-                                PlayerView(player: player)
+                                PlayersListRow(player: player)
                             }
                         }
                     }
@@ -41,6 +41,7 @@ struct PlayerListView: View {
                 viewStore.send(.onAppear)
             }
         }
+        .background(Color.blue._50)
         .embedInNavigation()
     }
 }

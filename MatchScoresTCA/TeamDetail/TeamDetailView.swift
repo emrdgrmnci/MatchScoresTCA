@@ -59,7 +59,7 @@ struct TeamDetailView: View {
 private extension TeamDetailView {
     
     var background: some View {
-        Theme.background
+        Color.blue._50
             .ignoresSafeArea(edges: .top)
     }
 }

@@ -43,6 +43,7 @@ struct TeamListView: View {
                 viewStore.send(.onAppear)
             }
         }
+        .background(Color.blue._50)
         .embedInNavigation()
     }
 }

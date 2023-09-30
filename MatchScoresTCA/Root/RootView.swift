@@ -57,7 +57,7 @@ struct RootView: View {
                 }
                 .tag(RootFeature.Tab.players)
             }
-            .accentColor(Color("launch-screen-background"))
+            .background(Color.blue._400)
         }
     }
 }
