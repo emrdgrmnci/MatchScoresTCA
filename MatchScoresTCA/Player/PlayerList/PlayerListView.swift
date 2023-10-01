@@ -37,6 +37,8 @@ struct PlayerListView: View {
                 ), placement: .automatic, prompt: "Search NBA Players")
             }
             .navigationTitle("Players")
+            .toolbarBackground(Color.blue._50, for: .navigationBar)
+            .toolbarBackground(Color.blue._50, for: .tabBar)
             .onAppear {
                 viewStore.send(.onAppear)
             }

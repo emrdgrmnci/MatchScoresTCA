@@ -39,6 +39,8 @@ struct TeamListView: View {
                 ), placement: .automatic, prompt: "Search NBA Teams")
             }
             .navigationTitle("Teams")
+            .toolbarBackground(Color.blue._50, for: .navigationBar)
+            .toolbarBackground(Color.blue._50, for: .tabBar)
             .onAppear {
                 viewStore.send(.onAppear)
             }

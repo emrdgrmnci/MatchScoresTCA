@@ -33,7 +33,8 @@ struct TeamDetailProfileView: View {
             
             Text(team.division)
                 .font(.system(.title3, design: .rounded))
-                .foregroundColor(Color.theme.primaryTextColor)        }
+                .foregroundColor(Color.theme.primaryTextColor)
+        }
         .background(Color.blue._50)
     }
 }

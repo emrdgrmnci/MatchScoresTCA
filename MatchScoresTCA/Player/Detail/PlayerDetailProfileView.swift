@@ -17,15 +17,20 @@ struct PlayerDetailProfileView: View {
     var body: some View {
         VStack() {
             Image("allen")
-            //                                                    .clipShape(// TODO, fill: // TODO)
                 .frame(
                     width: 100,
                     height: 100
                 )
+                .clipShape(Circle()) // Make the image circular
+                .aspectRatio(contentMode: .fit) // Maintain aspect rati
             
             Text(player.firstName + " " + player.lastName)
-                .font(.system(size: 24, weight: .semibold, design: .rounded))
+                .font(.system(.title, design: .rounded))
+                .foregroundColor(Color.theme.primaryTextColor)
             Text(player.position)
+                .font(.system(.title3, design: .rounded))
+                .foregroundColor(Color.theme.primaryTextColor)
         }
+        .background(Color.blue._50)
     }
 }

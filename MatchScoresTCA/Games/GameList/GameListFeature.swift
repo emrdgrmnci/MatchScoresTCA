@@ -12,6 +12,8 @@ struct GameListFeature: Reducer {
     struct State: Equatable {
         var dataLoadingStatus = DataLoadingStatus.notStarted
         var gameList: IdentifiedArrayOf<GameData> = []
+        var searchQuery = ""
+        var games = [GameData]()
         
         var shouldShowError: Bool {
             dataLoadingStatus == .error
@@ -20,10 +22,18 @@ struct GameListFeature: Reducer {
         var isLoading: Bool {
             dataLoadingStatus == .loading
         }
+        
+        var searchResults: IdentifiedArrayOf<GameData> {
+            guard !searchQuery.isEmpty else {
+                return gameList
+            }
+            return gameList.filter { $0.homeTeam.fullName.lowercased().contains(searchQuery.lowercased()) }
+        }
     }
     
     enum Action: Equatable {
         case fetchGameResponse(TaskResult<GamesModel>)
+        case searchQueryChanged(String)
         case onAppear
     }
     
@@ -39,8 +49,8 @@ struct GameListFeature: Reducer {
             return .none
             
         case let .fetchGameResponse(.success(gameData)):
-            state.gameList = IdentifiedArrayOf(uniqueElements: gameData.data
-            )
+            state.gameList = IdentifiedArrayOf(uniqueElements: gameData.data)
+            state.games = gameData.data
             state.dataLoadingStatus = .loading
             return .none
             
@@ -53,6 +63,13 @@ struct GameListFeature: Reducer {
                     )
                 )
             }
+            
+        case let .searchQueryChanged(query):
+            state.searchQuery = query
+            guard !query.isEmpty else {
+                return .cancel(id: CancelID.game)
+            }
+            return .none
         }
     }
 }

@@ -28,21 +28,14 @@ struct PlayerDetailNameRow: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Text("Name")
-                    .font(.system(.body, design: .rounded))
-                    .foregroundColor(Color(uiColor: .white))
+                    .font(.system(.title, design: .rounded))
+                    .foregroundColor(Color.theme.primaryTextColor)
                 
                 Text(player.firstName + " " + player.lastName)
-                    .font(.system(.subheadline, design: .rounded))
-                    .foregroundColor(Color(hue: 0, saturation: 0, brightness: 0.769, opacity: 1))
+                    .font(.system(.title3, design: .rounded))
+                    .foregroundColor(Color.theme.primaryTextColor)
             }
         }
-        .padding(16)
-        .background(alignment: .topLeading) {
-            RoundedRectangle(
-                cornerRadius: 8,
-                style: .circular
-            )
-            .fill(Color(hue: 0.667, saturation: 0.32, brightness: 0.196, opacity: 1))
-        }
+        .background(Color.blue._50)
     }
 }
