@@ -75,6 +75,6 @@ private extension TeamView {
 
 struct TeamView_Previews: PreviewProvider {
     static var previews: some View {
-        TeamView(team: .init(id: 1, abbreviation: "ATL", city: "Atlanta", division: "Southeast", fullName: "Atlanta Hawks", name: "Hawks"))
+        TeamView(team: .init(id: 1, abbreviation: "ATL", city: "Atlanta", conference: "East", division: "Southeast", fullName: "Atlanta Hawks", name: "Hawks"))
     }
 }

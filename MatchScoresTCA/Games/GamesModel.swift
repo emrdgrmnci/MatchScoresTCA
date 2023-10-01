@@ -66,7 +66,8 @@ extension GamesModel {
                 homeTeam: TeamData(
                     id: 1,
                     abbreviation: "ATL",
-                    city: "Atlanta",
+                    city: "Atlanta", 
+                    conference: "East",
                     division: "Southeast",
                     fullName: "Atlanta Hawks",
                     name: "Hawks"
@@ -80,6 +81,7 @@ extension GamesModel {
                     id: 2,
                     abbreviation: "BOS",
                     city: "Boston",
+                    conference: "East",
                     division: "Atlantic",
                     fullName: "Boston Celtics",
                     name: "Celtics"

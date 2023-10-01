@@ -15,7 +15,7 @@ struct PlayerView: View {
     var body: some View {
         VStack(spacing: .zero) {
             
-            background
+//            background
             
             VStack(alignment: .leading) {
                 Text("\(player.firstName) \(player.lastName)")
@@ -33,15 +33,15 @@ struct PlayerView: View {
             .frame(height: 150.0)
             .padding(.horizontal, 8)
             .padding(.vertical, 5)
-            .background(Theme.detailBackground)
             
             VStack {
                 PillView(id: player.id)
                     .padding(.leading, 10)
                     .padding(.top, 10)
             }
-            
         }
+        .toolbarBackground(Color.blue._50, for: .navigationBar)
+        .toolbarBackground(Color.blue._50, for: .tabBar)
         .clipShape(
             RoundedRectangle(cornerRadius: 16,
                              style: .continuous)
@@ -56,10 +56,10 @@ struct PlayerView: View {
 
 private extension PlayerView {
     
-    var background: some View {
-        Theme.background
-            .ignoresSafeArea(edges: .top)
-    }
+//    var background: some View {
+//        Theme.background
+//            .ignoresSafeArea(edges: .top)
+//    }
     
     var refresh: some View {
         Button {
@@ -75,6 +75,6 @@ private extension PlayerView {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        return PlayerView(player: PlayerData(id: 14, firstName: "Ike", heightFeet: nil, heightInches: nil, lastName: "Anigbogu", position: "C", team: TeamData(id: 12, abbreviation: "IND", city: "Indiana", conference: "Central", division: "Central", fullName: "Indiana Pacers", name: "Pacers"), weightPounds: nil))
+        return PlayerView(player: PlayerData(id: 14, firstName: "Ike", heightFeet: nil, heightInches: nil, lastName: "Anigbogu", position: "C", team: TeamData(id: 12, abbreviation: "IND", city: "Indiana", conference: "East", division: "Central", fullName: "Indiana Pacers", name: "Pacers"), weightPounds: nil))
     }
 }
