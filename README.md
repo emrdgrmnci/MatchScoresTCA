@@ -11,6 +11,10 @@ SwiftUI, UIKit, and more, and on any Apple platform (iOS, macOS, tvOS, and watch
 * [TCA Data-flow Diagram](#tca-data-flow-diagram)
 * [Basic usage](#basic-usage)
 
+### Mockup
+
+![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/MSTCA-Screens.png "MatchScoresTCA Mockup")
+
 ### Source 
 
 ⚠️ For the all first-hand info:
