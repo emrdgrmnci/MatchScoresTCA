@@ -22,11 +22,11 @@ struct TeamsModel: Codable, Equatable, Identifiable, Sendable {
 // MARK: - Datum
 struct TeamData: Codable, Equatable, Identifiable, Sendable {
     let id: Int
-    let abbreviation, city: String
+    let abbreviation, city, conference: String
     let division, fullName, name: String
     
     enum CodingKeys: String, CodingKey {
-        case id, abbreviation, city, division
+        case id, abbreviation, city, conference, division
         case fullName = "full_name"
         case name
     }
@@ -53,6 +53,7 @@ extension TeamsModel {
                 id: 1,
                 abbreviation: "ATL",
                 city: "Atlanta",
+                conference: "East",
                 division: "Southeast",
                 fullName: "Atlanta Hawks",
                 name: "Hawks"
@@ -61,6 +62,7 @@ extension TeamsModel {
                 id: 2,
                 abbreviation: "BOS",
                 city: "Boston",
+                conference: "East",
                 division: "Atlantic",
                 fullName: "Boston Celtics",
                 name: "Celtics"
@@ -69,6 +71,7 @@ extension TeamsModel {
                 id: 3,
                 abbreviation: "BKN",
                 city: "Brooklyn",
+                conference: "East",
                 division: "Atlantic",
                 fullName: "Brooklyn Nets",
                 name: "Nets"

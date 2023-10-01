@@ -66,7 +66,7 @@ extension GamesModel {
                 homeTeam: TeamData(
                     id: 1,
                     abbreviation: "ATL",
-                    city: "Atlanta", 
+                    city: "Atlanta",
                     conference: "East",
                     division: "Southeast",
                     fullName: "Atlanta Hawks",

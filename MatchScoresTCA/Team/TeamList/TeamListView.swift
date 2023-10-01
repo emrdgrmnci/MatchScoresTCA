@@ -21,7 +21,7 @@ struct TeamListView: View {
                               spacing: 16) {
                         ForEach(viewStore.searchResults) { team in
                             NavigationLink {
-                                TeamDetailView(team: team)
+                                TeamDetailView(team: team, avatars: avatars[team.id - 1])
                             } label: {
                                 TeamView(team: team)
                                     .accessibilityIdentifier("item_\(team.id)")
