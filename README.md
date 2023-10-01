@@ -15,6 +15,13 @@ SwiftUI, UIKit, and more, and on any Apple platform (iOS, macOS, tvOS, and watch
 
 ![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/MSTCA-Screens.png "MatchScoresTCA Mockup")
 
+### Recording ⏺🔴
+
+![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/Light-Mode.gif "Light Mode Screens")
+
+
+![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/Dark-Mode.gif "Dark Mode Screens")
+
 ### Source 
 
 ⚠️ For the all first-hand info:
