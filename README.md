@@ -7,7 +7,7 @@ The Composable Architecture (TCA, for short) is a library for building applicati
 and understandable way, with composition, testing, and ergonomics in mind. It can be used in 
 SwiftUI, UIKit, and more, and on any Apple platform (iOS, macOS, tvOS, and watchOS).
 
-* [Mockup](#Mockup)
+* [Mockup](#mockup)
 * [Recording](#recording)
 * [Source](#source)
 * [What is the Composable Architecture?](#what-is-the-composable-architecture)
@@ -18,7 +18,7 @@ SwiftUI, UIKit, and more, and on any Apple platform (iOS, macOS, tvOS, and watch
 
 ![Alt text](https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/MSTCA-Screens.png "MatchScoresTCA Mockup")
 
-### Recording ⏺🔴
+### Recording
 </br>
 </br>
 <p align="center">
