@@ -15,25 +15,20 @@ struct TeamView: View {
     var body: some View {
         VStack(spacing: .zero) {
             
-            background
-            
-            VStack(alignment: .leading) {
-                Text(team.fullName)
-                    .foregroundColor(Theme.text)
+            VStack {
+                Image(avatars[team.id - 1])
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                
+                Text(team.name)
                     .font(
                         .system(.largeTitle, design: .rounded)
-                    )
-                    .background(
-                        Image(avatars[team.id - 1])
-                            .opacity(0.4)
-                            .aspectRatio(contentMode: .fill)
                     )
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .frame(height: 150.0)
             .padding(.horizontal, 8)
             .padding(.vertical, 5)
-            .background(Theme.detailBackground)
             
             VStack {
                 PillView(id: team.id)
@@ -42,9 +37,19 @@ struct TeamView: View {
             }
             
         }
-        .clipShape(
-            RoundedRectangle(cornerRadius: 16,
-                             style: .continuous)
+        .background(Color.blue._50)
+        .frame(maxWidth: .infinity)
+        .padding()
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .strokeBorder(
+                    LinearGradient(
+                        gradient: Gradient(colors: [.blue, .green, .red]),
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    ),
+                    lineWidth: 1
+                )
         )
         .shadow(color: Theme.text.opacity(0.1),
                 radius: 2,

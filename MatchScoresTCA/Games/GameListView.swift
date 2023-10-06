@@ -91,6 +91,11 @@ struct GameRowView: View {
                         Text("\(game.homeTeamScore)")
                             .font(.callout)
                     }
+                    .shadow(color: Theme.text.opacity(0.5),
+                            radius: 2,
+                            x: 0,
+                            y: 1
+                    )
                     
                     VStack {
                         Image(avatars[game.homeTeam.id - 1])

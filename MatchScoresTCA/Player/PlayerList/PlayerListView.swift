@@ -23,6 +23,7 @@ struct PlayerListView: View {
                                 PlayerDetailView(player: player)
                             } label: {
                                 PlayersListRow(player: player)
+                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
                             }
                         }
                     }

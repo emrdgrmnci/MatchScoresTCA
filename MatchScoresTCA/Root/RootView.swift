@@ -20,6 +20,17 @@ struct RootView: View {
                     send: RootFeature.Action.tabSelected
                 )
             ) {
+                StatsListView(store: self.store.scope(
+                    state: \.statsListState,
+                    action: RootFeature.Action.statsList
+                )
+                )
+                .tabItem {
+                    Image(systemName: "chart.bar.fill")
+                    Text("Stats")
+                }
+                .tag(RootFeature.Tab.stats)
+                
                 TeamListView(
                     store: self.store.scope(
                         state: \.teamListState,
@@ -69,6 +80,7 @@ struct RootView_Previews: PreviewProvider {
                 initialState: RootFeature.State()
             ) {
                 RootFeature(
+                    fetchStats: {StatsModel.sample },
                     fetchTeams: { TeamsModel.sample },
                     fetchGames: { GamesModel.sample },
                     fetchPlayers: { PlayersModel.sample },

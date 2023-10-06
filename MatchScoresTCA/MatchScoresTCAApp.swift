@@ -15,6 +15,9 @@ struct MatchScoresTCAApp: App {
             RootView(
                 store: Store(initialState: RootFeature.State()) {
                     RootFeature(
+                        fetchStats: {
+                            StatsModel.sample
+                        }, 
                         fetchTeams: {
                             TeamsModel.sample
                         },

@@ -11,6 +11,7 @@ enum Endpoint {
     case teams
     case games
     case players
+    case stats
 }
 
 extension Endpoint {
@@ -32,6 +33,8 @@ extension Endpoint {
             return "/api/v1/games"
         case .players:
             return "/api/v1/players"
+        case .stats:
+            return "api/v1/stats"
         }
     }
     
@@ -42,6 +45,8 @@ extension Endpoint {
         case .games:
             return .GET
         case .players:
+            return .GET
+        case .stats:
             return .GET
         }
     }

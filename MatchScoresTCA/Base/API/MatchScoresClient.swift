@@ -12,6 +12,7 @@ struct MatchScoresClient {
     var fetchTeams: () async throws -> TeamsModel
     var fetchPlayers: () async throws -> PlayersModel
     var fetchGames: () async throws -> GamesModel
+    var fetchStats: () async throws -> StatsModel
     var error: NetworkingManager.NetworkingError?
 }
 
@@ -27,6 +28,11 @@ extension MatchScoresClient: DependencyKey {
         },
         fetchGames: {
             let response = try await NetworkingManager.shared.request(session: .shared, .games, type: GamesModel.self)
+            return response
+        },
+        fetchStats: {
+            let response = try await
+            NetworkingManager.shared.request(session: .shared, .stats, type: StatsModel.self)
             return response
         }
     )

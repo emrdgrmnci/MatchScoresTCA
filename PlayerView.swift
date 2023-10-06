@@ -14,20 +14,12 @@ struct PlayerView: View {
     
     var body: some View {
         VStack(spacing: .zero) {
-            
-//            background
-            
             VStack(alignment: .leading) {
                 Text("\(player.firstName) \(player.lastName)")
                     .foregroundColor(Theme.text)
                     .font(
                         .system(.largeTitle, design: .rounded)
                     )
-//                    .background(
-//                        Image(avatars[player.id - 1])
-//                            .opacity(0.4)
-//                            .aspectRatio(contentMode: .fill)
-//                    )
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .frame(height: 150.0)
@@ -56,11 +48,6 @@ struct PlayerView: View {
 
 private extension PlayerView {
     
-//    var background: some View {
-//        Theme.background
-//            .ignoresSafeArea(edges: .top)
-//    }
-    
     var refresh: some View {
         Button {
             Task {
@@ -69,7 +56,6 @@ private extension PlayerView {
         } label: {
             Symbols.refresh
         }
-        // .disabled(vm.isLoading)
     }
 }
 

@@ -19,6 +19,9 @@
 		C3955AC92AC9E77500CECC6C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AC82AC9E77500CECC6C /* PlayerView.swift */; };
 		CB13BD152A87D190001188AE /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD142A87D190001188AE /* PlayerDetailView.swift */; };
 		CB13BD1A2A87D43F001188AE /* GamesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD192A87D43F001188AE /* GamesModel.swift */; };
+		CB4D0FFB2ACEB3D300CAC6CD /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */; };
+		CB4D0FFF2ACEB7AB00CAC6CD /* StatsListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D0FFE2ACEB7AB00CAC6CD /* StatsListFeature.swift */; };
+		CB4D10012ACEBE6800CAC6CD /* StatsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D10002ACEBE6800CAC6CD /* StatsListView.swift */; };
 		CB50DAC32AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */; };
 		CB50DAC52AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */; };
 		CB50DAC62AB4A5F3007CFB3D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */; };
@@ -100,6 +103,9 @@
 		C3955AC82AC9E77500CECC6C /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = SOURCE_ROOT; };
 		CB13BD142A87D190001188AE /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		CB13BD192A87D43F001188AE /* GamesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesModel.swift; sourceTree = "<group>"; };
+		CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
+		CB4D0FFE2ACEB7AB00CAC6CD /* StatsListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsListFeature.swift; sourceTree = "<group>"; };
+		CB4D10002ACEBE6800CAC6CD /* StatsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsListView.swift; sourceTree = "<group>"; };
 		CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerCreateFailureMock.swift; sourceTree = "<group>"; };
 		CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerCreateSuccessMock.swift; sourceTree = "<group>"; };
 		CB50DAD32AB4A73D007CFB3D /* MockURLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionProtocol.swift; sourceTree = "<group>"; };
@@ -217,6 +223,16 @@
 				CB5416882AAB49E4004CAB22 /* GameView.swift */,
 			);
 			path = Games;
+			sourceTree = "<group>";
+		};
+		CB4D0FF92ACEB37B00CAC6CD /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */,
+				CB4D0FFE2ACEB7AB00CAC6CD /* StatsListFeature.swift */,
+				CB4D10002ACEBE6800CAC6CD /* StatsListView.swift */,
+			);
+			path = Stats;
 			sourceTree = "<group>";
 		};
 		CB50DAB82AB4A488007CFB3D /* NetworkingTests */ = {
@@ -462,6 +478,7 @@
 		CBF91C412A7D532200F0AC33 /* MatchScoresTCA */ = {
 			isa = PBXGroup;
 			children = (
+				CB4D0FF92ACEB37B00CAC6CD /* Stats */,
 				CBCDAF562AC80C6600D9CD84 /* Extensions */,
 				CB50DAC82AB4A654007CFB3D /* Mocks */,
 				CB13BD162A87D3D9001188AE /* Games */,
@@ -671,6 +688,7 @@
 				C3955AC22AC9E73C00CECC6C /* TeamDetailDivisionRow.swift in Sources */,
 				CBACB31A2A7FCFCF0044F570 /* PillView.swift in Sources */,
 				CBF91C6F2A7D539B00F0AC33 /* NetworkingManager.swift in Sources */,
+				CB4D10012ACEBE6800CAC6CD /* StatsListView.swift in Sources */,
 				C3955AC72AC9E73C00CECC6C /* TeamDetailNameRow.swift in Sources */,
 				CBACB3342A80233E0044F570 /* PlayerListView.swift in Sources */,
 				CBCDAF612AC8C18300D9CD84 /* PlayersListRow.swift in Sources */,
@@ -679,11 +697,13 @@
 				C3955AC92AC9E77500CECC6C /* PlayerView.swift in Sources */,
 				C3955AC52AC9E73C00CECC6C /* TeamDetailConferenceRow.swift in Sources */,
 				CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */,
+				CB4D0FFF2ACEB7AB00CAC6CD /* StatsListFeature.swift in Sources */,
 				CBACB3302A8023290044F570 /* TeamView.swift in Sources */,
 				CBECBE402A812A3E00AF97DF /* DataLoadingStatus.swift in Sources */,
 				CBACB3392A8026470044F570 /* TeamListFeature.swift in Sources */,
 				CB50DAD72AB4A786007CFB3D /* StaticJSONMapper.swift in Sources */,
 				CBACB31F2A801B030044F570 /* RootView.swift in Sources */,
+				CB4D0FFB2ACEB3D300CAC6CD /* StatsModel.swift in Sources */,
 				C3955AB62AC9E6F700CECC6C /* GameDetailView.swift in Sources */,
 				CBACB3372A80240C0044F570 /* FavoriteListView.swift in Sources */,
 				CBECBE482A81344900AF97DF /* CheckmarkPopoverView.swift in Sources */,
@@ -956,6 +976,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -976,6 +999,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
