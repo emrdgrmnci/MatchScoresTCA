@@ -1,6 +1,12 @@
 import SwiftUI
 import ComposableArchitecture
 
+enum GameInfoToken: String, Identifiable, Hashable, CaseIterable {
+    case season
+    case team
+    var id: Self { self }
+}
+
 struct GameListView: View {
     let store: StoreOf<GameListFeature>
 
@@ -16,7 +22,6 @@ struct GameListView: View {
         }
     }
 }
-
 
 struct GameListContentView: View {
     let store: StoreOf<GameListFeature>

@@ -7,88 +7,102 @@
 
 import Foundation
 
-// MARK: - Stats
+// MARK: - StatsModel
 struct StatsModel: Codable, Equatable, Identifiable, Sendable {
-    var id = UUID(uuidString: "3971cc04-4e77-31ee-be56-0442ac120502")
+    var id = UUID(uuidString: "3971ec05-4e53-11ze-be66-0242ac120002")
     let data: [StatsData]
-    let meta: Meta
+    let meta: Meta?
 }
 
 // MARK: - Datum
 struct StatsData: Codable, Equatable, Identifiable, Sendable {
-    let id, ast: Int
-    let fgPct: Double
-    let fga, fgm: Int
+    let id: Int?
+    let ast, blk, dreb: Int?
+    let fg3Pct: Double?
+    let fg3A, fg3M: Int?
+    let fgPct: Double?
+    let fga, fgm: Int?
     let ftPct: Double?
-    let fta, ftm: Int
-    let game: Game
-    let min: String
-    let pf: Int
-    let player: Player
-    let pts, reb: Int
-    let team: Team
-    
+    let fta, ftm: Int?
+    let game: Game?
+    let min: String?
+    let oreb, pf: Int?
+    let player: Player?
+    let pts, reb, stl: Int?
+    let team: Team?
+    let turnover: Int?
+
     enum CodingKeys: String, CodingKey {
-        case id, ast
+        case id, ast, blk, dreb
+        case fg3Pct = "fg3_pct"
+        case fg3A = "fg3a"
+        case fg3M = "fg3m"
         case fgPct = "fg_pct"
         case fga, fgm
         case ftPct = "ft_pct"
-        case fta, ftm, game, min, pf, player, pts, reb, team
+        case fta, ftm, game, min, oreb, pf, player, pts, reb, stl, team, turnover
     }
 }
 
 // MARK: - Game
 struct Game: Codable, Equatable, Identifiable, Sendable {
-    let id: Int
-    let date: DateEnum
-    let homeTeamID, homeTeamScore, period: Int
-    let postseason: Bool
-    let season: Int
-    let status: Status
-    let visitorTeamID, visitorTeamScore: Int
-    
+    let id: Int?
+    let date: String?
+    let homeTeamID, homeTeamScore, period: Int?
+    let postseason: Bool?
+    let season: Int?
+    let status: Status?
+    let time: Time?
+    let visitorTeamID, visitorTeamScore: Int?
+
     enum CodingKeys: String, CodingKey {
         case id, date
         case homeTeamID = "home_team_id"
         case homeTeamScore = "home_team_score"
-        case period, postseason, season, status
+        case period, postseason, season, status, time
         case visitorTeamID = "visitor_team_id"
         case visitorTeamScore = "visitor_team_score"
     }
 }
 
-enum DateEnum: String, Codable {
-    case the19691128T000000000Z = "1969-11-28T00:00:00.000Z"
+enum Time: String, Codable {
+    case empty = " "
 }
 
 // MARK: - Player
 struct Player: Codable, Equatable, Identifiable, Sendable {
-    let id: Int
-    let firstName: String
-    let lastName, position: String
+    let id: Int?
+//    let firstName: FirstName
+//    let heightFeet, heightInches: Int
+//    let lastName: LastName
     let teamID: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case id
-        case firstName = "first_name"
-        case lastName = "last_name"
-        case position
+//        case firstName = "first_name"
+//        case heightFeet = "height_feet"
+//        case heightInches = "height_inches"
+//        case lastName = "last_name"
         case teamID = "team_id"
     }
 }
 
+enum FirstName: String, Codable {
+    case leBron = "LeBron"
+}
+
+enum LastName: String, Codable {
+    case james = "James"
+}
+
 // MARK: - Team
 struct Team: Codable, Equatable, Identifiable, Sendable {
-    let id: Int
-    let abbreviation, city: String
+    let id: Int?
     let conference: Conference
     let division: Division
-    let fullName, name: String
-    
+
     enum CodingKeys: String, CodingKey {
-        case id, abbreviation, city, conference, division
-        case fullName = "full_name"
-        case name
+        case id, conference, division
     }
 }
 
@@ -96,47 +110,7 @@ extension StatsModel {
     static var sample: StatsModel {
         .init(
             data: [
-                StatsData(
-                    id: 13,
-                    ast: 45,
-                    fgPct: 67,
-                    fga: 87,
-                    fgm: 90,
-                    ftPct: 5.0,
-                    fta: 111,
-                    ftm: 232,
-                    game: Game(
-                        id: 13,
-                        date: DateEnum.the19691128T000000000Z,
-                        homeTeamID: 25,
-                        homeTeamScore: 100,
-                        period: 4,
-                        postseason: false,
-                        season: 3,
-                        status: Status.statusFinal,
-                        visitorTeamID: 15,
-                        visitorTeamScore: 130
-                    ),
-                    min: "",
-                    pf: 0,
-                    player: Player(
-                        id: 47,
-                        firstName: "Jabari",
-                        lastName: "Bird",
-                        position: "G",
-                        teamID: 15
-                    ),
-                    pts: 30,
-                    reb: 30,
-                    team: Team(
-                        id: 15,
-                        abbreviation: "MEM",
-                        city: "Memphis",
-                        conference: Conference(rawValue: "West") ?? Conference.east,
-                        division: Division(rawValue: "Southwest") ?? Division.atlantic,
-                        fullName: "Memphis Grizzlies",
-                        name: "Grizzlies")
-                )
+                StatsData(id: 13, ast: 45, blk: 67, dreb: 67, fg3Pct: 43, fg3A: 345, fg3M: 32, fgPct: 123, fga: 56, fgm: 43, ftPct: 46.0, fta: 23, ftm: 12, game: Game(id: 4, date: "", homeTeamID: 23, homeTeamScore: 115, period: 4, postseason: true, season: 2, status: Status.statusFinal, time: Time.empty, visitorTeamID: 12, visitorTeamScore: 90), min: "", oreb: 0, pf: 8, player: Player(id: 4, teamID: 8), pts: 6, reb: 4, stl: 5, team: Team(id: 3, conference: Conference.east, division: Division.atlantic), turnover: 5)
             ],
             meta: Meta(
                 totalPages: 206,

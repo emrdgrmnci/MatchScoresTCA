@@ -14,7 +14,6 @@ struct RootFeature: Reducer {
         var teamListState = TeamListFeature.State()
         var gameListState = GameListFeature.State()
         var playerListState = PlayerListFeature.State()
-        var statsListState = StatsListFeature.State()
     }
     
     enum Tab {
@@ -27,20 +26,17 @@ struct RootFeature: Reducer {
     
     enum Action: Equatable {
         case tabSelected(Tab)
-        case statsList(StatsListFeature.Action)
         case teamList(TeamListFeature.Action)
         case gameList(GameListFeature.Action)
         case playerList(PlayerListFeature.Action)
     }
     
-    var fetchStats: () async throws -> StatsModel
     var fetchTeams: () async throws -> TeamsModel
     var fetchGames: () async throws -> GamesModel
     var fetchPlayers:  @Sendable () async throws -> PlayersModel
     var uuid: @Sendable () -> UUID
     
     static let live = Self(
-        fetchStats: MatchScoresClient.liveValue.fetchStats,
         fetchTeams: MatchScoresClient.liveValue.fetchTeams,
         fetchGames: MatchScoresClient.liveValue.fetchGames,
         fetchPlayers: MatchScoresClient.liveValue.fetchPlayers,
@@ -59,12 +55,7 @@ struct RootFeature: Reducer {
             case .tabSelected(let tab):
                 state.selectedTab = tab
                 return .none
-            case .statsList:
-                return .none
             }
-        }
-        Scope(state: \.statsListState, action: /RootFeature.Action.statsList) {
-            StatsListFeature(uuid: uuid)
         }
         Scope(state: \.teamListState, action: /RootFeature.Action.teamList) {
             TeamListFeature(uuid: uuid)

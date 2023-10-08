@@ -43,7 +43,7 @@ final class NetworkingManager: NetworkingManagerImpl {
         
         let decoder = JSONDecoder()
         let res = try decoder.decode(T.self, from: data)
-        print("res", res)
+        print("JSON DATA RESPONSE:", res)
         return res
     }
     

@@ -31,7 +31,7 @@ struct PlayerListView: View {
                               .accessibilityIdentifier("peopleGrid")
                 }
                 .refreshable {
-                    viewStore.send(.onAppear)
+                    viewStore.send(.onAppearPlayer)
                 }
                 .searchable(text: viewStore.binding(
                     get: \.searchQuery, send: PlayerListFeature.Action.searchQueryChanged
@@ -41,7 +41,8 @@ struct PlayerListView: View {
             .toolbarBackground(Color.blue._50, for: .navigationBar)
             .toolbarBackground(Color.blue._50, for: .tabBar)
             .onAppear {
-                viewStore.send(.onAppear)
+                viewStore.send(.onAppearPlayer)
+//                viewStore.send(.onAppearStat)
             }
         }
         .background(Color.blue._50)

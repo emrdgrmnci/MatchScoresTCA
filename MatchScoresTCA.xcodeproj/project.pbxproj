@@ -17,11 +17,10 @@
 		C3955AC62AC9E73C00CECC6C /* TeamDetailFoundationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AC02AC9E73C00CECC6C /* TeamDetailFoundationRow.swift */; };
 		C3955AC72AC9E73C00CECC6C /* TeamDetailNameRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AC12AC9E73C00CECC6C /* TeamDetailNameRow.swift */; };
 		C3955AC92AC9E77500CECC6C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AC82AC9E77500CECC6C /* PlayerView.swift */; };
+		C3B045532AD3215D0020CF22 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B045522AD3215D0020CF22 /* String+Extension.swift */; };
 		CB13BD152A87D190001188AE /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD142A87D190001188AE /* PlayerDetailView.swift */; };
 		CB13BD1A2A87D43F001188AE /* GamesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD192A87D43F001188AE /* GamesModel.swift */; };
 		CB4D0FFB2ACEB3D300CAC6CD /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */; };
-		CB4D0FFF2ACEB7AB00CAC6CD /* StatsListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D0FFE2ACEB7AB00CAC6CD /* StatsListFeature.swift */; };
-		CB4D10012ACEBE6800CAC6CD /* StatsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D10002ACEBE6800CAC6CD /* StatsListView.swift */; };
 		CB50DAC32AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */; };
 		CB50DAC52AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */; };
 		CB50DAC62AB4A5F3007CFB3D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */; };
@@ -101,11 +100,10 @@
 		C3955AC02AC9E73C00CECC6C /* TeamDetailFoundationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailFoundationRow.swift; sourceTree = "<group>"; };
 		C3955AC12AC9E73C00CECC6C /* TeamDetailNameRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailNameRow.swift; sourceTree = "<group>"; };
 		C3955AC82AC9E77500CECC6C /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = SOURCE_ROOT; };
+		C3B045522AD3215D0020CF22 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		CB13BD142A87D190001188AE /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		CB13BD192A87D43F001188AE /* GamesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesModel.swift; sourceTree = "<group>"; };
 		CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
-		CB4D0FFE2ACEB7AB00CAC6CD /* StatsListFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsListFeature.swift; sourceTree = "<group>"; };
-		CB4D10002ACEBE6800CAC6CD /* StatsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsListView.swift; sourceTree = "<group>"; };
 		CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerCreateFailureMock.swift; sourceTree = "<group>"; };
 		CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerCreateSuccessMock.swift; sourceTree = "<group>"; };
 		CB50DAD32AB4A73D007CFB3D /* MockURLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionProtocol.swift; sourceTree = "<group>"; };
@@ -229,8 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */,
-				CB4D0FFE2ACEB7AB00CAC6CD /* StatsListFeature.swift */,
-				CB4D10002ACEBE6800CAC6CD /* StatsListView.swift */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -374,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				CBCDAF572AC80C7800D9CD84 /* Color+Extension.swift */,
+				C3B045522AD3215D0020CF22 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -688,7 +685,6 @@
 				C3955AC22AC9E73C00CECC6C /* TeamDetailDivisionRow.swift in Sources */,
 				CBACB31A2A7FCFCF0044F570 /* PillView.swift in Sources */,
 				CBF91C6F2A7D539B00F0AC33 /* NetworkingManager.swift in Sources */,
-				CB4D10012ACEBE6800CAC6CD /* StatsListView.swift in Sources */,
 				C3955AC72AC9E73C00CECC6C /* TeamDetailNameRow.swift in Sources */,
 				CBACB3342A80233E0044F570 /* PlayerListView.swift in Sources */,
 				CBCDAF612AC8C18300D9CD84 /* PlayersListRow.swift in Sources */,
@@ -697,7 +693,6 @@
 				C3955AC92AC9E77500CECC6C /* PlayerView.swift in Sources */,
 				C3955AC52AC9E73C00CECC6C /* TeamDetailConferenceRow.swift in Sources */,
 				CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */,
-				CB4D0FFF2ACEB7AB00CAC6CD /* StatsListFeature.swift in Sources */,
 				CBACB3302A8023290044F570 /* TeamView.swift in Sources */,
 				CBECBE402A812A3E00AF97DF /* DataLoadingStatus.swift in Sources */,
 				CBACB3392A8026470044F570 /* TeamListFeature.swift in Sources */,
@@ -712,6 +707,7 @@
 				CBACB3172A7FCF610044F570 /* Theme.swift in Sources */,
 				CBF91C712A7D53AE00F0AC33 /* Endpoint.swift in Sources */,
 				CBACB3152A7FCF280044F570 /* Symbols.swift in Sources */,
+				C3B045532AD3215D0020CF22 /* String+Extension.swift in Sources */,
 				CBECBE432A812AB000AF97DF /* PlayerFeature.swift in Sources */,
 				CBACB33B2A8027BA0044F570 /* PlayerListFeature.swift in Sources */,
 				CBACB32A2A801C2A0044F570 /* PlayerModel.swift in Sources */,

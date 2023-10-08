@@ -11,7 +11,7 @@ enum Endpoint {
     case teams
     case games
     case players
-    case stats
+    case stats(String)
 }
 
 extension Endpoint {
@@ -34,7 +34,7 @@ extension Endpoint {
         case .players:
             return "/api/v1/players"
         case .stats:
-            return "api/v1/stats"
+            return "/api/v1/stats"
         }
     }
     
@@ -55,6 +55,10 @@ extension Endpoint {
         switch self {
         case .teams:
             return nil
+        case let .stats(playerID):
+            return [
+                "player_ids[]": playerID
+            ]
         default:
             return nil
         }
@@ -75,9 +79,9 @@ extension Endpoint {
             requestQueryItems.append(URLQueryItem(name: item.key, value: item.value))
         }
         
-#if DEBUG
-        requestQueryItems.append(URLQueryItem(name: "delay", value: "2"))
-#endif
+//#if DEBUG
+//        requestQueryItems.append(URLQueryItem(name: "delay", value: "2"))
+//#endif
         
         urlComponents.queryItems = requestQueryItems
         
