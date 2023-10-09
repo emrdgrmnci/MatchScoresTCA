@@ -81,22 +81,22 @@ struct GameDetailView: View {
                 .toolbarBackground(Color.blue._50, for: .tabBar)
 //                .frame(maxWidth: .infinity)
                 .navigationTitle(selectedGame[0].homeTeam.abbreviation)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Menu {
-                            ForEach([selectedGame[0].homeTeam.fullName], id: \.self) { team in
-                                Button {
-                                    selectedFilter = team
-                                } label: {
-                                    Text(team)
-                                }
-                            }
-                        }
-                    label: {
-                        Label("Add", systemImage: "line.3.horizontal.decrease.circle.fill")
-                    }
-                }
-            }
+//                .toolbar {
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        Menu {
+//                            ForEach([selectedGame[0].homeTeam.fullName], id: \.self) { team in
+//                                Button {
+//                                    selectedFilter = team
+//                                } label: {
+//                                    Text(team)
+//                                }
+//                            }
+//                        }
+//                    label: {
+//                        Label("Add", systemImage: "line.3.horizontal.decrease.circle.fill")
+//                    }
+//                }
+//            }
         }
     }
 }

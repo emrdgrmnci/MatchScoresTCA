@@ -42,7 +42,6 @@ struct PlayerListView: View {
             .toolbarBackground(Color.blue._50, for: .tabBar)
             .onAppear {
                 viewStore.send(.onAppearPlayer)
-//                viewStore.send(.onAppearStat)
             }
         }
         .background(Color.blue._50)

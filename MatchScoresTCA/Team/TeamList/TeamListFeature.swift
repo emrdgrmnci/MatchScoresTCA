@@ -26,7 +26,12 @@ struct TeamListFeature: Reducer {
             guard !searchQuery.isEmpty else {
                 return teamList
             }
-            return teamList.filter { $0.fullName.lowercased().contains(searchQuery.lowercased()) }
+            
+            let filteredAndSortedArray = teamList
+                .sorted(by: { $0.fullName.lowercased() > $1.fullName.lowercased() })
+                .filter { $0.fullName.lowercased().contains(searchQuery.lowercased()) }
+
+            return .init(uniqueElements: filteredAndSortedArray)
         }
     }
     
@@ -49,7 +54,7 @@ struct TeamListFeature: Reducer {
             
         case let .fetchTeamResponse(.success(teamData)):
             state.teamList = IdentifiedArrayOf(
-                uniqueElements: teamData.data
+                uniqueElements: teamData.data.sorted(by: >)
             )
             state.dataLoadingStatus = .loading
             return .none

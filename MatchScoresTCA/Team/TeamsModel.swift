@@ -32,6 +32,12 @@ struct TeamData: Codable, Equatable, Identifiable, Sendable {
     }
 }
 
+extension TeamData: Comparable {
+    static func < (lhs: TeamData, rhs: TeamData) -> Bool {
+        return lhs.name > rhs.name
+    }
+}
+
 // MARK: - Meta
 struct Meta: Codable, Equatable {
     let totalPages, currentPage, nextPage, perPage: Int?

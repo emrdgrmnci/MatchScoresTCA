@@ -27,8 +27,15 @@ struct PlayerListFeature: Reducer {
             guard !searchQuery.isEmpty else {
                 return playerList
             }
-            return playerList.filter { "\($0.firstName)\($0.lastName)".lowercased().contains(searchQuery.lowercased())
-            }
+            
+            let filteredAndSortedArray = playerList
+                .sorted(by: { $0.firstName.lowercased() > $1.firstName.lowercased() })
+                .filter { "\($0.firstName)\($0.lastName)".lowercased().contains(searchQuery.lowercased()) ||
+                    "\($0.position)".lowercased().contains(searchQuery.lowercased()) ||
+                    "\($0.team.fullName)".lowercased().contains(searchQuery.lowercased()) ||
+                    "\($0.team.city)".lowercased().contains(searchQuery.lowercased())
+                }
+            return .init(uniqueElements: filteredAndSortedArray)
         }
     }
     
@@ -37,7 +44,6 @@ struct PlayerListFeature: Reducer {
         case fetchStatsResponse(TaskResult<StatsModel>)
         case searchQueryChanged(String)
         case onAppearPlayer
-//        case onAppearStat
     }
     
     var uuid: @Sendable () -> UUID
@@ -55,7 +61,7 @@ struct PlayerListFeature: Reducer {
             
         case let .fetchPlayerResponse(.success(playerData)):
             state.playerList = IdentifiedArrayOf(
-                uniqueElements: playerData.data
+                uniqueElements: playerData.data.sorted(by: >)
             )
             state.dataLoadingStatus = .loading
             return .none
@@ -68,15 +74,6 @@ struct PlayerListFeature: Reducer {
                     )
                 )
             }
-            
-//        case .onAppearStat:
-//            return .run { send in
-//                await send(
-//                    .fetchStatsResponse(
-//                        TaskResult { try await MatchScoresClient.liveValue.fetchStats("237") }
-//                    )
-//                )
-//            }
             
         case let .searchQueryChanged(query):
             state.searchQuery = query

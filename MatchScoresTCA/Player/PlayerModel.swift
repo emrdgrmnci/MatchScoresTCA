@@ -33,6 +33,12 @@ struct PlayerData: Codable, Equatable, Identifiable, Sendable {
     }
 }
 
+extension PlayerData: Comparable {
+    static func < (lhs: PlayerData, rhs: PlayerData) -> Bool {
+        return lhs.firstName > rhs.firstName
+    }
+}
+
 extension PlayersModel {
     static var sample: PlayersModel {
         .init(
