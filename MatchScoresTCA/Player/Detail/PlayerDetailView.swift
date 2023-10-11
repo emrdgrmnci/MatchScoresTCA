@@ -22,11 +22,12 @@ struct PlayerDetailView: View {
                         .padding(.horizontal, 16) // Add horizontal padding
                     
                     VStack(alignment: .leading, spacing: 16) { // Add spacing between VStacks
-                        PlayerDetailNameRow(player: player)
-                        Divider()
                         PlayerDetailTeamRow(player: player)
                         Divider()
-                        PlayerStatsView(player: player)
+                        PlayerDetailPersonalInfoRow(player: player)
+                        Divider()
+                        PlayerDetailStatsView(player: player)
+                            .padding(.bottom, 8)
                     }
                     .padding(.horizontal, 16) // Add horizontal padding
                 }
@@ -38,33 +39,5 @@ struct PlayerDetailView: View {
             .navigationBarBackButtonHidden(false)
         }
         .background(Color.blue._50)
-    }
-}
-
-struct PlayerStatsView: View {
-    let player: PlayerData
-    @State private var statsData: StatsModel?
-    
-    var body: some View {
-        NavigationView {
-            List {
-                ForEach(statsData?.data ?? []) { data in
-                    Text(dateFormatter(inputDate: data.game?.time?.rawValue ?? ""))
-                }
-            }
-            .navigationBarTitle("NBA Stats")
-            .navigationTitle("Teams")
-            .toolbarBackground(Color.blue._50, for: .navigationBar)
-            .toolbarBackground(Color.blue._50, for: .tabBar)
-            .task {
-                do {
-                    self.statsData = try await MatchScoresClient.liveValue.fetchStats(String(player.id))
-                } catch(let error) {
-                    print(error)
-                }
-            }
-        }
-        .background(Color.blue._50)
-        .embedInNavigation()
     }
 }

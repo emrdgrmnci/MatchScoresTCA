@@ -65,44 +65,43 @@ struct Game: Codable, Equatable, Identifiable, Sendable {
     }
 }
 
+enum DateEnum: String, Codable {
+    case the19960204T000000000Z = "1996-02-04T00:00:00.000Z"
+}
+
 enum Time: String, Codable {
     case empty = " "
 }
 
 // MARK: - Player
 struct Player: Codable, Equatable, Identifiable, Sendable {
-    let id: Int?
-//    let firstName: FirstName
-//    let heightFeet, heightInches: Int
-//    let lastName: LastName
+    let id: Int
+    let heightFeet, heightInches: Int?
+    let position: String
     let teamID: Int
+    let weightPounds: Int?
 
     enum CodingKeys: String, CodingKey {
         case id
-//        case firstName = "first_name"
-//        case heightFeet = "height_feet"
-//        case heightInches = "height_inches"
-//        case lastName = "last_name"
+        case heightFeet = "height_feet"
+        case heightInches = "height_inches"
+        case position
         case teamID = "team_id"
+        case weightPounds = "weight_pounds"
     }
-}
-
-enum FirstName: String, Codable {
-    case leBron = "LeBron"
-}
-
-enum LastName: String, Codable {
-    case james = "James"
 }
 
 // MARK: - Team
 struct Team: Codable, Equatable, Identifiable, Sendable {
-    let id: Int?
+    let id: Int
+    let abbreviation, city: String
     let conference: Conference
-    let division: Division
+    let division, fullName, name: String
 
     enum CodingKeys: String, CodingKey {
-        case id, conference, division
+        case id, abbreviation, city, conference, division
+        case fullName = "full_name"
+        case name
     }
 }
 
@@ -110,7 +109,7 @@ extension StatsModel {
     static var sample: StatsModel {
         .init(
             data: [
-                StatsData(id: 13, ast: 45, blk: 67, dreb: 67, fg3Pct: 43, fg3A: 345, fg3M: 32, fgPct: 123, fga: 56, fgm: 43, ftPct: 46.0, fta: 23, ftm: 12, game: Game(id: 4, date: "", homeTeamID: 23, homeTeamScore: 115, period: 4, postseason: true, season: 2, status: Status.statusFinal, time: Time.empty, visitorTeamID: 12, visitorTeamScore: 90), min: "", oreb: 0, pf: 8, player: Player(id: 4, teamID: 8), pts: 6, reb: 4, stl: 5, team: Team(id: 3, conference: Conference.east, division: Division.atlantic), turnover: 5)
+                StatsData(id: 13, ast: 45, blk: 67, dreb: 67, fg3Pct: 43, fg3A: 345, fg3M: 32, fgPct: 123, fga: 56, fgm: 43, ftPct: 46.0, fta: 23, ftm: 12, game: Game(id: 4, date: "", homeTeamID: 23, homeTeamScore: 115, period: 4, postseason: true, season: 2, status: Status.statusFinal, time: Time.empty, visitorTeamID: 12, visitorTeamScore: 90), min: "", oreb: 0, pf: 8, player: Player(id: 2929, heightFeet: 0, heightInches: 0, position: "G", teamID: 1, weightPounds: 0), pts: 6, reb: 4, stl: 5, team: Team(id: 2, abbreviation: "", city: "", conference: Conference.east, division: "", fullName: "", name: ""), turnover: 5)
             ],
             meta: Meta(
                 totalPages: 206,

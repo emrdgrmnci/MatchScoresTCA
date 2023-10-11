@@ -67,19 +67,15 @@ struct GameDetailView: View {
                                     }
                                     .frame(width: 65)
                                 }
-//                                .frame(maxWidth: .infinity)
                                 .padding()
                             }
                             .listRowBackground(Color.blue._50)
-//                            .frame(maxWidth: .infinity)
-//                            .padding(.vertical)
                         }
                     }
                     .scrollContentBackground(.hidden)
                 }
                 .toolbarBackground(Color.blue._50, for: .navigationBar)
                 .toolbarBackground(Color.blue._50, for: .tabBar)
-//                .frame(maxWidth: .infinity)
                 .navigationTitle(selectedGame[0].homeTeam.abbreviation)
 //                .toolbar {
 //                    ToolbarItem(placement: .navigationBarTrailing) {
