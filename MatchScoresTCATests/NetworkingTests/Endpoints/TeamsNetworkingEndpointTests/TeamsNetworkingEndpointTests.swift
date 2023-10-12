@@ -18,6 +18,6 @@ final class TeamsNetworkingEndpointTests: XCTestCase {
         XCTAssertEqual(endpoint.path, "/api/v1/teams", "The path should be /api/v1/teams")
         XCTAssertEqual(endpoint.methodType, .GET, "The method type should be GET")
         
-        XCTAssertEqual(endpoint.url?.absoluteString, "https://www.balldontlie.io/api/v1/teams?delay=2", "The generated doesn't match our endpoint")
+        XCTAssertEqual(endpoint.url?.absoluteString, "https://www.balldontlie.io/api/v1/teams?", "The generated URL doesn't match our endpoint")
     }
 }

@@ -21,8 +21,6 @@
 		CB13BD152A87D190001188AE /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD142A87D190001188AE /* PlayerDetailView.swift */; };
 		CB13BD1A2A87D43F001188AE /* GamesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD192A87D43F001188AE /* GamesModel.swift */; };
 		CB4D0FFB2ACEB3D300CAC6CD /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */; };
-		CB50DAC32AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */; };
-		CB50DAC52AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */; };
 		CB50DAC62AB4A5F3007CFB3D /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */; };
 		CB50DAC72AB4A601007CFB3D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C702A7D53AE00F0AC33 /* Endpoint.swift */; };
 		CB50DAD42AB4A73D007CFB3D /* MockURLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB50DAD32AB4A73D007CFB3D /* MockURLSessionProtocol.swift */; };
@@ -32,6 +30,11 @@
 		CB50DADE2AB4AA44007CFB3D /* TeamsStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB50DADD2AB4AA44007CFB3D /* TeamsStaticData.json */; };
 		CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5416882AAB49E4004CAB22 /* GameView.swift */; };
 		CB7703DE2AC4542700E0C419 /* GamesStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB7703DD2AC4542700E0C419 /* GamesStaticData.json */; };
+		CB9D29962AD7B5CE00B3C9F1 /* StatsStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB9D29952AD7B5CE00B3C9F1 /* StatsStaticData.json */; };
+		CB9D29992AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D29982AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift */; };
+		CB9D299C2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D299B2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift */; };
+		CB9D29A12AD7CB2700B3C9F1 /* TeamsScreenUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D29A02AD7CB2700B3C9F1 /* TeamsScreenUITest.swift */; };
+		CB9D29A42AD7D91600B3C9F1 /* UITestingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D29A32AD7D91600B3C9F1 /* UITestingHelper.swift */; };
 		CBACB17E2AD69D960046EA8D /* PlayerDetailPersonalInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB17D2AD69D960046EA8D /* PlayerDetailPersonalInfoRow.swift */; };
 		CBACB1802AD69DDB0046EA8D /* PlayerDetailStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB17F2AD69DDB0046EA8D /* PlayerDetailStatsView.swift */; };
 		CBACB3152A7FCF280044F570 /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB3142A7FCF280044F570 /* Symbols.swift */; };
@@ -66,8 +69,6 @@
 		CBF91C432A7D532200F0AC33 /* MatchScoresTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C422A7D532200F0AC33 /* MatchScoresTCAApp.swift */; };
 		CBF91C472A7D532300F0AC33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF91C462A7D532300F0AC33 /* Assets.xcassets */; };
 		CBF91C4A2A7D532300F0AC33 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF91C492A7D532300F0AC33 /* Preview Assets.xcassets */; };
-		CBF91C5E2A7D532300F0AC33 /* MatchScoresTCAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C5D2A7D532300F0AC33 /* MatchScoresTCAUITests.swift */; };
-		CBF91C602A7D532300F0AC33 /* MatchScoresTCAUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C5F2A7D532300F0AC33 /* MatchScoresTCAUITestsLaunchTests.swift */; };
 		CBF91C6F2A7D539B00F0AC33 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */; };
 		CBF91C712A7D53AE00F0AC33 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C702A7D53AE00F0AC33 /* Endpoint.swift */; };
 		CBF91C742A7D544200F0AC33 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = CBF91C732A7D544200F0AC33 /* ComposableArchitecture */; };
@@ -105,8 +106,6 @@
 		CB13BD142A87D190001188AE /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		CB13BD192A87D43F001188AE /* GamesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesModel.swift; sourceTree = "<group>"; };
 		CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
-		CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerCreateFailureMock.swift; sourceTree = "<group>"; };
-		CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManagerCreateSuccessMock.swift; sourceTree = "<group>"; };
 		CB50DAD32AB4A73D007CFB3D /* MockURLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionProtocol.swift; sourceTree = "<group>"; };
 		CB50DAD62AB4A786007CFB3D /* StaticJSONMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticJSONMapper.swift; sourceTree = "<group>"; };
 		CB50DAD92AB4A7F6007CFB3D /* SingleTeamData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SingleTeamData.json; sourceTree = "<group>"; };
@@ -115,6 +114,11 @@
 		CB5416882AAB49E4004CAB22 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CB7703DD2AC4542700E0C419 /* GamesStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GamesStaticData.json; sourceTree = "<group>"; };
 		CB8ED5512A7D8CBB003B5AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CB9D29952AD7B5CE00B3C9F1 /* StatsStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StatsStaticData.json; sourceTree = "<group>"; };
+		CB9D29982AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsNetworkingEndpointTests.swift; sourceTree = "<group>"; };
+		CB9D299B2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsNetworkingManagerTests.swift; sourceTree = "<group>"; };
+		CB9D29A02AD7CB2700B3C9F1 /* TeamsScreenUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsScreenUITest.swift; sourceTree = "<group>"; };
+		CB9D29A32AD7D91600B3C9F1 /* UITestingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingHelper.swift; sourceTree = "<group>"; };
 		CBACB17D2AD69D960046EA8D /* PlayerDetailPersonalInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailPersonalInfoRow.swift; sourceTree = "<group>"; };
 		CBACB17F2AD69DDB0046EA8D /* PlayerDetailStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailStatsView.swift; sourceTree = "<group>"; };
 		CBACB3142A7FCF280044F570 /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
@@ -152,8 +156,6 @@
 		CBF91C492A7D532300F0AC33 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CBF91C4F2A7D532300F0AC33 /* MatchScoresTCATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchScoresTCATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF91C592A7D532300F0AC33 /* MatchScoresTCAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchScoresTCAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBF91C5D2A7D532300F0AC33 /* MatchScoresTCAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresTCAUITests.swift; sourceTree = "<group>"; };
-		CBF91C5F2A7D532300F0AC33 /* MatchScoresTCAUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresTCAUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		CBF91C702A7D53AE00F0AC33 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,7 +230,6 @@
 		CB50DAB82AB4A488007CFB3D /* NetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				CB50DABF2AB4A50C007CFB3D /* Mocks */,
 				CB50DABE2AB4A505007CFB3D /* Endpoints */,
 				CB50DABD2AB4A4F4007CFB3D /* NetworkingManagerTests */,
 			);
@@ -238,6 +239,7 @@
 		CB50DABD2AB4A4F4007CFB3D /* NetworkingManagerTests */ = {
 			isa = PBXGroup;
 			children = (
+				CB9D299A2AD7B6E100B3C9F1 /* StatsNetworkingManagerTests */,
 				CBF593CE2AC6A7F800AA8663 /* PlayersNetworkingManagerTests */,
 				CBF593CB2AC68E9B00AA8663 /* GamesNetworkingManagerTests */,
 				CBF593C82AC68DB500AA8663 /* TeamsNetworkingManagerTests */,
@@ -248,20 +250,12 @@
 		CB50DABE2AB4A505007CFB3D /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
+				CB9D29972AD7B5FB00B3C9F1 /* StatsNetworkingEndpointTests */,
 				CBF593D72AC6AA2900AA8663 /* PlayersNetworkingEndpointTests */,
 				CBF593D42AC6A9ED00AA8663 /* GamesNetworkingEndpointTests */,
 				CBF593D12AC6A9BA00AA8663 /* TeamsNetworkingEndpointTests */,
 			);
 			path = Endpoints;
-			sourceTree = "<group>";
-		};
-		CB50DABF2AB4A50C007CFB3D /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				CB50DAC22AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift */,
-				CB50DAC42AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		CB50DAC82AB4A654007CFB3D /* Mocks */ = {
@@ -287,8 +281,55 @@
 				CB50DADB2AB4AA1E007CFB3D /* PlayersStaticData.json */,
 				CB50DADD2AB4AA44007CFB3D /* TeamsStaticData.json */,
 				CB7703DD2AC4542700E0C419 /* GamesStaticData.json */,
+				CB9D29952AD7B5CE00B3C9F1 /* StatsStaticData.json */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		CB9D29972AD7B5FB00B3C9F1 /* StatsNetworkingEndpointTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB9D29982AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift */,
+			);
+			path = StatsNetworkingEndpointTests;
+			sourceTree = "<group>";
+		};
+		CB9D299A2AD7B6E100B3C9F1 /* StatsNetworkingManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB9D299B2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift */,
+			);
+			path = StatsNetworkingManagerTests;
+			sourceTree = "<group>";
+		};
+		CB9D299D2AD7CB0600B3C9F1 /* Teams */ = {
+			isa = PBXGroup;
+			children = (
+				CB9D29A02AD7CB2700B3C9F1 /* TeamsScreenUITest.swift */,
+			);
+			path = Teams;
+			sourceTree = "<group>";
+		};
+		CB9D299E2AD7CB0B00B3C9F1 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		CB9D299F2AD7CB1200B3C9F1 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		CB9D29A22AD7D90700B3C9F1 /* UITestingHelper */ = {
+			isa = PBXGroup;
+			children = (
+				CB9D29A32AD7D91600B3C9F1 /* UITestingHelper.swift */,
+			);
+			path = UITestingHelper;
 			sourceTree = "<group>";
 		};
 		CBACB3132A7FCF1C0044F570 /* Resources */ = {
@@ -471,6 +512,7 @@
 		CBF91C412A7D532200F0AC33 /* MatchScoresTCA */ = {
 			isa = PBXGroup;
 			children = (
+				CB9D29A22AD7D90700B3C9F1 /* UITestingHelper */,
 				CB4D0FF92ACEB37B00CAC6CD /* Stats */,
 				CBCDAF562AC80C6600D9CD84 /* Extensions */,
 				CB50DAC82AB4A654007CFB3D /* Mocks */,
@@ -508,8 +550,9 @@
 		CBF91C5C2A7D532300F0AC33 /* MatchScoresTCAUITests */ = {
 			isa = PBXGroup;
 			children = (
-				CBF91C5D2A7D532300F0AC33 /* MatchScoresTCAUITests.swift */,
-				CBF91C5F2A7D532300F0AC33 /* MatchScoresTCAUITestsLaunchTests.swift */,
+				CB9D299F2AD7CB1200B3C9F1 /* Players */,
+				CB9D299E2AD7CB0B00B3C9F1 /* Games */,
+				CB9D299D2AD7CB0600B3C9F1 /* Teams */,
 			);
 			path = MatchScoresTCAUITests;
 			sourceTree = "<group>";
@@ -613,6 +656,7 @@
 					};
 					CBF91C582A7D532300F0AC33 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1510;
 						TestTargetID = CBF91C3E2A7D532200F0AC33;
 					};
 				};
@@ -650,6 +694,7 @@
 				CBF91C472A7D532300F0AC33 /* Assets.xcassets in Resources */,
 				CB50DADA2AB4A7F6007CFB3D /* SingleTeamData.json in Resources */,
 				CB50DADC2AB4AA1E007CFB3D /* PlayersStaticData.json in Resources */,
+				CB9D29962AD7B5CE00B3C9F1 /* StatsStaticData.json in Resources */,
 				CB50DADE2AB4AA44007CFB3D /* TeamsStaticData.json in Resources */,
 				CBECBE4A2A815FB900AF97DF /* TCA-Diagram.png in Resources */,
 			);
@@ -689,6 +734,7 @@
 				C3955AC52AC9E73C00CECC6C /* TeamDetailConferenceRow.swift in Sources */,
 				CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */,
 				CBACB3302A8023290044F570 /* TeamView.swift in Sources */,
+				CB9D29A42AD7D91600B3C9F1 /* UITestingHelper.swift in Sources */,
 				CBECBE402A812A3E00AF97DF /* DataLoadingStatus.swift in Sources */,
 				CBACB3392A8026470044F570 /* TeamListFeature.swift in Sources */,
 				CB50DAD72AB4A786007CFB3D /* StaticJSONMapper.swift in Sources */,
@@ -731,8 +777,8 @@
 				CBF593D92AC6AA4400AA8663 /* PlayersNetworkingEndpointTests.swift in Sources */,
 				CB50DAC72AB4A601007CFB3D /* Endpoint.swift in Sources */,
 				CBF593D32AC6A9C500AA8663 /* TeamsNetworkingEndpointTests.swift in Sources */,
-				CB50DAC32AB4A540007CFB3D /* NetworkingManagerCreateFailureMock.swift in Sources */,
-				CB50DAC52AB4A54D007CFB3D /* NetworkingManagerCreateSuccessMock.swift in Sources */,
+				CB9D29992AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift in Sources */,
+				CB9D299C2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift in Sources */,
 				CBF593CD2AC68EAE00AA8663 /* GamesNetworkingManagerTests.swift in Sources */,
 				CBF593D02AC6A80D00AA8663 /* PlayersNetworkingManagerTests.swift in Sources */,
 				CBF593CA2AC68DD900AA8663 /* TeamsNetworkingManagerTests.swift in Sources */,
@@ -744,8 +790,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBF91C602A7D532300F0AC33 /* MatchScoresTCAUITestsLaunchTests.swift in Sources */,
-				CBF91C5E2A7D532300F0AC33 /* MatchScoresTCAUITests.swift in Sources */,
+				CB9D29A12AD7CB2700B3C9F1 /* TeamsScreenUITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,7 +931,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MatchScoresTCA/Preview Content\"";
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
 				ENABLE_PREVIEWS = YES;
@@ -903,13 +948,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -924,7 +970,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MatchScoresTCA/Preview Content\"";
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
 				ENABLE_PREVIEWS = YES;
@@ -941,13 +987,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -964,7 +1011,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -987,7 +1034,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1005,6 +1052,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
@@ -1013,6 +1061,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCAUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MatchScoresTCA;
@@ -1023,6 +1072,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
