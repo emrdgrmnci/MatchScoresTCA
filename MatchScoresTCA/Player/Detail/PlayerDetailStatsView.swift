@@ -13,15 +13,18 @@ struct PlayerDetailStatsView: View {
     var player: PlayerData
 
     let columns = ["BY YEAR", "TEAM", "MIN", "PTS", "FGM", "FGA", "FG%", "3PM", "3PA", "3P%", "FTM", "FTA", "FT%", "OREB", "DREB", "REB", "AST", "STL", "BLK", "PF"]
-
+    let byYearKeyPath = \StatsData.game?.season
+    
     @State private var columnWidths: [CGFloat] = Array(repeating: 60, count: 20)
-
+    @State private var offset = CGPoint.zero
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.blue._50
                     .edgesIgnoringSafeArea(.all)
                 ScrollView([.horizontal, .vertical], showsIndicators: false) {
+                    if !statsData.isEmpty {
                     VStack(alignment: .leading, spacing: 20) {
                         // Header Row
                         Text("Player Stats")
@@ -29,9 +32,8 @@ struct PlayerDetailStatsView: View {
                             .background(Color.blue)
                             .foregroundColor(.white)
                             .fixedSize(horizontal: false, vertical: true)
-
-                        // Data Rows
-                        if !statsData.isEmpty {
+                            .padding(.bottom, 18.0)
+                        Divider()
                             LazyVStack(alignment: .leading, spacing: 50) {
                                 ForEach(statsData, id: \.id) { data in
                                     HStack {
@@ -42,9 +44,16 @@ struct PlayerDetailStatsView: View {
                                     }
                                 }
                             }
+                        Divider()
                         }
-                    }
                     .padding(EdgeInsets(top: 20, leading: 10, bottom: 10, trailing: 10))
+                    } else {
+                        ContentUnavailableView(
+                            "No stats available for this player",
+                            systemImage: "person.fill",
+                            description: Text("Try another player")
+                        )
+                    }
                 }
                 .scrollContentBackground(.hidden)
                 .toolbarBackground(Color.blue._50, for: .navigationBar)
@@ -54,7 +63,7 @@ struct PlayerDetailStatsView: View {
                         do {
                             statsModel = try await MatchScoresClient.liveValue.fetchStats(String(player.id))
                             if let data = statsModel?.data {
-                                statsData = data
+                                statsData = data.sorted { $0[keyPath: byYearKeyPath] ?? 0 > $1[keyPath: byYearKeyPath] ?? 0 }
                             }
                         } catch(let error) {
                             print(error)
