@@ -33,7 +33,6 @@
 		CB9D29962AD7B5CE00B3C9F1 /* StatsStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB9D29952AD7B5CE00B3C9F1 /* StatsStaticData.json */; };
 		CB9D29992AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D29982AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift */; };
 		CB9D299C2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D299B2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift */; };
-		CB9D29A12AD7CB2700B3C9F1 /* TeamsScreenUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D29A02AD7CB2700B3C9F1 /* TeamsScreenUITest.swift */; };
 		CB9D29A42AD7D91600B3C9F1 /* UITestingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D29A32AD7D91600B3C9F1 /* UITestingHelper.swift */; };
 		CBACB17E2AD69D960046EA8D /* PlayerDetailPersonalInfoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB17D2AD69D960046EA8D /* PlayerDetailPersonalInfoRow.swift */; };
 		CBACB1802AD69DDB0046EA8D /* PlayerDetailStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBACB17F2AD69DDB0046EA8D /* PlayerDetailStatsView.swift */; };
@@ -82,13 +81,6 @@
 			remoteGlobalIDString = CBF91C3E2A7D532200F0AC33;
 			remoteInfo = MatchScoresTCA;
 		};
-		CBF91C5A2A7D532300F0AC33 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CBF91C372A7D532200F0AC33 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CBF91C3E2A7D532200F0AC33;
-			remoteInfo = MatchScoresTCA;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -117,7 +109,6 @@
 		CB9D29952AD7B5CE00B3C9F1 /* StatsStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StatsStaticData.json; sourceTree = "<group>"; };
 		CB9D29982AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsNetworkingEndpointTests.swift; sourceTree = "<group>"; };
 		CB9D299B2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsNetworkingManagerTests.swift; sourceTree = "<group>"; };
-		CB9D29A02AD7CB2700B3C9F1 /* TeamsScreenUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsScreenUITest.swift; sourceTree = "<group>"; };
 		CB9D29A32AD7D91600B3C9F1 /* UITestingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITestingHelper.swift; sourceTree = "<group>"; };
 		CBACB17D2AD69D960046EA8D /* PlayerDetailPersonalInfoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailPersonalInfoRow.swift; sourceTree = "<group>"; };
 		CBACB17F2AD69DDB0046EA8D /* PlayerDetailStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailStatsView.swift; sourceTree = "<group>"; };
@@ -155,7 +146,6 @@
 		CBF91C462A7D532300F0AC33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CBF91C492A7D532300F0AC33 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CBF91C4F2A7D532300F0AC33 /* MatchScoresTCATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchScoresTCATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBF91C592A7D532300F0AC33 /* MatchScoresTCAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchScoresTCAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF91C6E2A7D539A00F0AC33 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		CBF91C702A7D53AE00F0AC33 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,13 +160,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CBF91C4C2A7D532300F0AC33 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CBF91C562A7D532300F0AC33 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -300,28 +283,6 @@
 				CB9D299B2AD7B6EF00B3C9F1 /* StatsNetworkingManagerTests.swift */,
 			);
 			path = StatsNetworkingManagerTests;
-			sourceTree = "<group>";
-		};
-		CB9D299D2AD7CB0600B3C9F1 /* Teams */ = {
-			isa = PBXGroup;
-			children = (
-				CB9D29A02AD7CB2700B3C9F1 /* TeamsScreenUITest.swift */,
-			);
-			path = Teams;
-			sourceTree = "<group>";
-		};
-		CB9D299E2AD7CB0B00B3C9F1 /* Games */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Games;
-			sourceTree = "<group>";
-		};
-		CB9D299F2AD7CB1200B3C9F1 /* Players */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Players;
 			sourceTree = "<group>";
 		};
 		CB9D29A22AD7D90700B3C9F1 /* UITestingHelper */ = {
@@ -494,7 +455,6 @@
 			children = (
 				CBF91C412A7D532200F0AC33 /* MatchScoresTCA */,
 				CBF91C522A7D532300F0AC33 /* MatchScoresTCATests */,
-				CBF91C5C2A7D532300F0AC33 /* MatchScoresTCAUITests */,
 				CBF91C402A7D532200F0AC33 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -504,7 +464,6 @@
 			children = (
 				CBF91C3F2A7D532200F0AC33 /* MatchScoresTCA.app */,
 				CBF91C4F2A7D532300F0AC33 /* MatchScoresTCATests.xctest */,
-				CBF91C592A7D532300F0AC33 /* MatchScoresTCAUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -545,16 +504,6 @@
 				CB50DAB82AB4A488007CFB3D /* NetworkingTests */,
 			);
 			path = MatchScoresTCATests;
-			sourceTree = "<group>";
-		};
-		CBF91C5C2A7D532300F0AC33 /* MatchScoresTCAUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CB9D299F2AD7CB1200B3C9F1 /* Players */,
-				CB9D299E2AD7CB0B00B3C9F1 /* Games */,
-				CB9D299D2AD7CB0600B3C9F1 /* Teams */,
-			);
-			path = MatchScoresTCAUITests;
 			sourceTree = "<group>";
 		};
 		CBF91C6C2A7D538400F0AC33 /* Base */ = {
@@ -619,24 +568,6 @@
 			productReference = CBF91C4F2A7D532300F0AC33 /* MatchScoresTCATests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CBF91C582A7D532300F0AC33 /* MatchScoresTCAUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CBF91C692A7D532300F0AC33 /* Build configuration list for PBXNativeTarget "MatchScoresTCAUITests" */;
-			buildPhases = (
-				CBF91C552A7D532300F0AC33 /* Sources */,
-				CBF91C562A7D532300F0AC33 /* Frameworks */,
-				CBF91C572A7D532300F0AC33 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CBF91C5B2A7D532300F0AC33 /* PBXTargetDependency */,
-			);
-			name = MatchScoresTCAUITests;
-			productName = MatchScoresTCAUITests;
-			productReference = CBF91C592A7D532300F0AC33 /* MatchScoresTCAUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -645,18 +576,13 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					CBF91C3E2A7D532200F0AC33 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 					CBF91C4E2A7D532300F0AC33 = {
 						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = CBF91C3E2A7D532200F0AC33;
-					};
-					CBF91C582A7D532300F0AC33 = {
-						CreatedOnToolsVersion = 14.3.1;
-						LastSwiftMigration = 1510;
 						TestTargetID = CBF91C3E2A7D532200F0AC33;
 					};
 				};
@@ -679,7 +605,6 @@
 			targets = (
 				CBF91C3E2A7D532200F0AC33 /* MatchScoresTCA */,
 				CBF91C4E2A7D532300F0AC33 /* MatchScoresTCATests */,
-				CBF91C582A7D532300F0AC33 /* MatchScoresTCAUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -701,13 +626,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CBF91C4D2A7D532300F0AC33 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CBF91C572A7D532300F0AC33 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -786,14 +704,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CBF91C552A7D532300F0AC33 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CB9D29A12AD7CB2700B3C9F1 /* TeamsScreenUITest.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -801,11 +711,6 @@
 			isa = PBXTargetDependency;
 			target = CBF91C3E2A7D532200F0AC33 /* MatchScoresTCA */;
 			targetProxy = CBF91C502A7D532300F0AC33 /* PBXContainerItemProxy */;
-		};
-		CBF91C5B2A7D532300F0AC33 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CBF91C3E2A7D532200F0AC33 /* MatchScoresTCA */;
-			targetProxy = CBF91C5A2A7D532300F0AC33 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -846,6 +751,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -906,6 +812,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1013,7 +920,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1036,7 +943,7 @@
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = NMCVZ8F7S5;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCATests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1047,45 +954,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MatchScoresTCA.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MatchScoresTCA";
-			};
-			name = Release;
-		};
-		CBF91C6A2A7D532300F0AC33 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = NMCVZ8F7S5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCAUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MatchScoresTCA;
-			};
-			name = Debug;
-		};
-		CBF91C6B2A7D532300F0AC33 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = NMCVZ8F7S5;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.emre.MatchScoresTCAUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MatchScoresTCA;
 			};
 			name = Release;
 		};
@@ -1115,15 +983,6 @@
 			buildConfigurations = (
 				CBF91C672A7D532300F0AC33 /* Debug */,
 				CBF91C682A7D532300F0AC33 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CBF91C692A7D532300F0AC33 /* Build configuration list for PBXNativeTarget "MatchScoresTCAUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CBF91C6A2A7D532300F0AC33 /* Debug */,
-				CBF91C6B2A7D532300F0AC33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -10,6 +10,7 @@ import SwiftUI
 struct PlayerDetailStatsView: View {
     @State private var statsModel: StatsModel?
     @State private var statsData: [StatsData] = []
+    @State private var frames: [CGRect] = []
     var player: PlayerData
 
     let columns = ["BY YEAR", "TEAM", "MIN", "PTS", "FGM", "FGA", "FG%", "3PM", "3PA", "3P%", "FTM", "FTA", "FT%", "OREB", "DREB", "REB", "AST", "STL", "BLK", "PF"]
@@ -33,6 +34,7 @@ struct PlayerDetailStatsView: View {
                             .foregroundColor(.white)
                             .fixedSize(horizontal: false, vertical: true)
                             .padding(.bottom, 18.0)
+                            .sticky(frames)
                         Divider()
                             LazyVStack(alignment: .leading, spacing: 50) {
                                 ForEach(statsData, id: \.id) { data in
@@ -55,6 +57,12 @@ struct PlayerDetailStatsView: View {
                         )
                     }
                 }
+                .coordinateSpace(name: "container")
+                .onPreferenceChange(FramePreference.self, perform: {
+                    frames = $0.sorted(by: {
+                        $0.minY < $1.minY
+                    })
+                })
                 .scrollContentBackground(.hidden)
                 .toolbarBackground(Color.blue._50, for: .navigationBar)
                 .toolbarBackground(Color.blue._50, for: .tabBar)
@@ -71,9 +79,9 @@ struct PlayerDetailStatsView: View {
                     }
                 }
             }
+            .background(Color.blue._50)
+            .embedInNavigation()
         }
-        .background(Color.blue._50)
-        .embedInNavigation()
     }
 
     private var headerRow: some View {
@@ -88,8 +96,8 @@ struct PlayerDetailStatsView: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
-                .onChange(of: geometry.size) { newSize in
-                    updateColumnWidths(geometry: newSize)
+                .onChange(of: geometry.size) {
+                    updateColumnWidths(geometry: geometry.size)
                 }
             }
         }
@@ -151,6 +159,45 @@ struct PlayerDetailStatsView: View {
         let availableWidth = geometry.width
         let equalWidth = availableWidth / CGFloat(columns.count)
         columnWidths = Array(repeating: equalWidth, count: columns.count)
+    }
+}
+
+struct FramePreference: PreferenceKey {
+    static var defaultValue: [CGRect] = []
+    
+    static func reduce(value: inout [CGRect], nextValue: () -> [CGRect]) {
+        value.append(contentsOf: nextValue())
+    }
+}
+
+struct Sticky: ViewModifier {
+    var stickyRect: [CGRect] = []
+    @State var frame: CGRect = .zero
+    
+    var isSticking: Bool {
+        frame.minY < 0
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .offset(y: isSticking ? frame.minY : 0)
+            .zIndex(isSticking ? .infinity : 0)
+            .overlay(GeometryReader {
+                proxy in
+                let frm = proxy.frame(in: .named( "container"))
+                Color.clear
+                    .onAppear { frame = frm}
+                    .onChange(of: frm) {
+                            frame = frm
+                        }
+                    .preference(key: FramePreference.self, value: [frame])
+            })
+    }
+}
+
+extension View {
+    func sticky(_ stickyRects: [CGRect]) -> some View {
+        modifier(Sticky(stickyRect: stickyRects))
     }
 }
 

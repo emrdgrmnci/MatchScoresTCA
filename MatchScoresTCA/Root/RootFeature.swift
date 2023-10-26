@@ -33,7 +33,7 @@ struct RootFeature: Reducer {
     
     var fetchTeams: () async throws -> TeamsModel
     var fetchGames: () async throws -> GamesModel
-    var fetchPlayers:  @Sendable () async throws -> PlayersModel
+    var fetchPlayers: () async throws -> PlayersModel
     var uuid: @Sendable () -> UUID
     
     static let live = Self(
