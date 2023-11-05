@@ -14,6 +14,9 @@ struct PlayerListFeature: Reducer {
         var playerList: IdentifiedArrayOf<PlayerData> = []
         var statsList: IdentifiedArrayOf<StatsData> = []
         var searchQuery = ""
+        var page = 1
+        var totalPages: Int?
+        var playersData: [PlayerData] = []
         
         var shouldShowError: Bool {
             dataLoadingStatus == .error
@@ -37,13 +40,21 @@ struct PlayerListFeature: Reducer {
                 }
             return .init(uniqueElements: filteredAndSortedArray)
         }
+        
+        var hasReachedEnd: Bool {
+            return playersData.contains { playerData in
+                playerData.id == playerList.last?.id
+            }
+        }
     }
     
     enum Action: Equatable {
         case fetchPlayerResponse(TaskResult<PlayersModel>)
+        case fetchPlayerNextResponse(TaskResult<PlayersModel>)
         case fetchStatsResponse(TaskResult<StatsModel>)
         case searchQueryChanged(String)
         case onAppearPlayer
+        case onAppearPlayerForNextPage
     }
     
     var uuid: @Sendable () -> UUID
@@ -52,49 +63,75 @@ struct PlayerListFeature: Reducer {
     
     func reduce(into state: inout State, action: Action) -> Effect<Action> {
         switch action {
-            
-        case .fetchPlayerResponse(.failure(let error)):
-            state.dataLoadingStatus = .error
-            print(error)
-            print("DEBUG: getting players, try again later.")
-            return .none
-            
-        case let .fetchPlayerResponse(.success(playerData)):
-            state.playerList = IdentifiedArrayOf(
-                uniqueElements: playerData.data.sorted(by: >)
-            )
-            state.dataLoadingStatus = .loading
-            return .none
-            
-        case .onAppearPlayer:
-            return .run { send in
-                await send (
-                    .fetchPlayerResponse(
-                        TaskResult { try await MatchScoresClient.liveValue.fetchPlayers() }
-                    )
+            case .fetchPlayerResponse(.failure(let error)):
+                state.dataLoadingStatus = .error
+                print(error)
+                print("DEBUG: getting players, try again later.")
+                return .none
+                
+            case let .fetchPlayerResponse(.success(playerData)):
+                state.totalPages = playerData.meta.totalCount
+                state.playersData = playerData.data
+                state.playerList = IdentifiedArrayOf(
+                    uniqueElements: playerData.data.sorted(by: >)
                 )
-            }
-            
-        case let .searchQueryChanged(query):
-            state.searchQuery = query
-            guard !query.isEmpty else {
-                return .cancel(id: CancelID.player)
-            }
-            return .none
-            
-        case .fetchStatsResponse(.failure(let error)):
-            state.dataLoadingStatus = .error
-            print(error)
-            print("DEBUG: getting stats, try again later.")
-            return .none
-            
-        case let .fetchStatsResponse(.success(statsData)):
-            state.statsList = IdentifiedArrayOf(
-                uniqueElements: statsData.data
-            )
-            state.dataLoadingStatus = .loading
-            return .none
-            
+                state.dataLoadingStatus = .loading
+                return .none
+                
+            case let .fetchPlayerNextResponse(.failure(error)):
+                state.dataLoadingStatus = .error
+                print(error)
+                print("DEBUG: getting players, try again later.")
+                return .none
+                
+            case let .fetchPlayerNextResponse(.success(playerData)):
+                state.totalPages = playerData.meta.totalCount
+                state.playerList += IdentifiedArrayOf(
+                    uniqueElements: playerData.data.sorted(by: >)
+                )
+                state.dataLoadingStatus = .loading
+                return .none
+                
+            case .onAppearPlayer:
+                return .run { [page = state.page] send in
+                    await send (
+                        .fetchPlayerResponse(
+                            TaskResult { try await MatchScoresClient.liveValue.fetchPlayers(page) }
+                        )
+                    )
+                }
+                
+            case let .searchQueryChanged(query):
+                state.searchQuery = query
+                guard !query.isEmpty else {
+                    return .cancel(id: CancelID.player)
+                }
+                return .none
+                
+            case .fetchStatsResponse(.failure(let error)):
+                state.dataLoadingStatus = .error
+                print(error)
+                print("DEBUG: getting stats, try again later.")
+                return .none
+                
+            case let .fetchStatsResponse(.success(statsData)):
+                state.statsList = IdentifiedArrayOf(
+                    uniqueElements: statsData.data
+                )
+                state.dataLoadingStatus = .loading
+                return .none
+                
+            case .onAppearPlayerForNextPage:
+                guard state.page != state.totalPages else { return .none }
+                state.page += 1
+                
+                return .run { [page = state.page] send in
+                    await send (
+                        .fetchPlayerNextResponse(
+                            TaskResult { try await MatchScoresClient.liveValue.fetchPlayers(page) }
+                        )
+                    )
+                }
         }
     }
 }

@@ -36,6 +36,11 @@ struct GameListContentView: View {
                 }
                 .scrollContentBackground(.hidden)
             }
+            .overlay {
+                if viewStore.searchResults.isEmpty {
+                    ContentUnavailableView.search
+                }
+            }
             .searchable(
                 text: viewStore.binding(
                     get: \.searchQuery, send: GameListFeature.Action.searchQueryChanged

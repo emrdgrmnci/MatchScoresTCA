@@ -8,9 +8,9 @@
 import Foundation
 
 enum Endpoint {
-    case teams
+    case teams(page: Int)
     case games
-    case players
+    case players(page: Int)
     case stats(String)
 }
 
@@ -27,40 +27,46 @@ extension Endpoint {
     
     var path: String {
         switch self {
-        case .teams:
-            return "/api/v1/teams"
-        case .games:
-            return "/api/v1/games"
-        case .players:
-            return "/api/v1/players"
-        case .stats:
-            return "/api/v1/stats"
+            case .teams:
+                return "/api/v1/teams"
+            case .games:
+                return "/api/v1/games"
+            case .players:
+                return "/api/v1/players"
+            case .stats:
+                return "/api/v1/stats"
         }
     }
     
     var methodType: MethodType {
         switch self {
-        case .teams:
-            return .GET
-        case .games:
-            return .GET
-        case .players:
-            return .GET
-        case .stats:
-            return .GET
+            case .teams:
+                return .GET
+            case .games:
+                return .GET
+            case .players:
+                return .GET
+            case .stats:
+                return .GET
         }
     }
     
     var queryItems: [String: String]? {
         switch self {
-        case .teams:
-            return nil
-        case let .stats(playerID):
-            return [
-                "player_ids[]": playerID
-            ]
-        default:
-            return nil
+            case let .teams(page):
+                return [
+                    "page": "\(page)"
+                ]
+            case let .players(page):
+                return [
+                    "page": "\(page)"
+                ]
+            case let .stats(playerID):
+                return [
+                    "player_ids[]": playerID
+                ]
+            default:
+                return nil
         }
     }
 }
@@ -79,9 +85,9 @@ extension Endpoint {
             requestQueryItems.append(URLQueryItem(name: item.key, value: item.value))
         }
         
-//#if DEBUG
-//        requestQueryItems.append(URLQueryItem(name: "delay", value: "2"))
-//#endif
+        //#if DEBUG
+        //        requestQueryItems.append(URLQueryItem(name: "delay", value: "2"))
+        //#endif
         
         urlComponents.queryItems = requestQueryItems
         

@@ -12,7 +12,7 @@ final class TeamsNetworkingEndpointTests: XCTestCase {
     
     func test_with_teams_endpoint_request_is_valid() {
         
-        let endpoint = Endpoint.teams
+        let endpoint = Endpoint.teams(page: 1)
         
         XCTAssertEqual(endpoint.host, "www.balldontlie.io", "The host should be balldontlie.io")
         XCTAssertEqual(endpoint.path, "/api/v1/teams", "The path should be /api/v1/teams")

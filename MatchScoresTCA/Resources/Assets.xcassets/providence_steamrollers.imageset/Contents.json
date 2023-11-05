@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "providence_steamrollers.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

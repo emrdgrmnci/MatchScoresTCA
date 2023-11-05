@@ -12,7 +12,7 @@ final class PlayersNetworkingEndpointTests: XCTestCase {
     
     func test_with_players_endpoint_request_is_valid() {
         
-        let endpoint = Endpoint.players
+        let endpoint = Endpoint.players(page: 1)
         
         XCTAssertEqual(endpoint.host, "www.balldontlie.io", "The host should be balldontlie.io")
         XCTAssertEqual(endpoint.path, "/api/v1/players", "The path should be /api/v1/players")

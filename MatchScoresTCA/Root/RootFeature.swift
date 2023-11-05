@@ -10,7 +10,7 @@ import Foundation
 
 struct RootFeature: Reducer {
     struct State: Equatable {
-        var selectedTab = Tab.players
+        var selectedTab = Tab.teams
         var teamListState = TeamListFeature.State()
         var gameListState = GameListFeature.State()
         var playerListState = PlayerListFeature.State()
@@ -31,9 +31,9 @@ struct RootFeature: Reducer {
         case playerList(PlayerListFeature.Action)
     }
     
-    var fetchTeams: () async throws -> TeamsModel
+    var fetchTeams: (Int) async throws -> TeamsModel
     var fetchGames: () async throws -> GamesModel
-    var fetchPlayers: () async throws -> PlayersModel
+    var fetchPlayers: (Int) async throws -> PlayersModel
     var uuid: @Sendable () -> UUID
     
     static let live = Self(
@@ -63,7 +63,7 @@ struct RootFeature: Reducer {
         Scope(state: \.gameListState, action: /RootFeature.Action.gameList) {
             GameListFeature(uuid: uuid)
         }
-        Scope(state:  \.playerListState, action: /RootFeature.Action.playerList) {
+        Scope(state: \.playerListState, action: /RootFeature.Action.playerList) {
             PlayerListFeature(uuid: uuid)
         }
     }

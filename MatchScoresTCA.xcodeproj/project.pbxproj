@@ -28,7 +28,6 @@
 		CB50DADA2AB4A7F6007CFB3D /* SingleTeamData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB50DAD92AB4A7F6007CFB3D /* SingleTeamData.json */; };
 		CB50DADC2AB4AA1E007CFB3D /* PlayersStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB50DADB2AB4AA1E007CFB3D /* PlayersStaticData.json */; };
 		CB50DADE2AB4AA44007CFB3D /* TeamsStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB50DADD2AB4AA44007CFB3D /* TeamsStaticData.json */; };
-		CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5416882AAB49E4004CAB22 /* GameView.swift */; };
 		CB7703DE2AC4542700E0C419 /* GamesStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB7703DD2AC4542700E0C419 /* GamesStaticData.json */; };
 		CB9D29962AD7B5CE00B3C9F1 /* StatsStaticData.json in Resources */ = {isa = PBXBuildFile; fileRef = CB9D29952AD7B5CE00B3C9F1 /* StatsStaticData.json */; };
 		CB9D29992AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9D29982AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift */; };
@@ -65,6 +64,7 @@
 		CBF593D32AC6A9C500AA8663 /* TeamsNetworkingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF593D22AC6A9C500AA8663 /* TeamsNetworkingEndpointTests.swift */; };
 		CBF593D62AC6A9FD00AA8663 /* GamesNetworkingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF593D52AC6A9FD00AA8663 /* GamesNetworkingEndpointTests.swift */; };
 		CBF593D92AC6AA4400AA8663 /* PlayersNetworkingEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF593D82AC6AA4400AA8663 /* PlayersNetworkingEndpointTests.swift */; };
+		CBF616642AF1265B00A02844 /* DateFormatter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF616632AF1265B00A02844 /* DateFormatter+Extension.swift */; };
 		CBF91C432A7D532200F0AC33 /* MatchScoresTCAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBF91C422A7D532200F0AC33 /* MatchScoresTCAApp.swift */; };
 		CBF91C472A7D532300F0AC33 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF91C462A7D532300F0AC33 /* Assets.xcassets */; };
 		CBF91C4A2A7D532300F0AC33 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CBF91C492A7D532300F0AC33 /* Preview Assets.xcassets */; };
@@ -103,7 +103,6 @@
 		CB50DAD92AB4A7F6007CFB3D /* SingleTeamData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SingleTeamData.json; sourceTree = "<group>"; };
 		CB50DADB2AB4AA1E007CFB3D /* PlayersStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = PlayersStaticData.json; sourceTree = "<group>"; };
 		CB50DADD2AB4AA44007CFB3D /* TeamsStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TeamsStaticData.json; sourceTree = "<group>"; };
-		CB5416882AAB49E4004CAB22 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		CB7703DD2AC4542700E0C419 /* GamesStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GamesStaticData.json; sourceTree = "<group>"; };
 		CB8ED5512A7D8CBB003B5AD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CB9D29952AD7B5CE00B3C9F1 /* StatsStaticData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = StatsStaticData.json; sourceTree = "<group>"; };
@@ -141,6 +140,7 @@
 		CBF593D22AC6A9C500AA8663 /* TeamsNetworkingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsNetworkingEndpointTests.swift; sourceTree = "<group>"; };
 		CBF593D52AC6A9FD00AA8663 /* GamesNetworkingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesNetworkingEndpointTests.swift; sourceTree = "<group>"; };
 		CBF593D82AC6AA4400AA8663 /* PlayersNetworkingEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersNetworkingEndpointTests.swift; sourceTree = "<group>"; };
+		CBF616632AF1265B00A02844 /* DateFormatter+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extension.swift"; sourceTree = "<group>"; };
 		CBF91C3F2A7D532200F0AC33 /* MatchScoresTCA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchScoresTCA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBF91C422A7D532200F0AC33 /* MatchScoresTCAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresTCAApp.swift; sourceTree = "<group>"; };
 		CBF91C462A7D532300F0AC33 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -197,7 +197,6 @@
 				C3955AB72AC9E70400CECC6C /* GameListView.swift */,
 				CB13BD192A87D43F001188AE /* GamesModel.swift */,
 				C3955AB92AC9E71900CECC6C /* GameListFeature.swift */,
-				CB5416882AAB49E4004CAB22 /* GameView.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -367,6 +366,7 @@
 			children = (
 				CBCDAF572AC80C7800D9CD84 /* Color+Extension.swift */,
 				C3B045522AD3215D0020CF22 /* String+Extension.swift */,
+				CBF616632AF1265B00A02844 /* DateFormatter+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -645,12 +645,12 @@
 				CBF91C6F2A7D539B00F0AC33 /* NetworkingManager.swift in Sources */,
 				C3955AC72AC9E73C00CECC6C /* TeamDetailNameRow.swift in Sources */,
 				CBACB3342A80233E0044F570 /* PlayerListView.swift in Sources */,
+				CBF616642AF1265B00A02844 /* DateFormatter+Extension.swift in Sources */,
 				CBCDAF612AC8C18300D9CD84 /* PlayersListRow.swift in Sources */,
 				CBCDAF5B2AC8C06100D9CD84 /* PlayerDetailProfileView.swift in Sources */,
 				CB13BD152A87D190001188AE /* PlayerDetailView.swift in Sources */,
 				C3955AC92AC9E77500CECC6C /* PlayerView.swift in Sources */,
 				C3955AC52AC9E73C00CECC6C /* TeamDetailConferenceRow.swift in Sources */,
-				CB5416892AAB49E4004CAB22 /* GameView.swift in Sources */,
 				CBACB3302A8023290044F570 /* TeamView.swift in Sources */,
 				CB9D29A42AD7D91600B3C9F1 /* UITestingHelper.swift in Sources */,
 				CBECBE402A812A3E00AF97DF /* DataLoadingStatus.swift in Sources */,

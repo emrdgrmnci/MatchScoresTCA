@@ -19,8 +19,7 @@ struct GameDetailView: View {
     
     var body: some View {
         if let selectedGame = games?.filter ({
-            $0.homeTeam.id == homeTeamID ||
-            $0.visitorTeam.id == visitorTeamID
+            $0.homeTeam.id == homeTeamID
         }) {
             NavigationStack {
                 ZStack {
@@ -67,32 +66,30 @@ struct GameDetailView: View {
                                     }
                                     .frame(width: 65)
                                 }
-                                .padding()
                             }
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .strokeBorder(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [.blue, .green, .red]),
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        ),
+                                        lineWidth: 1
+                                    )
+                            )
                             .listRowBackground(Color.blue._50)
                         }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical)
                     }
                     .scrollContentBackground(.hidden)
                 }
                 .toolbarBackground(Color.blue._50, for: .navigationBar)
                 .toolbarBackground(Color.blue._50, for: .tabBar)
                 .navigationTitle(selectedGame[0].homeTeam.abbreviation)
-//                .toolbar {
-//                    ToolbarItem(placement: .navigationBarTrailing) {
-//                        Menu {
-//                            ForEach([selectedGame[0].homeTeam.fullName], id: \.self) { team in
-//                                Button {
-//                                    selectedFilter = team
-//                                } label: {
-//                                    Text(team)
-//                                }
-//                            }
-//                        }
-//                    label: {
-//                        Label("Add", systemImage: "line.3.horizontal.decrease.circle.fill")
-//                    }
-//                }
-//            }
         }
     }
 }

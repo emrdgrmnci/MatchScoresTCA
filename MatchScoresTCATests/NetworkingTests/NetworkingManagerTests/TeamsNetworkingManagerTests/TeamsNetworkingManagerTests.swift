@@ -55,7 +55,7 @@ final class TeamsNetworkingManagerTests: XCTestCase {
                                            headerFields: nil)
             return (response!, nil)
         }
-        _ = try await NetworkingManager.shared.request(session: session, .teams)
+        _ = try await NetworkingManager.shared.request(session: session, .teams(page: 1))
     }
     
     func test_with_teams_unsuccessful_response_code_in_invalid_range_is_invalid() async {
@@ -72,7 +72,7 @@ final class TeamsNetworkingManagerTests: XCTestCase {
         
         do {
             _ = try await NetworkingManager.shared.request(session: session,
-                                                           .teams,
+                                                           .teams(page: 1),
                                                            type: TeamsModel.self)
         } catch {
             
@@ -102,7 +102,7 @@ final class TeamsNetworkingManagerTests: XCTestCase {
         
         do {
             _ = try await NetworkingManager.shared.request(session: session,
-                                                           .teams)
+                                                           .teams(page: 1))
         } catch {
             
             guard let networkingError = error as? NetworkingManager.NetworkingError else {

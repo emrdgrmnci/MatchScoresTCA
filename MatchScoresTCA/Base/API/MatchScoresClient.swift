@@ -9,8 +9,8 @@ import Foundation
 import ComposableArchitecture
 
 struct MatchScoresClient {
-    var fetchTeams: () async throws -> TeamsModel
-    var fetchPlayers: () async throws -> PlayersModel
+    var fetchTeams: @Sendable (Int) async throws -> TeamsModel
+    var fetchPlayers: @Sendable (Int) async throws -> PlayersModel
     var fetchGames: () async throws -> GamesModel
     var fetchStats: (String) async throws -> StatsModel
     var error: NetworkingManager.NetworkingError?
@@ -18,12 +18,12 @@ struct MatchScoresClient {
 
 extension MatchScoresClient: DependencyKey {
     static let liveValue = Self(
-        fetchTeams: {
-            let response = try await NetworkingManager.shared.request(session: .shared, .teams, type: TeamsModel.self)
+        fetchTeams: { page in
+            let response = try await NetworkingManager.shared.request(session: .shared, .teams(page: page), type: TeamsModel.self)
             return response
         },
-        fetchPlayers: {
-            let response = try await NetworkingManager.shared.request(session: .shared, .players, type: PlayersModel.self)
+        fetchPlayers: { page in 
+            let response = try await NetworkingManager.shared.request(session: .shared, .players(page: page), type: PlayersModel.self)
             return response
         },
         fetchGames: {

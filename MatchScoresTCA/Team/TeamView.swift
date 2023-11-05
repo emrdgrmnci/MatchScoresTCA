@@ -8,9 +8,35 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct TeamView: View {
+public extension View {
+    func onFirstAppear(_ action: @escaping () -> ()) -> some View {
+        modifier(FirstAppear(action: action))
+    }
+}
+
+private struct FirstAppear: ViewModifier {
+    let action: () -> ()
     
+    // Use this to only fire your block one time
+    @State private var hasAppeared = false
+    
+    func body(content: Content) -> some View {
+        // And then, track it here
+        content.onAppear {
+            guard !hasAppeared else { return }
+            hasAppeared = true
+            action()
+        }
+    }
+}
+
+struct TeamView: View {
+        
     let team: TeamData
+    
+    init(team: TeamData) {
+        self.team = team
+    }
     
     var body: some View {
         VStack(spacing: .zero) {
@@ -22,7 +48,7 @@ struct TeamView: View {
                 
                 Text(team.name)
                     .font(
-                        .system(.largeTitle, design: .rounded)
+                        .system(.title, design: .rounded)
                     )
             }
             .frame(maxWidth: .infinity, alignment: .leading)

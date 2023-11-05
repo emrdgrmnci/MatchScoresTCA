@@ -24,11 +24,21 @@ struct PlayerListView: View {
                             } label: {
                                 PlayersListRow(player: player)
                                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50)
+                                    .onFirstAppear {
+                                        if viewStore.hasReachedEnd {
+                                            viewStore.send(.onAppearPlayerForNextPage)
+                                        }
+                                    }
                             }
                         }
                     }
                               .padding()
                               .accessibilityIdentifier("peopleGrid")
+                }
+                .overlay {
+                    if viewStore.searchResults.isEmpty {
+                        ContentUnavailableView.search
+                    }
                 }
                 .refreshable {
                     viewStore.send(.onAppearPlayer)
@@ -40,7 +50,7 @@ struct PlayerListView: View {
             .navigationTitle("Players")
             .toolbarBackground(Color.blue._50, for: .navigationBar)
             .toolbarBackground(Color.blue._50, for: .tabBar)
-            .onAppear {
+            .onFirstAppear {
                 viewStore.send(.onAppearPlayer)
             }
         }

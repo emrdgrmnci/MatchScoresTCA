@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "toronto_huskies.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -24,12 +24,21 @@ struct TeamListView: View {
                                 TeamDetailView(team: team, avatars: avatars[team.id - 1])
                             } label: {
                                 TeamView(team: team)
-                                    .accessibilityIdentifier("item_\(team.id)")
+                                    .onFirstAppear {
+                                        if viewStore.hasReachedEnd {
+                                            viewStore.send(.onAppearTeamForNextPage)
+                                        }
+                                    }
                             }
                         }
                     }
                               .padding()
                               .accessibilityIdentifier("peopleGrid")
+                }
+                .overlay {
+                    if viewStore.searchResults.isEmpty {
+                        ContentUnavailableView.search
+                    }
                 }
                 .refreshable {
                     viewStore.send(.onAppear)
@@ -41,7 +50,7 @@ struct TeamListView: View {
             .navigationTitle("Teams")
             .toolbarBackground(Color.blue._50, for: .navigationBar)
             .toolbarBackground(Color.blue._50, for: .tabBar)
-            .onAppear {
+            .onFirstAppear {
                 viewStore.send(.onAppear)
             }
         }

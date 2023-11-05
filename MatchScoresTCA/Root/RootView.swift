@@ -80,9 +80,9 @@ struct RootView_Previews: PreviewProvider {
                 initialState: RootFeature.State()
             ) {
                 RootFeature(
-                    fetchTeams: { TeamsModel.sample },
+                    fetchTeams: { _ in TeamsModel.sample },
                     fetchGames: { GamesModel.sample },
-                    fetchPlayers: { PlayersModel.sample },
+                    fetchPlayers: { _ in PlayersModel.sample },
                     uuid: { UUID() }
                 )
             }

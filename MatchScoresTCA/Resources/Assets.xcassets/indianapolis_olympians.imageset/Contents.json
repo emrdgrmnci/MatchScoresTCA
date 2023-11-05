@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "indianapolis_olympians.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

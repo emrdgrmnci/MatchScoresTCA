@@ -55,7 +55,7 @@ final class PlayersNetworkingManagerTests: XCTestCase {
                                            headerFields: nil)
             return (response!, nil)
         }
-        _ = try await NetworkingManager.shared.request(session: session, .players)
+        _ = try await NetworkingManager.shared.request(session: session, .players(page: 1))
     }
     
     func test_with_players_unsuccessful_response_code_in_invalid_range_is_invalid() async {
@@ -72,7 +72,7 @@ final class PlayersNetworkingManagerTests: XCTestCase {
         
         do {
             _ = try await NetworkingManager.shared.request(session: session,
-                                                           .players,
+                                                           .players(page: 1),
                                                            type: PlayersModel.self)
         } catch {
             
@@ -102,7 +102,7 @@ final class PlayersNetworkingManagerTests: XCTestCase {
         
         do {
             _ = try await NetworkingManager.shared.request(session: session,
-                                                           .players)
+                                                           .players(page: 1))
         } catch {
             
             guard let networkingError = error as? NetworkingManager.NetworkingError else {
