@@ -18,6 +18,6 @@ final class PlayersNetworkingEndpointTests: XCTestCase {
         XCTAssertEqual(endpoint.path, "/api/v1/players", "The path should be /api/v1/players")
         XCTAssertEqual(endpoint.methodType, .GET, "The method type should be GET")
         
-        XCTAssertEqual(endpoint.url?.absoluteString, "https://www.balldontlie.io/api/v1/players?", "The generated URL doesn't match our endpoint")
+        XCTAssertEqual(endpoint.url?.absoluteString, "https://www.balldontlie.io/api/v1/players?page=1", "The generated URL doesn't match our endpoint")
     }
 }

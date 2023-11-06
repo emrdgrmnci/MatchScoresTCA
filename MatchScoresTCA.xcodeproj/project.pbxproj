@@ -18,6 +18,8 @@
 		C3955AC72AC9E73C00CECC6C /* TeamDetailNameRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AC12AC9E73C00CECC6C /* TeamDetailNameRow.swift */; };
 		C3955AC92AC9E77500CECC6C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AC82AC9E77500CECC6C /* PlayerView.swift */; };
 		C3B045532AD3215D0020CF22 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B045522AD3215D0020CF22 /* String+Extension.swift */; };
+		CB0A312E2AF8CFB6002B4508 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0A312D2AF8CFB6002B4508 /* View+Extension.swift */; };
+		CB0A313B2AF8DE45002B4508 /* MacroTesting in Frameworks */ = {isa = PBXBuildFile; productRef = CB0A313A2AF8DE45002B4508 /* MacroTesting */; };
 		CB13BD152A87D190001188AE /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD142A87D190001188AE /* PlayerDetailView.swift */; };
 		CB13BD1A2A87D43F001188AE /* GamesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD192A87D43F001188AE /* GamesModel.swift */; };
 		CB4D0FFB2ACEB3D300CAC6CD /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */; };
@@ -95,6 +97,7 @@
 		C3955AC12AC9E73C00CECC6C /* TeamDetailNameRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamDetailNameRow.swift; sourceTree = "<group>"; };
 		C3955AC82AC9E77500CECC6C /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = SOURCE_ROOT; };
 		C3B045522AD3215D0020CF22 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		CB0A312D2AF8CFB6002B4508 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		CB13BD142A87D190001188AE /* PlayerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailView.swift; sourceTree = "<group>"; };
 		CB13BD192A87D43F001188AE /* GamesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesModel.swift; sourceTree = "<group>"; };
 		CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsModel.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0A313B2AF8DE45002B4508 /* MacroTesting in Frameworks */,
 				CBF91C742A7D544200F0AC33 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +192,46 @@
 				C3955AC12AC9E73C00CECC6C /* TeamDetailNameRow.swift */,
 			);
 			path = TeamDetail;
+			sourceTree = "<group>";
+		};
+		CB0A312F2AF8D058002B4508 /* TeamsNetworkingEndpointTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBF593D22AC6A9C500AA8663 /* TeamsNetworkingEndpointTests.swift */,
+			);
+			path = TeamsNetworkingEndpointTests;
+			sourceTree = "<group>";
+		};
+		CB0A31302AF8D069002B4508 /* GamesNetworkingEndpointTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBF593D52AC6A9FD00AA8663 /* GamesNetworkingEndpointTests.swift */,
+			);
+			path = GamesNetworkingEndpointTests;
+			sourceTree = "<group>";
+		};
+		CB0A31312AF8D075002B4508 /* PlayersTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB0A31322AF8D07E002B4508 /* PlayersNetworkingEndpointTests */,
+			);
+			path = PlayersTests;
+			sourceTree = "<group>";
+		};
+		CB0A31322AF8D07E002B4508 /* PlayersNetworkingEndpointTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBF593D82AC6AA4400AA8663 /* PlayersNetworkingEndpointTests.swift */,
+			);
+			path = PlayersNetworkingEndpointTests;
+			sourceTree = "<group>";
+		};
+		CB0A31332AF8D08E002B4508 /* StatsNetworkingEndpointTests */ = {
+			isa = PBXGroup;
+			children = (
+				CB9D29982AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift */,
+			);
+			path = StatsNetworkingEndpointTests;
 			sourceTree = "<group>";
 		};
 		CB13BD162A87D3D9001188AE /* Games */ = {
@@ -232,10 +276,10 @@
 		CB50DABE2AB4A505007CFB3D /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				CB9D29972AD7B5FB00B3C9F1 /* StatsNetworkingEndpointTests */,
+				CB9D29972AD7B5FB00B3C9F1 /* StatsTests */,
 				CBF593D72AC6AA2900AA8663 /* PlayersNetworkingEndpointTests */,
-				CBF593D42AC6A9ED00AA8663 /* GamesNetworkingEndpointTests */,
-				CBF593D12AC6A9BA00AA8663 /* TeamsNetworkingEndpointTests */,
+				CBF593D42AC6A9ED00AA8663 /* GamesTests */,
+				CBF593D12AC6A9BA00AA8663 /* TeamsTests */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -268,12 +312,12 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
-		CB9D29972AD7B5FB00B3C9F1 /* StatsNetworkingEndpointTests */ = {
+		CB9D29972AD7B5FB00B3C9F1 /* StatsTests */ = {
 			isa = PBXGroup;
 			children = (
-				CB9D29982AD7B62800B3C9F1 /* StatsNetworkingEndpointTests.swift */,
+				CB0A31332AF8D08E002B4508 /* StatsNetworkingEndpointTests */,
 			);
-			path = StatsNetworkingEndpointTests;
+			path = StatsTests;
 			sourceTree = "<group>";
 		};
 		CB9D299A2AD7B6E100B3C9F1 /* StatsNetworkingManagerTests */ = {
@@ -367,6 +411,7 @@
 				CBCDAF572AC80C7800D9CD84 /* Color+Extension.swift */,
 				C3B045522AD3215D0020CF22 /* String+Extension.swift */,
 				CBF616632AF1265B00A02844 /* DateFormatter+Extension.swift */,
+				CB0A312D2AF8CFB6002B4508 /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,26 +471,26 @@
 			path = PlayersNetworkingManagerTests;
 			sourceTree = "<group>";
 		};
-		CBF593D12AC6A9BA00AA8663 /* TeamsNetworkingEndpointTests */ = {
+		CBF593D12AC6A9BA00AA8663 /* TeamsTests */ = {
 			isa = PBXGroup;
 			children = (
-				CBF593D22AC6A9C500AA8663 /* TeamsNetworkingEndpointTests.swift */,
+				CB0A312F2AF8D058002B4508 /* TeamsNetworkingEndpointTests */,
 			);
-			path = TeamsNetworkingEndpointTests;
+			path = TeamsTests;
 			sourceTree = "<group>";
 		};
-		CBF593D42AC6A9ED00AA8663 /* GamesNetworkingEndpointTests */ = {
+		CBF593D42AC6A9ED00AA8663 /* GamesTests */ = {
 			isa = PBXGroup;
 			children = (
-				CBF593D52AC6A9FD00AA8663 /* GamesNetworkingEndpointTests.swift */,
+				CB0A31302AF8D069002B4508 /* GamesNetworkingEndpointTests */,
 			);
-			path = GamesNetworkingEndpointTests;
+			path = GamesTests;
 			sourceTree = "<group>";
 		};
 		CBF593D72AC6AA2900AA8663 /* PlayersNetworkingEndpointTests */ = {
 			isa = PBXGroup;
 			children = (
-				CBF593D82AC6AA4400AA8663 /* PlayersNetworkingEndpointTests.swift */,
+				CB0A31312AF8D075002B4508 /* PlayersTests */,
 			);
 			path = PlayersNetworkingEndpointTests;
 			sourceTree = "<group>";
@@ -545,6 +590,7 @@
 			name = MatchScoresTCA;
 			packageProductDependencies = (
 				CBF91C732A7D544200F0AC33 /* ComposableArchitecture */,
+				CB0A313A2AF8DE45002B4508 /* MacroTesting */,
 			);
 			productName = MatchScoresTCA;
 			productReference = CBF91C3F2A7D532200F0AC33 /* MatchScoresTCA.app */;
@@ -598,6 +644,8 @@
 			mainGroup = CBF91C362A7D532200F0AC33;
 			packageReferences = (
 				CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				CB0A31382AF8DE00002B4508 /* XCRemoteSwiftPackageReference "swift-syntax" */,
+				CB0A31392AF8DE45002B4508 /* XCRemoteSwiftPackageReference "swift-macro-testing" */,
 			);
 			productRefGroup = CBF91C402A7D532200F0AC33 /* Products */;
 			projectDirPath = "";
@@ -661,6 +709,7 @@
 				C3955AB62AC9E6F700CECC6C /* GameDetailView.swift in Sources */,
 				CBACB3372A80240C0044F570 /* FavoriteListView.swift in Sources */,
 				CBECBE482A81344900AF97DF /* CheckmarkPopoverView.swift in Sources */,
+				CB0A312E2AF8CFB6002B4508 /* View+Extension.swift in Sources */,
 				CBACB31D2A801AFE0044F570 /* RootFeature.swift in Sources */,
 				CB50DAD42AB4A73D007CFB3D /* MockURLSessionProtocol.swift in Sources */,
 				CBACB3172A7FCF610044F570 /* Theme.swift in Sources */,
@@ -990,6 +1039,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CB0A31382AF8DE00002B4508 /* XCRemoteSwiftPackageReference "swift-syntax" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-syntax.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 509.0.2;
+			};
+		};
+		CB0A31392AF8DE45002B4508 /* XCRemoteSwiftPackageReference "swift-macro-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-macro-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
 		CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -1001,6 +1066,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CB0A313A2AF8DE45002B4508 /* MacroTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CB0A31392AF8DE45002B4508 /* XCRemoteSwiftPackageReference "swift-macro-testing" */;
+			productName = MacroTesting;
+		};
 		CBF91C732A7D544200F0AC33 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
