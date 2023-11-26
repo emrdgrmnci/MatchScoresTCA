@@ -33,7 +33,7 @@ struct PlayerListView: View {
                         }
                     }
                               .padding()
-                              .accessibilityIdentifier("peopleGrid")
+                              .accessibilityIdentifier("playerGrid")
                 }
                 .overlay {
                     if viewStore.searchResults.isEmpty {
@@ -46,6 +46,7 @@ struct PlayerListView: View {
                 .searchable(text: viewStore.binding(
                     get: \.searchQuery, send: PlayerListFeature.Action.searchQueryChanged
                 ), placement: .automatic, prompt: "Search NBA Players")
+                .accessibilityIdentifier("Search NBA Players")
             }
             .navigationTitle("Players")
             .toolbarBackground(Color.blue._50, for: .navigationBar)

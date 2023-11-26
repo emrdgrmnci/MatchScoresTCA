@@ -20,17 +20,6 @@ struct RootView: View {
                     send: RootFeature.Action.tabSelected
                 )
             ) {
-//                StatsListView(store: self.store.scope(
-//                    state: \.statsListState,
-//                    action: RootFeature.Action.statsList
-//                )
-//                )
-//                .tabItem {
-//                    Image(systemName: "chart.bar.fill")
-//                    Text("Stats")
-//                }
-//                .tag(RootFeature.Tab.stats)
-                
                 TeamListView(
                     store: self.store.scope(
                         state: \.teamListState,

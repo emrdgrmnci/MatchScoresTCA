@@ -33,7 +33,7 @@ struct TeamListView: View {
                         }
                     }
                               .padding()
-                              .accessibilityIdentifier("peopleGrid")
+                              .accessibilityIdentifier("teamsGrid")
                 }
                 .overlay {
                     if viewStore.searchResults.isEmpty {

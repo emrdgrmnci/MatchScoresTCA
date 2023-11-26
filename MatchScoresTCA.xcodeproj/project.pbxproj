@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3535DC82B13BA7C001CB3C2 /* TeamListViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3535DC72B13BA7C001CB3C2 /* TeamListViewUITests.swift */; };
+		C3535DCA2B13BA7C001CB3C2 /* MatchScoresTCAUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3535DC92B13BA7C001CB3C2 /* MatchScoresTCAUITestsLaunchTests.swift */; };
+		C3535DD32B13C6DB001CB3C2 /* GamesListViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3535DD22B13C6DB001CB3C2 /* GamesListViewUITests.swift */; };
+		C3535DD62B13C8CB001CB3C2 /* PlayerListViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3535DD52B13C8CB001CB3C2 /* PlayerListViewUITests.swift */; };
 		C3955AB62AC9E6F700CECC6C /* GameDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AB52AC9E6F700CECC6C /* GameDetailView.swift */; };
 		C3955AB82AC9E70400CECC6C /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AB72AC9E70400CECC6C /* GameListView.swift */; };
 		C3955ABA2AC9E71900CECC6C /* GameListFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AB92AC9E71900CECC6C /* GameListFeature.swift */; };
@@ -19,7 +23,6 @@
 		C3955AC92AC9E77500CECC6C /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3955AC82AC9E77500CECC6C /* PlayerView.swift */; };
 		C3B045532AD3215D0020CF22 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B045522AD3215D0020CF22 /* String+Extension.swift */; };
 		CB0A312E2AF8CFB6002B4508 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0A312D2AF8CFB6002B4508 /* View+Extension.swift */; };
-		CB0A313B2AF8DE45002B4508 /* MacroTesting in Frameworks */ = {isa = PBXBuildFile; productRef = CB0A313A2AF8DE45002B4508 /* MacroTesting */; };
 		CB13BD152A87D190001188AE /* PlayerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD142A87D190001188AE /* PlayerDetailView.swift */; };
 		CB13BD1A2A87D43F001188AE /* GamesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13BD192A87D43F001188AE /* GamesModel.swift */; };
 		CB4D0FFB2ACEB3D300CAC6CD /* StatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB4D0FFA2ACEB3D300CAC6CD /* StatsModel.swift */; };
@@ -76,6 +79,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C3535DCB2B13BA7C001CB3C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBF91C372A7D532200F0AC33 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBF91C3E2A7D532200F0AC33;
+			remoteInfo = MatchScoresTCA;
+		};
 		CBF91C502A7D532300F0AC33 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CBF91C372A7D532200F0AC33 /* Project object */;
@@ -86,6 +96,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C3535DC52B13BA7C001CB3C2 /* MatchScoresTCAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MatchScoresTCAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3535DC72B13BA7C001CB3C2 /* TeamListViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewUITests.swift; sourceTree = "<group>"; };
+		C3535DC92B13BA7C001CB3C2 /* MatchScoresTCAUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoresTCAUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C3535DD22B13C6DB001CB3C2 /* GamesListViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesListViewUITests.swift; sourceTree = "<group>"; };
+		C3535DD52B13C8CB001CB3C2 /* PlayerListViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListViewUITests.swift; sourceTree = "<group>"; };
 		C3955AB52AC9E6F700CECC6C /* GameDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailView.swift; sourceTree = "<group>"; };
 		C3955AB72AC9E70400CECC6C /* GameListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameListView.swift; path = MatchScoresTCA/Games/GameListView.swift; sourceTree = SOURCE_ROOT; };
 		C3955AB92AC9E71900CECC6C /* GameListFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameListFeature.swift; path = GameList/GameListFeature.swift; sourceTree = "<group>"; };
@@ -154,11 +169,17 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C3535DC22B13BA7C001CB3C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBF91C3C2A7D532200F0AC33 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB0A313B2AF8DE45002B4508 /* MacroTesting in Frameworks */,
 				CBF91C742A7D544200F0AC33 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,6 +194,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C3535DC62B13BA7C001CB3C2 /* MatchScoresTCAUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3535DD42B13C8AE001CB3C2 /* PlayersViewUITests */,
+				C3535DD12B13C6B9001CB3C2 /* GamesViewUITests */,
+				C3535DD02B13C6A2001CB3C2 /* TeamsViewUITests */,
+				C3535DC92B13BA7C001CB3C2 /* MatchScoresTCAUITestsLaunchTests.swift */,
+			);
+			path = MatchScoresTCAUITests;
+			sourceTree = "<group>";
+		};
+		C3535DD02B13C6A2001CB3C2 /* TeamsViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3535DC72B13BA7C001CB3C2 /* TeamListViewUITests.swift */,
+			);
+			path = TeamsViewUITests;
+			sourceTree = "<group>";
+		};
+		C3535DD12B13C6B9001CB3C2 /* GamesViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3535DD22B13C6DB001CB3C2 /* GamesListViewUITests.swift */,
+			);
+			path = GamesViewUITests;
+			sourceTree = "<group>";
+		};
+		C3535DD42B13C8AE001CB3C2 /* PlayersViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3535DD52B13C8CB001CB3C2 /* PlayerListViewUITests.swift */,
+			);
+			path = PlayersViewUITests;
+			sourceTree = "<group>";
+		};
 		C3955AB42AC9E6F700CECC6C /* GameDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -500,6 +556,7 @@
 			children = (
 				CBF91C412A7D532200F0AC33 /* MatchScoresTCA */,
 				CBF91C522A7D532300F0AC33 /* MatchScoresTCATests */,
+				C3535DC62B13BA7C001CB3C2 /* MatchScoresTCAUITests */,
 				CBF91C402A7D532200F0AC33 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -509,6 +566,7 @@
 			children = (
 				CBF91C3F2A7D532200F0AC33 /* MatchScoresTCA.app */,
 				CBF91C4F2A7D532300F0AC33 /* MatchScoresTCATests.xctest */,
+				C3535DC52B13BA7C001CB3C2 /* MatchScoresTCAUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -575,6 +633,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C3535DC42B13BA7C001CB3C2 /* MatchScoresTCAUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3535DCF2B13BA7C001CB3C2 /* Build configuration list for PBXNativeTarget "MatchScoresTCAUITests" */;
+			buildPhases = (
+				C3535DC12B13BA7C001CB3C2 /* Sources */,
+				C3535DC22B13BA7C001CB3C2 /* Frameworks */,
+				C3535DC32B13BA7C001CB3C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3535DCC2B13BA7C001CB3C2 /* PBXTargetDependency */,
+			);
+			name = MatchScoresTCAUITests;
+			productName = MatchScoresTCAUITests;
+			productReference = C3535DC52B13BA7C001CB3C2 /* MatchScoresTCAUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		CBF91C3E2A7D532200F0AC33 /* MatchScoresTCA */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CBF91C632A7D532300F0AC33 /* Build configuration list for PBXNativeTarget "MatchScoresTCA" */;
@@ -590,7 +666,6 @@
 			name = MatchScoresTCA;
 			packageProductDependencies = (
 				CBF91C732A7D544200F0AC33 /* ComposableArchitecture */,
-				CB0A313A2AF8DE45002B4508 /* MacroTesting */,
 			);
 			productName = MatchScoresTCA;
 			productReference = CBF91C3F2A7D532200F0AC33 /* MatchScoresTCA.app */;
@@ -621,9 +696,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					C3535DC42B13BA7C001CB3C2 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = CBF91C3E2A7D532200F0AC33;
+					};
 					CBF91C3E2A7D532200F0AC33 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -645,7 +724,6 @@
 			packageReferences = (
 				CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				CB0A31382AF8DE00002B4508 /* XCRemoteSwiftPackageReference "swift-syntax" */,
-				CB0A31392AF8DE45002B4508 /* XCRemoteSwiftPackageReference "swift-macro-testing" */,
 			);
 			productRefGroup = CBF91C402A7D532200F0AC33 /* Products */;
 			projectDirPath = "";
@@ -653,11 +731,19 @@
 			targets = (
 				CBF91C3E2A7D532200F0AC33 /* MatchScoresTCA */,
 				CBF91C4E2A7D532300F0AC33 /* MatchScoresTCATests */,
+				C3535DC42B13BA7C001CB3C2 /* MatchScoresTCAUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C3535DC32B13BA7C001CB3C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBF91C3D2A7D532200F0AC33 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -683,6 +769,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C3535DC12B13BA7C001CB3C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3535DCA2B13BA7C001CB3C2 /* MatchScoresTCAUITestsLaunchTests.swift in Sources */,
+				C3535DD32B13C6DB001CB3C2 /* GamesListViewUITests.swift in Sources */,
+				C3535DC82B13BA7C001CB3C2 /* TeamListViewUITests.swift in Sources */,
+				C3535DD62B13C8CB001CB3C2 /* PlayerListViewUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CBF91C3B2A7D532200F0AC33 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -756,6 +853,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C3535DCC2B13BA7C001CB3C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBF91C3E2A7D532200F0AC33 /* MatchScoresTCA */;
+			targetProxy = C3535DCB2B13BA7C001CB3C2 /* PBXContainerItemProxy */;
+		};
 		CBF91C512A7D532300F0AC33 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CBF91C3E2A7D532200F0AC33 /* MatchScoresTCA */;
@@ -764,6 +866,49 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		C3535DCD2B13BA7C001CB3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NMCVZ8F7S5;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emredegirmenci.MatchScoresTCAUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MatchScoresTCA;
+			};
+			name = Debug;
+		};
+		C3535DCE2B13BA7C001CB3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NMCVZ8F7S5;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emredegirmenci.MatchScoresTCAUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MatchScoresTCA;
+			};
+			name = Release;
+		};
 		CBF91C612A7D532300F0AC33 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1009,6 +1154,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C3535DCF2B13BA7C001CB3C2 /* Build configuration list for PBXNativeTarget "MatchScoresTCAUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3535DCD2B13BA7C001CB3C2 /* Debug */,
+				C3535DCE2B13BA7C001CB3C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CBF91C3A2A7D532200F0AC33 /* Build configuration list for PBXProject "MatchScoresTCA" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1047,14 +1201,6 @@
 				minimumVersion = 509.0.2;
 			};
 		};
-		CB0A31392AF8DE45002B4508 /* XCRemoteSwiftPackageReference "swift-macro-testing" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-macro-testing";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.1;
-			};
-		};
 		CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -1066,11 +1212,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		CB0A313A2AF8DE45002B4508 /* MacroTesting */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CB0A31392AF8DE45002B4508 /* XCRemoteSwiftPackageReference "swift-macro-testing" */;
-			productName = MacroTesting;
-		};
 		CBF91C732A7D544200F0AC33 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CBF91C722A7D544200F0AC33 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
