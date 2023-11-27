@@ -19,7 +19,7 @@ final class TeamListViewUITests: XCTestCase {
     
     func testTeamSearchFunctionality() throws {
         // Navigate to Teams View if necessary
-        // Example: app.tabBars.buttons["Teams"].tap()
+        app.tabBars.buttons["Teams"].tap()
         
         // Interact with Search Field
         let searchField = app.searchFields["Search NBA Teams"]
@@ -36,8 +36,8 @@ final class TeamListViewUITests: XCTestCase {
         
         // Verify Search Results
         // Assuming the search results are displayed in a grid with accessibility identifier 'peopleGrid'
-        let peopleGrid = app.otherElements["teamsGrid"]
-        XCTAssertTrue(peopleGrid.exists, "Grid for displaying people does not exist")
+        let teamsGrid = app.otherElements["teamsGrid"]
+        XCTAssertTrue(teamsGrid.exists, "Grid for displaying teams does not exist")
         
         // Verify if a specific team appears in the search results
         let specificTeam = app.staticTexts["Lakers"] // Adjust according to how teams are displayed
