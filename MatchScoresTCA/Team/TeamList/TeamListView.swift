@@ -21,7 +21,12 @@ struct TeamListView: View {
                               spacing: 16) {
                         ForEach(viewStore.searchResults) { team in
                             NavigationLink {
-                                TeamDetailView(team: team, avatars: avatars[team.id - 1])
+                                // Check if the index exists in the avatars array
+                                if avatars.indices.contains(team.id - 1) {
+                                    TeamDetailView(team: team, avatars: avatars[team.id - 1])
+                                } else {
+                                    TeamDetailView(team: team, avatars: "basketball.circle.fill")
+                                }
                             } label: {
                                 TeamView(team: team)
                                     .onFirstAppear {
@@ -48,13 +53,13 @@ struct TeamListView: View {
                 ), placement: .automatic, prompt: "Search NBA Teams")
             }
             .navigationTitle("Teams")
-            .toolbarBackground(Color.blue._50, for: .navigationBar)
-            .toolbarBackground(Color.blue._50, for: .tabBar)
+            .toolbarBackground(Color.blue._300, for: .navigationBar)
+            .toolbarBackground(Color.blue._300, for: .tabBar)
             .onFirstAppear {
                 viewStore.send(.onAppear)
             }
         }
-        .background(Color.blue._50)
+        .background(Color.blue._300)
         .embedInNavigation()
     }
 }

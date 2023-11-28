@@ -29,7 +29,7 @@ struct GameListContentView: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack {
-                Color.blue._50
+                Color.blue._300
                     .edgesIgnoringSafeArea(.all)
                 List(viewStore.searchResults) { game in
                     GameRowView(game: game, viewStore: viewStore)
@@ -48,8 +48,8 @@ struct GameListContentView: View {
                 placement: .automatic,
                 prompt: "Search All NBA Competitions"
             )
-            .toolbarBackground(Color.blue._50, for: .navigationBar)
-            .toolbarBackground(Color.blue._50, for: .tabBar)
+            .toolbarBackground(Color.blue._300, for: .navigationBar)
+            .toolbarBackground(Color.blue._300, for: .tabBar)
             .frame(maxWidth: .infinity)
             .refreshable {
                 store.send(.onAppear)
@@ -134,7 +134,7 @@ struct GameRowView: View {
             .frame(maxWidth: .infinity)
             .padding(.vertical)
         }
-        .listRowBackground(Color.blue._50)
+        .listRowBackground(Color.blue._300)
     }
 }
 

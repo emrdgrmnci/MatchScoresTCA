@@ -33,7 +33,7 @@ struct PlayerListFeature: Reducer {
             
             let filteredAndSortedArray = playerList
                 .sorted(by: { $0.firstName.lowercased() > $1.firstName.lowercased() })
-                .filter { "\($0.firstName)\($0.lastName)".lowercased().contains(searchQuery.lowercased()) ||
+                .filter { "\($0.firstName) \($0.lastName)".lowercased().contains(searchQuery.lowercased()) ||
                     "\($0.position)".lowercased().contains(searchQuery.lowercased()) ||
                     "\($0.team.fullName)".lowercased().contains(searchQuery.lowercased()) ||
                     "\($0.team.city)".lowercased().contains(searchQuery.lowercased())

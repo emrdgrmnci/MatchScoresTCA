@@ -32,8 +32,8 @@ struct PlayerView: View {
                     .padding(.top, 10)
             }
         }
-        .toolbarBackground(Color.blue._50, for: .navigationBar)
-        .toolbarBackground(Color.blue._50, for: .tabBar)
+        .toolbarBackground(Color.blue._300, for: .navigationBar)
+        .toolbarBackground(Color.blue._300, for: .tabBar)
         .clipShape(
             RoundedRectangle(cornerRadius: 16,
                              style: .continuous)

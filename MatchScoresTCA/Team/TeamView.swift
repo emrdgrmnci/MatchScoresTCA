@@ -18,30 +18,29 @@ struct TeamView: View {
     
     var body: some View {
         VStack(spacing: .zero) {
-            
-            VStack {
-                Image(avatars[team.id - 1])
-                    .resizable()
-                    .frame(width: 50, height: 50)
-                
-                Text(team.name)
+            VStack(alignment: .center, spacing: 10) {
+                // Check if the index exists in the avatars array
+                if avatars.indices.contains(team.id - 1) {
+                    // If it exists, use the corresponding avatar
+                    Image(avatars[team.id - 1])
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                } else {
+                    // If it doesn't exist, display ContentUnavailableView
+                    Image("basketball.circle.fill")
+                        .resizable()
+                        .frame(width: 80, height: 80)
+                }
+                Text(team.fullName)
                     .font(
-                        .system(.title, design: .rounded)
+                        .system(.headline, design: .rounded)
                     )
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
+            .frame(maxHeight: .infinity, alignment: .leading)
             .frame(height: 150.0)
             .padding(.horizontal, 8)
             .padding(.vertical, 5)
-            
-            VStack {
-                PillView(id: team.id)
-                    .padding(.leading, 10)
-                    .padding(.top, 10)
-            }
-            
         }
-        .background(Color.blue._50)
         .frame(maxWidth: .infinity)
         .padding()
         .overlay(

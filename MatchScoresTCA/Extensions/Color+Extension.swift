@@ -22,6 +22,7 @@ struct ColorTheme {
     let secondaryBackgroundColor = Color("SecondaryBackgroundColor")
     let primaryTextColor = Color("PrimaryTextColor")
     let splashBGColor = Color("splashBG")
+    let miamiHeatRed = Color("miami_heat_red")
 }
 
 extension Color {

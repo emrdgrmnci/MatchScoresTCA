@@ -16,12 +16,13 @@ struct PlayerDetailProfileView: View {
     
     var body: some View {
         VStack() {
-            Image("allen")
+            Image("figure.basketball")
+                .resizable()
                 .frame(
-                    width: 100,
-                    height: 100
+                    width: 120,
+                    height: 120
                 )
-                .clipShape(Circle()) // Make the image circular
+                .clipShape(Rectangle()) // Make the image circular
                 .aspectRatio(contentMode: .fit) // Maintain aspect rati
             
             Text(player.firstName + " " + player.lastName)
@@ -31,6 +32,6 @@ struct PlayerDetailProfileView: View {
                 .font(.system(.title3, design: .rounded))
                 .foregroundColor(Color.theme.primaryTextColor)
         }
-        .background(Color.blue._50)
+        .background(Color.blue._300)
     }
 }

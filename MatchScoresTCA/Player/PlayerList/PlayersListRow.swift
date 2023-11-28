@@ -18,17 +18,15 @@ struct PlayersListRow: View {
     var body: some View {
         VStack {
             VStack {
-                Image("allen")
+                Image("figure.basketball")
+                    .resizable()
                     .frame(
-                        width: 100,
-                        height: 100
+                        width: 80,
+                        height: 80
                     )
-                    .clipShape(Circle()) // Make the image circular
-                    .aspectRatio(contentMode: .fit) // Maintain aspect ratio
                 
                 Text(player.firstName + " " + player.lastName)
-                    .font(.system(.title2, design: .rounded))
-                    .foregroundColor(Color.theme.primaryTextColor)
+                    .font(.system(.headline, design: .rounded))
                 Text(player.position)
                     .font(.system(.caption, design: .rounded))
                     .foregroundColor(Color.theme.primaryTextColor)

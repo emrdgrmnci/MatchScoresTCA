@@ -19,7 +19,6 @@ final class PlayerListViewUITests: XCTestCase {
     }
     
     func testPlayerSearchFunctionality() throws {
-        // Navigate to Players View
         app.tabBars.buttons["Players"].tap()
 
         // Interact with Search Field
@@ -28,13 +27,16 @@ final class PlayerListViewUITests: XCTestCase {
         searchField.tap()
         searchField.typeText("Alex Abrines")
 
-        // Use NSPredicate to wait for search results
         let predicate = NSPredicate(format: "exists == true")
         let playerGrid = app.otherElements["playerGrid"]
         let playerGridExpectation = XCTNSPredicateExpectation(predicate: predicate, object: playerGrid)
         
         // Verify grid appears with search results
-        let result = XCTWaiter.wait(for: [playerGridExpectation], timeout: 10) // Adjust timeout as needed
+        let result = XCTWaiter.wait(for: [playerGridExpectation], timeout: 10)
         XCTAssertEqual(result, .completed, "Grid for displaying players did not load in time")
+        
+        // Verify if a specific player appears in the search results
+        let specificTeam = app.staticTexts["Alex Abrines"]
+        XCTAssertTrue(specificTeam.exists, "Expected player not found in search results")
     }
 }

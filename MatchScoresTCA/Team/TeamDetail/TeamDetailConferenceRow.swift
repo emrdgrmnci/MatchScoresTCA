@@ -36,7 +36,7 @@ struct TeamDetailConferenceRow: View {
                     .foregroundColor(Color.theme.primaryTextColor)
             }
         }
-        .background(Color.blue._50)
+        .background(Color.blue._300)
     }
 }
 

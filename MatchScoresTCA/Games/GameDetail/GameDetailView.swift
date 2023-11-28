@@ -23,7 +23,7 @@ struct GameDetailView: View {
         }) {
             NavigationStack {
                 ZStack {
-                    Color.blue._50
+                    Color.blue._300
                         .edgesIgnoringSafeArea(.all)
                     List(selectedGame) { game in
                             VStack(alignment: .center) {
@@ -80,15 +80,15 @@ struct GameDetailView: View {
                                         lineWidth: 1
                                     )
                             )
-                            .listRowBackground(Color.blue._50)
+                            .listRowBackground(Color.blue._300)
                         }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical)
                     }
                     .scrollContentBackground(.hidden)
                 }
-                .toolbarBackground(Color.blue._50, for: .navigationBar)
-                .toolbarBackground(Color.blue._50, for: .tabBar)
+                .toolbarBackground(Color.blue._300, for: .navigationBar)
+                .toolbarBackground(Color.blue._300, for: .tabBar)
                 .navigationTitle(selectedGame[0].homeTeam.abbreviation)
         }
     }

@@ -22,7 +22,7 @@ struct PlayerDetailStatsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.blue._50
+                Color.blue._300
                     .edgesIgnoringSafeArea(.all)
                 ScrollView([.horizontal, .vertical], showsIndicators: false) {
                     if !statsData.isEmpty {
@@ -64,8 +64,8 @@ struct PlayerDetailStatsView: View {
                     })
                 })
                 .scrollContentBackground(.hidden)
-                .toolbarBackground(Color.blue._50, for: .navigationBar)
-                .toolbarBackground(Color.blue._50, for: .tabBar)
+                .toolbarBackground(Color.blue._300, for: .navigationBar)
+                .toolbarBackground(Color.blue._300, for: .tabBar)
                 .onAppear {
                     Task {
                         do {
@@ -79,7 +79,7 @@ struct PlayerDetailStatsView: View {
                     }
                 }
             }
-            .background(Color.blue._50)
+            .background(Color.blue._300)
             .embedInNavigation()
         }
     }
