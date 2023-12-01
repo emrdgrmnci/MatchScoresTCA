@@ -89,6 +89,7 @@ extension TeamsModel {
                   nextPage: 2,
                   perPage: 30,
                   totalCount: 45
-              ))
+              )
+        )
     }
 }

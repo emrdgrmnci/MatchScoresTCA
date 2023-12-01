@@ -9,10 +9,9 @@ import SwiftUI
 import ComposableArchitecture
 
 struct TeamListView: View {
-    let store: StoreOf<TeamListFeature>
+    let store: Store<TeamListFeature.State, TeamListFeature.Action>
     private let columns = Array(repeating: GridItem(.flexible()),
                                 count: 2)
-    
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack {

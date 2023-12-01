@@ -54,7 +54,7 @@ extension PlayersModel {
                         TeamData(
                             id: 12,
                             abbreviation: "IND",
-                            city: "Indiana", 
+                            city: "Indiana",
                             conference: "East",
                             division: "Central",
                             fullName: "Indiana Pacers",

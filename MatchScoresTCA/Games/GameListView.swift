@@ -65,7 +65,7 @@ struct GameRowView: View {
     var body: some View {
         ZStack {
             NavigationLink(destination: GameDetailView(
-                games: viewStore.games,
+                games: viewStore.gamesData,
                 homeTeamID: game.homeTeam.id,
                 visitorTeamID: game.visitorTeam.id
             )) {

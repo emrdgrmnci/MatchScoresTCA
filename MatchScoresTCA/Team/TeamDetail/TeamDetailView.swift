@@ -45,3 +45,9 @@ struct TeamDetailView: View {
         .background(Color.blue._300)
     }
 }
+
+struct TeamDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        TeamDetailView(team: .init(id: 1, abbreviation: "ATL", city: "Atlanta", conference: "East", division: "Southeast", fullName: "Atlanta Hawks", name: "Hawks"), avatars: "atlanta_hawks")
+    }
+}

@@ -109,7 +109,58 @@ extension StatsModel {
     static var sample: StatsModel {
         .init(
             data: [
-                StatsData(id: 13, ast: 45, blk: 67, dreb: 67, fg3Pct: 43, fg3A: 345, fg3M: 32, fgPct: 123, fga: 56, fgm: 43, ftPct: 46.0, fta: 23, ftm: 12, game: Game(id: 4, date: "", homeTeamID: 23, homeTeamScore: 115, period: 4, postseason: true, season: 2, status: Status.statusFinal, time: Time.empty, visitorTeamID: 12, visitorTeamScore: 90), min: "", oreb: 0, pf: 8, player: Player(id: 2929, heightFeet: 0, heightInches: 0, position: "G", teamID: 1, weightPounds: 0), pts: 6, reb: 4, stl: 5, team: Team(id: 2, abbreviation: "", city: "", conference: Conference.east, division: "", fullName: "", name: ""), turnover: 5)
+                StatsData(
+                    id: 13,
+                    ast: 45,
+                    blk: 67,
+                    dreb: 67,
+                    fg3Pct: 43,
+                    fg3A: 345,
+                    fg3M: 32,
+                    fgPct: 123,
+                    fga: 56,
+                    fgm: 43,
+                    ftPct: 46.0,
+                    fta: 23,
+                    ftm: 12,
+                    game: Game(
+                        id: 4,
+                        date: "",
+                        homeTeamID: 23,
+                        homeTeamScore: 115,
+                        period: 4,
+                        postseason: true,
+                        season: 2,
+                        status: Status.statusFinal,
+                        time: Time.empty,
+                        visitorTeamID: 12,
+                        visitorTeamScore: 90
+                    ),
+                    min: "",
+                    oreb: 0,
+                    pf: 8,
+                    player: Player(
+                        id: 2929,
+                        heightFeet: 0,
+                        heightInches: 0,
+                        position: "G",
+                        teamID: 1,
+                        weightPounds: 0
+                    ),
+                    pts: 6,
+                    reb: 4,
+                    stl: 5,
+                    team: Team(
+                        id: 2,
+                        abbreviation: "",
+                        city: "",
+                        conference: Conference.east,
+                        division: "",
+                        fullName: "",
+                        name: ""
+                    ),
+                    turnover: 5
+                )
             ],
             meta: Meta(
                 totalPages: 206,
