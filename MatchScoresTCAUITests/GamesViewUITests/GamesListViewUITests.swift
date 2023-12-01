@@ -37,6 +37,10 @@ final class GamesListViewUITests: XCTestCase {
         // Verify if a specific game appears in the search results
         let specificGame = app.staticTexts["Lakers"]
         XCTAssertTrue(specificGame.exists, "Expected game not found in search results")
+        
+        let cancelButton = app.buttons["Cancel"]
+        XCTAssertTrue(cancelButton.exists, "Cancel button does not exist")
+                cancelButton.tap()
     }
 }
 

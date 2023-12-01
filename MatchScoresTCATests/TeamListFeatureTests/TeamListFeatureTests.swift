@@ -9,7 +9,7 @@ import XCTest
 import ComposableArchitecture
 @testable import MatchScoresTCA
 
-let testUUID = UUID(uuidString: "256FB1A-1557-4FE9-9954-693CA1678970")!
+let testTeamUUID = UUID(uuidString: "256FB1A-1557-4FE9-9954-693CA1678970")!
 
 @MainActor
 final class TeamListFeatureTests: XCTestCase {
@@ -29,7 +29,7 @@ final class TeamListFeatureTests: XCTestCase {
     
     func testGetTeams() async {
         let mockResponse = TeamsModel(
-            id: UUID(uuidString: testUUID)!, // Use a fixed UUID
+            id: testTeamUUID,
             data: [
                 TeamData(
                     id: 1,

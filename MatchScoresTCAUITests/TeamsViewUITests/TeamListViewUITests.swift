@@ -24,7 +24,7 @@ final class TeamListViewUITests: XCTestCase {
         let searchField = app.searchFields["Search NBA Teams"]
         XCTAssertTrue(searchField.exists, "Search field does not exist")
         searchField.tap()
-        searchField.typeText("Lakers")
+        searchField.typeText("Los Angeles Lakers")
         
         // Wait for search results to load
         let expectation = XCTestExpectation(description: "Wait for search results")
@@ -37,7 +37,11 @@ final class TeamListViewUITests: XCTestCase {
         XCTAssertTrue(teamsGrid.exists, "Grid for displaying teams does not exist")
         
         // Verify if a specific team appears in the search results
-        let specificTeam = app.staticTexts["Lakers"]
+        let specificTeam = app.staticTexts["Los Angeles Lakers"]
         XCTAssertTrue(specificTeam.exists, "Expected team not found in search results")
+        
+        let cancelButton = app.buttons["Cancel"]
+        XCTAssertTrue(cancelButton.exists, "Cancel button does not exist")
+                cancelButton.tap()
     }
 }

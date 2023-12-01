@@ -38,5 +38,9 @@ final class PlayerListViewUITests: XCTestCase {
         // Verify if a specific player appears in the search results
         let specificTeam = app.staticTexts["Alex Abrines"]
         XCTAssertTrue(specificTeam.exists, "Expected player not found in search results")
+        
+        let cancelButton = app.buttons["Cancel"]
+        XCTAssertTrue(cancelButton.exists, "Cancel button does not exist")
+                cancelButton.tap()
     }
 }
