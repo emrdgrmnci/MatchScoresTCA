@@ -89,7 +89,7 @@ struct GameRowView: View {
                         Text(game.visitorTeam.name)
                             .font(.callout)
                     }
-                    .frame(width: 65)
+                    .frame(width: 75)
                     
                     HStack {
                         Text("\(game.visitorTeamScore)")
@@ -115,7 +115,7 @@ struct GameRowView: View {
                         Text(game.homeTeam.name)
                             .font(.callout)
                     }
-                    .frame(width: 65)
+                    .frame(width: 75)
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
