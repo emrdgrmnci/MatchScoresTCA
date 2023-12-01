@@ -29,6 +29,7 @@ struct MatchScoresTCAApp: App {
                         },
                         uuid: { UUID() }
                     )
+                    ._printChanges()
                 }
             )
         }

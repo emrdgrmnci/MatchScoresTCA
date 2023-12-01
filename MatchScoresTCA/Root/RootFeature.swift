@@ -58,13 +58,13 @@ struct RootFeature: Reducer {
             }
         }
         Scope(state: \.teamListState, action: /RootFeature.Action.teamList) {
-            TeamListFeature(uuid: uuid)
+            TeamListFeature()
         }
         Scope(state: \.gameListState, action: /RootFeature.Action.gameList) {
-            GameListFeature(uuid: uuid)
+            GameListFeature()
         }
         Scope(state: \.playerListState, action: /RootFeature.Action.playerList) {
-            PlayerListFeature(uuid: uuid)
+            PlayerListFeature()
         }
     }
 }

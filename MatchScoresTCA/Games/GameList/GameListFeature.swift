@@ -9,11 +9,57 @@ import ComposableArchitecture
 import SwiftUI
 
 struct GameListFeature: Reducer {
+    @Dependency(\.matchScoresClient) var matchScoresClient
+    var body: some ReducerOf<GameListFeature> {
+        Reduce { state, action in
+            switch action {
+                case let .fetchGameResponse(.failure(error)):
+                    state.dataLoadingStatus = .error
+                    print(error)
+                    print("DEBUG: Error getting games, try again later.")
+                    return .none
+                    
+                case let .fetchGameResponse(.success(gameData)):
+                    state.totalPages = gameData.meta.totalCount
+                    state.gamesData = gameData.data
+                    state.gameList = IdentifiedArrayOf(uniqueElements: gameData.data)
+                    state.dataLoadingStatus = .loading
+                    return .none
+                    
+                case .onAppear:
+                    state.dataLoadingStatus = .loading
+                    return .run { send in
+                        await send (
+                            .fetchGameResponse(
+                                TaskResult { try await MatchScoresClient.liveValue.fetchGames()
+                                }
+                            )
+                        )
+                    }
+                    
+                case let .searchQueryChanged(query):
+                    state.searchQuery = query
+                    guard !query.isEmpty else {
+                        return .cancel(id: CancelID.game)
+                    }
+                    return .none
+                    
+                case let .searchTokenChanged(tokens):
+                    state.tokens = tokens
+                    guard !tokens.isEmpty else {
+                        return .cancel(id: CancelID.game)
+                    }
+                    return .none
+            }
+        }
+    }
+    
     struct State: Equatable {
         var dataLoadingStatus = DataLoadingStatus.notStarted
         var gameList: IdentifiedArrayOf<GameData> = []
         var searchQuery = ""
-        var games = [GameData]()
+        var totalPages: Int?
+        var gamesData = [GameData]()
         var tokens: [GameInfoToken] = []
         var shouldShowError: Bool {
             dataLoadingStatus == .error
@@ -40,46 +86,5 @@ struct GameListFeature: Reducer {
         case onAppear
     }
     
-    var uuid: @Sendable () -> UUID
     private enum CancelID { case game }
-    
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case let .fetchGameResponse(.failure(error)):
-            state.dataLoadingStatus = .error
-            print(error)
-            print("DEBUG: Error getting games, try again later.")
-            return .none
-            
-        case let .fetchGameResponse(.success(gameData)):
-            state.gameList = IdentifiedArrayOf(uniqueElements: gameData.data)
-            state.games = gameData.data
-            state.dataLoadingStatus = .loading
-            return .none
-            
-        case .onAppear:
-            return .run { send in
-                await send (
-                    .fetchGameResponse(
-                        TaskResult { try await MatchScoresClient.liveValue.fetchGames()
-                        }
-                    )
-                )
-            }
-            
-        case let .searchQueryChanged(query):
-            state.searchQuery = query
-            guard !query.isEmpty else {
-                return .cancel(id: CancelID.game)
-            }
-            return .none
-            
-        case let .searchTokenChanged(tokens):
-            state.tokens = tokens
-            guard !tokens.isEmpty else {
-                return .cancel(id: CancelID.game)
-            }
-            return .none
-        }
-    }
 }
