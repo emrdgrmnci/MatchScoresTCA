@@ -84,10 +84,11 @@ struct GameRowView: View {
                     VStack {
                         Image(avatars[game.visitorTeam.id - 1])
                             .resizable()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 70, height: 70)
                         
                         Text(game.visitorTeam.name)
                             .font(.callout)
+                            .frame(width: 110)
                     }
                     .frame(width: 75)
                     
@@ -110,10 +111,11 @@ struct GameRowView: View {
                     VStack {
                         Image(avatars[game.homeTeam.id - 1])
                             .resizable()
-                            .frame(width: 50, height: 50)
+                            .frame(width: 70, height: 70)
                         
                         Text(game.homeTeam.name)
                             .font(.callout)
+                            .frame(width: 110)
                     }
                     .frame(width: 75)
                 }

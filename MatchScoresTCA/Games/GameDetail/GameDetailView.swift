@@ -11,7 +11,6 @@ import ComposableArchitecture
 struct GameDetailView: View {
     
     @State private var isShowingBottomSheet = false
-    @State private var selectedFilter = "All"
     
     var games: [GameData]?
     var homeTeamID: Int
@@ -38,12 +37,13 @@ struct GameDetailView: View {
                                     VStack {
                                         Image(avatars[game.visitorTeam.id - 1])
                                             .resizable()
-                                            .frame(width: 50, height: 50)
+                                            .frame(width: 70, height: 70)
                                         
                                         Text(game.visitorTeam.name)
                                             .font(.callout)
+                                            .frame(width: 110)
                                     }
-                                    .frame(width: 65)
+                                    .frame(width: 75)
                                     
                                     HStack {
                                         Text("\(game.visitorTeamScore)")
@@ -55,16 +55,22 @@ struct GameDetailView: View {
                                         Text("\(game.homeTeamScore)")
                                             .font(.callout)
                                     }
+                                    .shadow(color: Theme.text.opacity(0.5),
+                                            radius: 2,
+                                            x: 0,
+                                            y: 1
+                                    )
                                     
                                     VStack {
                                         Image(avatars[game.homeTeam.id - 1])
                                             .resizable()
-                                            .frame(width: 50, height: 50)
+                                            .frame(width: 70, height: 70)
                                         
                                         Text(game.homeTeam.name)
                                             .font(.callout)
+                                            .frame(width: 110)
                                     }
-                                    .frame(width: 65)
+                                    .frame(width: 75)
                                 }
                             }
                             .frame(maxWidth: .infinity)

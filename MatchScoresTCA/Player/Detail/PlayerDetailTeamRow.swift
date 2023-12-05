@@ -26,7 +26,7 @@ struct PlayerDetailTeamRow: View {
                         .fill(Color(uiColor: .systemGray))
                 }
             
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading) {
                 Text("Team")
                     .font(.system(.title, design: .rounded))
                     .foregroundColor(Color.theme.primaryTextColor)

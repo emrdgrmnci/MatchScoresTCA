@@ -35,6 +35,7 @@ struct TeamView: View {
                     .font(
                         .system(.headline, design: .rounded)
                     )
+                    .foregroundColor(Color.theme.primaryTextColor)
             }
             .frame(maxHeight: .infinity, alignment: .leading)
             .frame(height: 150.0)

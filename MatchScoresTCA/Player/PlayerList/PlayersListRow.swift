@@ -27,6 +27,7 @@ struct PlayersListRow: View {
                 
                 Text(player.firstName + " " + player.lastName)
                     .font(.system(.headline, design: .rounded))
+                    .foregroundColor(Color.theme.primaryTextColor)
                 Text(player.position)
                     .font(.system(.caption, design: .rounded))
                     .foregroundColor(Color.theme.primaryTextColor)
