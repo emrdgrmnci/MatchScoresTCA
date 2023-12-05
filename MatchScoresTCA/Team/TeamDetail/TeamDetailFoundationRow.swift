@@ -31,7 +31,7 @@ struct TeamDetailFoundationRow: View {
                     .font(.system(.title3, design: .rounded))
                     .foregroundColor(Color.theme.primaryTextColor)
                 
-                Text("1976")
+                Text("-")
                     .font(.system(.title3, design: .rounded))
                     .foregroundColor(Color.theme.primaryTextColor)
             }
