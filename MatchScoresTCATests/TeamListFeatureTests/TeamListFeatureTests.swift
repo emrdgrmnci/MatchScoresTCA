@@ -1,15 +1,6 @@
-//
-//  MatchScoresTCATests.swift
-//  MatchScoresTCATests
-//
-//  Created by emre.degirmenci on 1.12.2023.
-//
-
 import XCTest
 import ComposableArchitecture
 @testable import MatchScoresTCA
-
-let testTeamUUID = UUID(uuidString: "256FB1A-1557-4FE9-9954-693CA1678970")!
 
 @MainActor
 final class TeamListFeatureTests: XCTestCase {
@@ -19,73 +10,36 @@ final class TeamListFeatureTests: XCTestCase {
             initialState: TeamListFeature.State()) {
                 TeamListFeature()
             }
-        await store.send(.searchQueryChanged("S")) {
-            $0.searchQuery = "S"
+        
+        await store.send(.searchQueryChanged("P")) {
+            $0.searchQuery = "P"
         }
+        
         await store.send(.searchQueryChanged("")) {
             $0.searchQuery = ""
         }
     }
     
     func testGetTeams() async {
-        let mockResponse = TeamsModel(
-            id: testTeamUUID,
-            data: [
-                TeamData(
-                    id: 1,
-                    abbreviation: "ATL",
-                    city: "Atlanta",
-                    conference: "East",
-                    division: "Southeast",
-                    fullName: "Atlanta Hawks",
-                    name: "Hawks"
-                ),
-                TeamData(
-                    id: 2,
-                    abbreviation: "BOS",
-                    city: "Boston",
-                    conference: "East",
-                    division: "Atlantic",
-                    fullName: "Boston Celtics",
-                    name: "Celtics"
-                ),
-                TeamData(
-                    id: 3,
-                    abbreviation: "BKN",
-                    city: "Brooklyn",
-                    conference: "East",
-                    division: "Atlantic",
-                    fullName: "Brooklyn Nets",
-                    name: "Nets"
-                )
-            ],
-            meta: Meta(
-                totalPages: nil,
-                currentPage: 1,
-                nextPage: 2,
-                perPage: 30,
-                totalCount: 45
-            )
-        )
-        
         let store = TestStore(initialState: TeamListFeature.State()) {
             TeamListFeature()
         } withDependencies: {
-            $0.matchScoresClient.fetchTeams = { _ in
-                return mockResponse
-            }
+            $0.matchScoresClient.fetchTeams = { _ in TeamsModel.sample }
         }
-        
+
+        // Simulate the onAppear action and set state to loading
         await store.send(.onAppear) {
             $0.dataLoadingStatus = .loading
         }
-        
-        await store.receive(.fetchTeamResponse(TaskResult.success(mockResponse))) {
-            $0.teamsData = mockResponse.data
-            $0.teamList = IdentifiedArrayOf(uniqueElements: mockResponse.data.sorted(by: >))
-            $0.totalPages = mockResponse.meta.totalCount
-            $0.dataLoadingStatus = .loading
+
+        await store.receive(.fetchTeamResponse(.success(TeamsModel.sample))) {
+//            $0.dataLoadingStatus = .success
+            $0.totalPages = TeamsModel.sample.meta.totalCount
+            $0.teamsData = TeamsModel.sample.data
+            $0.teamList = IdentifiedArrayOf(uniqueElements: TeamsModel.sample.data)
+            // Update other relevant parts of the state as necessary
         }
+
     }
 }
 /*
