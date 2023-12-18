@@ -36,11 +36,12 @@ struct PlayerListFeature: Reducer {
                     return .none
                     
                 case let .fetchPlayerNextResponse(.success(playerData)):
+                    state.dataLoadingStatus = .loading
                     state.totalPages = playerData.meta.totalCount
+                    state.playersData = playerData.data
                     state.playerList += IdentifiedArrayOf(
                         uniqueElements: playerData.data.sorted(by: >)
                     )
-                    state.dataLoadingStatus = .loading
                     return .none
                     
                 case .onAppearPlayer:

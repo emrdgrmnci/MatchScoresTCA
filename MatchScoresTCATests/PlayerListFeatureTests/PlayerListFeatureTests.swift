@@ -27,4 +27,23 @@ final class PlayerListFeatureTests: XCTestCase {
             $0.searchQuery = ""
         }
     }
+    
+    func testGetPlayers() async {
+        let store = TestStore(initialState: PlayerListFeature.State()) {
+            PlayerListFeature()
+        } withDependencies: {
+            $0.matchScoresClient.fetchPlayers = { _ in PlayersModel.sample
+            }
+        }
+        
+        await store.send(.onAppearPlayer) {
+            $0.dataLoadingStatus = .loading
+        }
+        
+        await store.receive(.fetchPlayerResponse(.success(PlayersModel.sample))) {
+            $0.totalPages = PlayersModel.sample.meta.totalCount
+            $0.playersData = PlayersModel.sample.data
+            $0.playerList += IdentifiedArrayOf(uniqueElements: PlayersModel.sample.data.sorted(by: >))
+        }
+    }
 }

@@ -17,18 +17,19 @@ struct TeamListFeature: Reducer {
             switch action {
                 case let .fetchTeamResponse(.failure(error)):
                     state.dataLoadingStatus = .error
+                    
                     MatchScoresLogger.log(error, level: .error)
                     MatchScoresLogger.log("DEBUG: getting teams, try again later.", level: .debug)
                     return .none // We don't have any action so, no side-effect to run
                     
                 case let .fetchTeamResponse(.success(teamData)):
+                    state.dataLoadingStatus = .loading
                     state.totalPages =
                     teamData.meta.totalCount
                     state.teamsData = teamData.data
                     state.teamList = IdentifiedArrayOf(
                         uniqueElements: teamData.data.sorted(by: >)
                     )
-                    state.dataLoadingStatus = .loading
                     return .none // We don't have any action so, no side-effect to run
                     
                 case .onAppear:

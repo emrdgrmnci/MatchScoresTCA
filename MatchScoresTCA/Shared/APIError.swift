@@ -11,3 +11,5 @@ enum APIError: Error {
   case downloadError
   case decodingError
 }
+
+extension APIError: Equatable { }
