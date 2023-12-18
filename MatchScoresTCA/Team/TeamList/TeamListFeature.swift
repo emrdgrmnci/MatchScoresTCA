@@ -28,7 +28,7 @@ struct TeamListFeature: Reducer {
                     state.teamList = IdentifiedArrayOf(
                         uniqueElements: teamData.data.sorted(by: >)
                     )
-//                    state.dataLoadingStatus = .loading
+                    state.dataLoadingStatus = .loading
                     return .none // We don't have any action so, no side-effect to run
                     
                 case .onAppear:
