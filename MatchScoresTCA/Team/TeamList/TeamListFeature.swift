@@ -18,7 +18,7 @@ struct TeamListFeature: Reducer {
                 case let .fetchTeamResponse(.failure(error)):
                     state.dataLoadingStatus = .error
                     MatchScoresLogger.log(error, level: .error)
-                    MatchScoresLogger.log("DEBUG: getting players, try again later.", level: .info)
+                    MatchScoresLogger.log("DEBUG: getting teams, try again later.", level: .debug)
                     return .none // We don't have any action so, no side-effect to run
                     
                 case let .fetchTeamResponse(.success(teamData)):
@@ -50,8 +50,8 @@ struct TeamListFeature: Reducer {
                     
                 case let .fetchTeamNextResponse(.failure(error)):
                     state.dataLoadingStatus = .error
-                    print(error)
-                    print("DEBUG: getting teams next page, try again later.")
+                MatchScoresLogger.log(error, level: .error)
+                MatchScoresLogger.log("DEBUG: getting teams next page, try again later.", level: .debug)
                     return .none
                     
                 case let .fetchTeamNextResponse(.success(teamData)):

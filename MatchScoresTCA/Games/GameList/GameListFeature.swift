@@ -15,8 +15,8 @@ struct GameListFeature: Reducer {
             switch action {
                 case let .fetchGameResponse(.failure(error)):
                     state.dataLoadingStatus = .error
-                    print(error)
-                    print("DEBUG: Error getting games, try again later.")
+                MatchScoresLogger.log(error, level: .error)
+                MatchScoresLogger.log("DEBUG: getting games, try again later.", level: .debug)
                     return .none
                     
                 case let .fetchGameResponse(.success(gameData)):
@@ -31,7 +31,7 @@ struct GameListFeature: Reducer {
                     return .run { send in
                         await send (
                             .fetchGameResponse(
-                                TaskResult { try await MatchScoresClient.liveValue.fetchGames()
+                                TaskResult { try await matchScoresClient.fetchGames()
                                 }
                             )
                         )
