@@ -22,8 +22,8 @@ SwiftUI, UIKit, and more, and on any Apple platform (iOS, macOS, tvOS, and watch
 </br>
 </br>
 <p align="center">
-<img src="https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/Light-Mode.gif" width="400px" alt="Image 1">
-<img src="https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/Dark-Mode.gif" width="400px" alt="Image 2">
+<img src="https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/LM.gif" width="400px" alt="Image 1">
+<img src="https://github.com/emrdgrmnci/MatchScoresTCA/blob/main/MatchScoresTCA/Resources/DM.gif" width="400px" alt="Image 2">
 </p>
 </br>
 </br>
@@ -90,15 +90,14 @@ As a basic example, consider a UI that shows a 2-columns grid list along with "#
 
 🧑🏼‍🦳👨🏼‍🦳 To implement this root (grand-parent) feature we create a new type that will house the root domain and behavior of the feature by conforming to Reducer:
 
-```
+```swift
 import ComposableArchitecture
 
-struct RootFeature: Reducer {
-}
+struct RootFeature: Reducer {}
 ```
 In here we need to define a type for the root feature's state, which consists of a selected tab, as well as parent feature states that are `TeamListFeature.State()` and `PlayerListFeature.State()`:
 
-```
+```swift
 struct RootFeature: Reducer {
     struct State: Equatable {
         var selectedTab = Tab.teams
@@ -109,7 +108,7 @@ struct RootFeature: Reducer {
 ```
 We need to define a type for the feature's tabs. There are the obvious tabbar items, such as teams, favorites and players.
 
-```
+```swift
 struct RootFeature: Reducer {
     struct State: Equatable {
         var selectedTab = Tab.teams
@@ -125,54 +124,64 @@ struct RootFeature: Reducer {
 ```
 We also need to define a type for the root (grand-parent) feature's actions. There are the obvious actions, such as tabbar item selected, and the actions that are encapsulate all actions from the child domain/feature of the root (grand-parent) domain/feature, providing a comprehensive and cohesive approach.
 
-```
+```swift
 struct RootFeature: Reducer {
     struct State: Equatable {
         var selectedTab = Tab.teams
         var teamListState = TeamListFeature.State()
+        var gameListState = GameListFeature.State()
         var playerListState = PlayerListFeature.State()
     }
     enum Tab {
+        case stats
         case teams
-        case favorites
+        case games
         case players
+        case favorites
     }
+    
     enum Action: Equatable {
         case tabSelected(Tab)
         case teamList(TeamListFeature.Action)
+        case gameList(GameListFeature.Action)
         case playerList(PlayerListFeature.Action)
     }
 }
 ```
 And then we implement the reduce method which is responsible for handling the actual logic and behavior for the feature. It describes how to change the current state to the next state, and describes what effects need to be executed. Some actions don't need to execute effects, and they can return .none to represent that:
 
-```
+```swift
 struct RootFeature: Reducer {
     struct State: Equatable {
         var selectedTab = Tab.teams
         var teamListState = TeamListFeature.State()
+        var gameListState = GameListFeature.State()
         var playerListState = PlayerListFeature.State()
     }
     
     enum Tab {
+        case stats
         case teams
-        case favorites
+        case games
         case players
+        case favorites
     }
     
     enum Action: Equatable {
         case tabSelected(Tab)
         case teamList(TeamListFeature.Action)
+        case gameList(GameListFeature.Action)
         case playerList(PlayerListFeature.Action)
     }
     
-    // Dependencies
-    var fetchTeams: () async throws -> TeamsModel
-    var fetchPlayers:  @Sendable () async throws -> PlayersModel
+    var fetchTeams: (Int) async throws -> TeamsModel
+    var fetchGames: () async throws -> GamesModel
+    var fetchPlayers: (Int) async throws -> PlayersModel
     var uuid: @Sendable () -> UUID
     
     static let live = Self(
         fetchTeams: MatchScoresClient.liveValue.fetchTeams,
+        fetchGames: MatchScoresClient.liveValue.fetchGames,
         fetchPlayers: MatchScoresClient.liveValue.fetchPlayers,
         uuid: { UUID() }
     )
@@ -184,25 +193,31 @@ struct RootFeature: Reducer {
                 return .none
             case .playerList:
                 return .none
+            case .gameList:
+                return .none
             case .tabSelected(let tab):
                 state.selectedTab = tab
                 return .none
             }
         }
         Scope(state: \.teamListState, action: /RootFeature.Action.teamList) {
-            TeamListFeature(uuid: uuid)
+            TeamListFeature()
         }
-        Scope(state:  \.playerListState, action: /RootFeature.Action.playerList) {
-            PlayerListFeature(uuid: uuid)
+        Scope(state: \.gameListState, action: /RootFeature.Action.gameList) {
+            GameListFeature()
+        }
+        Scope(state: \.playerListState, action: /RootFeature.Action.playerList) {
+            PlayerListFeature()
         }
     }
 }
 ```
 And then finally we define the view that displays the feature. It holds onto a `StoreOf<RootFeature>` so that it can observe all changes to the state and re-render, and we can send all user actions to the store so that state changes. `WithViewStore` is a view helper that transforms a `Store` into a `ViewStore` so that its state can be observed by a view builder:
 
-```
+```swift
 struct RootView: View {
-    let store: StoreOf<RootFeature>
+    
+    let store: Store<RootFeature.State, RootFeature.Action>
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
@@ -220,10 +235,22 @@ struct RootView: View {
                     )
                 )
                 .tabItem {
-                    Image(systemName: "list.bullet")
+                    Image(systemName: "tshirt.fill")
                     Text("Teams")
                 }
                 .tag(RootFeature.Tab.teams)
+                
+                GameListView(
+                    store: self.store.scope(
+                    state: \.gameListState,
+                    action: RootFeature.Action.gameList
+                )
+                )
+                .tabItem {
+                    Image(systemName: "sportscourt.fill")
+                    Text("Games")
+                }
+                .tag(RootFeature.Tab.games)
                 
                 PlayerListView(
                     store: self.store.scope(
@@ -237,25 +264,39 @@ struct RootView: View {
                 }
                 .tag(RootFeature.Tab.players)
             }
-            .accentColor(Color("launch-screen-background"))
+            .background(Color.blue._400)
         }
     }
 }
 ```
 Once we are ready to display these views, for example in the app's entry point, we can construct a store. This can be done by specifying the initial state to start the application in, as well as the reducer that will power the application:
 
-```
+```swift
 import SwiftUI
 import ComposableArchitecture
 
 @main
 struct MatchScoresTCAApp: App {
+    
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             RootView(
-                store: Store(initialState: RootDomain.State()) {
-                    RootDomain(fetchTeams: { TeamsModel.sample}, fetchPlayers: { PlayersModel.sample }, uuid: { UUID() }
+                store: Store(initialState: RootFeature.State()) {
+                    RootFeature(
+                        fetchTeams: { _ in
+                            TeamsModel.sample
+                        },
+                        fetchGames: {
+                            GamesModel.sample
+                        },
+                        fetchPlayers: { _ in 
+                            PlayersModel.sample
+                        },
+                        uuid: { UUID() }
                     )
+                    ._printChanges()
                 }
             )
         }
@@ -265,20 +306,22 @@ struct MatchScoresTCAApp: App {
 
 👱🏻‍♂️👱🏼To implement this parent feature we create a new type that will house the domain and behavior of the feature by conforming to Reducer:
 
-```
+```swift
 import ComposableArchitecture
 
-struct TeamListFeature: Reducer {
-}
+struct TeamListFeature: Reducer {}
 ```
 In here we need to define a type for the feature's state, which consists of a data loading status, as well as an TeamsModel that is an Identified collection which are designed to solve all of the collection problems by providing data structures for working with collections (teams and meta) of identifiable elements in an ergonomic, performant way:
 
-```
+```swift
 struct TeamListFeature: Reducer {
-    struct State: Equatable {
-        var dataLoadingStatus = DataLoadingStatus.notStarted
-        var resultTeamRequestInFlight: TeamsModel?
-        var teamList: IdentifiedArrayOf<TeamFeature.State> = []
+    struct State: Equatable { 
+        var dataLoadingStatus = DataLoadingStatus.notStarted 
+        var teamList: IdentifiedArrayOf<TeamData> = []
+        var searchQuery = "" 
+        var page = 1 
+        var totalPages: Int?
+        var teamsData: [TeamData] = []
         
         var shouldShowError: Bool {
             dataLoadingStatus == .error
@@ -286,118 +329,208 @@ struct TeamListFeature: Reducer {
         
         var isLoading: Bool {
             dataLoadingStatus == .loading
-        }   
+        }
+        
+        var searchResults: IdentifiedArrayOf<TeamData> {
+            guard !searchQuery.isEmpty else {
+                return teamList
+            }
+            
+            let filteredAndSortedArray = teamList
+                .sorted(by: { $0.fullName.lowercased() > $1.fullName.lowercased() })
+                .filter { $0.fullName.lowercased().contains(searchQuery.lowercased()) }
+            
+            return .init(uniqueElements: filteredAndSortedArray)
+        }
+        
+        var hasReachedEnd: Bool { 
+            return teamsData.contains { teamsData in
+                teamsData.id == teamList.last?.id
+            }
+        }
     }
 }
 ```
 We also need to define a type for the feature's actions. There are the obvious action, such as view on appear and the action that occurs when we receive a response from the team/player API request, and define a `team(id: TeamFeature.State.ID, action: TeamFeature.Action)` case to handle actions sent to the child domain `(TeamFeature: Reducer)`:
 
-```
+```swift
 struct TeamListFeature: Reducer {
-    struct State: Equatable {
-        var dataLoadingStatus = DataLoadingStatus.notStarted
-        var teamList: IdentifiedArrayOf<TeamFeature.State> = []
+    struct State: Equatable { 
+        var dataLoadingStatus = DataLoadingStatus.notStarted 
+        var teamList: IdentifiedArrayOf<TeamData> = []
+        var searchQuery = "" 
+        var page = 1 
+        var totalPages: Int?
+        var teamsData: [TeamData] = []
+        
         var shouldShowError: Bool {
             dataLoadingStatus == .error
         }
+        
         var isLoading: Bool {
             dataLoadingStatus == .loading
-        }   
+        }
+        
+        var searchResults: IdentifiedArrayOf<TeamData> {
+            guard !searchQuery.isEmpty else {
+                return teamList
+            }
+            
+            let filteredAndSortedArray = teamList
+                .sorted(by: { $0.fullName.lowercased() > $1.fullName.lowercased() })
+                .filter { $0.fullName.lowercased().contains(searchQuery.lowercased()) }
+            
+            return .init(uniqueElements: filteredAndSortedArray)
+        }
+        
+        var hasReachedEnd: Bool { 
+            return teamsData.contains { teamsData in
+                teamsData.id == teamList.last?.id
+            }
+        }
     }
     enum Action: Equatable {
         case fetchTeamResponse(TaskResult<TeamsModel>)
-        case team(id: TeamFeature.State.ID, action: TeamFeature.Action)
+        case fetchTeamNextResponse(TaskResult<TeamsModel>)
+        case searchQueryChanged(String)
         case onAppear
+        case onAppearTeamForNextPage
     }
 }
 ```
 And then we implement the reduce method which is responsible for handling the actual logic and behavior for the feature. It describes how to change the current state to the next state, and describes what effects need to be executed. Some actions don't need to execute effects, and they can return .none to represent that:
 
-```
+```swift
 struct TeamListFeature: Reducer {
   struct State: Equatable { /* ... */ }
   enum Action: Equatable { /* ... */ }
 
-func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case .fetchTeamResponse(.failure(let error)):
-            state.dataLoadingStatus = .error
-            print(error)
-            print("Error getting products, try again later.")
-            return .none
-            
-        case let .fetchTeamResponse(.success(teamData)):
-            state.teamList = IdentifiedArrayOf(
-                uniqueElements: teamData.data.map {
-                    TeamFeature.State(
-                        id: uuid(),
-                        team: $0
+@Dependency(\.matchScoresClient) var matchScoresClient
+    var body: some ReducerOf<TeamListFeature> {
+        Reduce { state, action in
+            switch action {
+                case let .fetchTeamResponse(.failure(error)):
+                    state.dataLoadingStatus = .error
+                    MatchScoresLogger.log(error, level: .error)
+                    MatchScoresLogger.log("DEBUG: getting teams, try again later.", level: .debug)
+                    return .none // We don't have any action so, no side-effect to run
+                    
+                case let .fetchTeamResponse(.success(teamData)):
+                    state.totalPages =
+                    teamData.meta.totalCount
+                    state.teamsData = teamData.data
+                    state.teamList = IdentifiedArrayOf(
+                        uniqueElements: teamData.data.sorted(by: >)
                     )
-                }
-            )
-            state.dataLoadingStatus = .loading
-            return .none
-            
-        case .onAppear:
-            return .run { send in
-                await send (
-                    .fetchTeamResponse(
-                        TaskResult { try await MatchScoresClient.liveValue.fetchTeams()
-                        }
-                    )
-                )
+                    state.dataLoadingStatus = .loading
+                    return .none // We don't have any action so, no side-effect to run
+                    
+                case .onAppear:
+                    state.dataLoadingStatus = .loading
+                    return .run { [page = state.page] send in
+                        await send (
+                            .fetchTeamResponse(
+                                TaskResult { try await matchScoresClient.fetchTeams(page) }
+                            )
+                        )
+                    }
+                    
+                case let .searchQueryChanged(query):
+                    state.searchQuery = query
+                    guard !query.isEmpty else {
+                        return .cancel(id: CancelID.team)
+                    }
+                    return .none // We don't have any action so, no side-effect to run
+                    
+                case let .fetchTeamNextResponse(.failure(error)):
+                    state.dataLoadingStatus = .error
+                MatchScoresLogger.log(error, level: .error)
+                MatchScoresLogger.log("DEBUG: getting teams next page, try again later.", level: .debug)
+                    return .none
+                    
+                case let .fetchTeamNextResponse(.success(teamData)):
+                    state.totalPages = teamData.meta.totalCount
+                    state.teamList += IdentifiedArrayOf(uniqueElements: teamData.data.sorted(by: >))
+                    state.dataLoadingStatus = .loading
+                    return .none // We don't have any action so, no side-effect to run
+                    
+                case .onAppearTeamForNextPage:
+                    guard state.page != state.totalPages else { return .none }
+                    state.page += 1
+                    
+                    return .run { [page = state.page] send in
+                        await send (
+                            .fetchTeamNextResponse(
+                                TaskResult { try await MatchScoresClient.liveValue.fetchTeams(page) }
+                            )
+                        )
+                    }
             }
-        case .team:
-            return .none
         }
     }
 }
 ```
 And then finally we define the view that displays the feature. It holds onto a `StoreOf<TeamListFeature>` so that it can observe all changes to the state and re-render, and we can send all user actions to the store so that state changes. `ForEachStore` loops over a store’s collection with a store scoped to the domain of each element. This allows us to extract and modularize an element’s view and avoid concerns around collection index math and parent-child store communication:
 
-```
+```swift
 struct TeamListView: View {
-    let store: StoreOf<TeamListFeature>
-    
-    private let columns = Array(
-        repeating: GridItem( .flexible()),
-        count: 2
-    )
-    
+    let store: Store<TeamListFeature.State, TeamListFeature.Action>
+    private let columns = Array(repeating: GridItem(.flexible()),
+                                count: 2)
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            ZStack{
+            ZStack {
                 ScrollView {
                     LazyVGrid(columns: columns,
                               spacing: 16) {
-                        ForEachStore(
-                            self.store.scope(
-                                state: \.teamList,
-                                action: TeamListFeature.Action.team(id:action:)
-                            )
-                        ) {
-                            TeamView(store: $0)
+                        ForEach(viewStore.searchResults) { team in
+                            NavigationLink {
+                                if avatars.indices.contains(team.id - 1) {
+                                    TeamDetailView(team: team, avatars: avatars[team.id - 1])
+                                } else {
+                                    TeamDetailView(team: team, avatars: "basketball.circle.fill")
+                                }
+                            } label: {
+                                TeamView(team: team)
+                                    .onFirstAppear {
+                                        if viewStore.hasReachedEnd {
+                                            viewStore.send(.onAppearTeamForNextPage)
+                                        }
+                                    }
+                            }
                         }
                     }
                               .padding()
-                              .accessibilityIdentifier("peopleGrid")
+                              .accessibilityIdentifier("teamsGrid")
+                }
+                .overlay {
+                    if viewStore.searchResults.isEmpty {
+                        ContentUnavailableView.search
+                    }
                 }
                 .refreshable {
                     viewStore.send(.onAppear)
                 }
+                .searchable(text: viewStore.binding(
+                    get: \.searchQuery, send: TeamListFeature.Action.searchQueryChanged
+                ), placement: .automatic, prompt: "Search NBA Teams")
             }
             .navigationTitle("Teams")
-            .onAppear {
+            .toolbarBackground(Color.blue._300, for: .navigationBar)
+            .toolbarBackground(Color.blue._300, for: .tabBar)
+            .onFirstAppear {
                 viewStore.send(.onAppear)
             }
         }
+        .background(Color.blue._300)
+        .embedInNavigation()
     }
 }
 ```
 
 👶🏼👶🏼 To implement this child (grand-child of `RootFeature` or child of `TeamListFeature`) feature we create a new type that will house the domain and behavior of the child feature by conforming to Reducer:
 
-```
+```swift
 struct TeamFeature: Reducer {
     struct State: Equatable, Identifiable {
         let id: UUID
@@ -409,7 +542,8 @@ struct TeamFeature: Reducer {
 }
 ```
 And then we define the view that displays the feature. It holds onto a `StoreOf<TeamFeature>` so that it can observe all changes to the state and re-render, and we can send all user actions to the store so that state changes. `WithViewStore` is a view helper that transforms a `Store` into a `ViewStore` so that its state can be observed by a view builder:
-```
+
+```swift
 import SwiftUI
 import ComposableArchitecture
 
@@ -439,13 +573,6 @@ struct TeamView: View {
                 .padding(.horizontal, 8)
                 .padding(.vertical, 5)
                 .background(Theme.detailBackground)
-                
-                VStack {
-                    PillView(id: viewStore.team.id)
-                        .padding(.leading, 10)
-                        .padding(.top, 10)
-                }
-                
             }
             .clipShape(
                 RoundedRectangle(cornerRadius: 16,
