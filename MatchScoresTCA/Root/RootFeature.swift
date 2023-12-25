@@ -10,7 +10,7 @@ import Foundation
 
 struct RootFeature: Reducer {
     struct State: Equatable {
-        var selectedTab = Tab.teams
+        var selectedTab = Tab.players
         var teamListState = TeamListFeature.State()
         var gameListState = GameListFeature.State()
         var playerListState = PlayerListFeature.State()

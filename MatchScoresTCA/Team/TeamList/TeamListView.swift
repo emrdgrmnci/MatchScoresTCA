@@ -39,17 +39,18 @@ struct TeamListView: View {
                               .padding()
                               .accessibilityIdentifier("teamsGrid")
                 }
+                .refreshable {
+                    viewStore.send(.resetData) // Reset the data before refreshing
+                    viewStore.send(.onAppear) // Then load new data
+                }
+                .searchable(text: viewStore.binding(
+                    get: \.searchQuery, send: TeamListFeature.Action.searchQueryChanged
+                ), placement: .automatic, prompt: "Search NBA Teams")
                 .overlay {
                     if viewStore.searchResults.isEmpty {
                         ContentUnavailableView.search
                     }
                 }
-                .refreshable {
-                    viewStore.send(.onAppear)
-                }
-                .searchable(text: viewStore.binding(
-                    get: \.searchQuery, send: TeamListFeature.Action.searchQueryChanged
-                ), placement: .automatic, prompt: "Search NBA Teams")
             }
             .navigationTitle("Teams")
             .toolbarBackground(Color.blue._300, for: .navigationBar)
@@ -60,20 +61,5 @@ struct TeamListView: View {
         }
         .background(Color.blue._300)
         .embedInNavigation()
-    }
-}
-
-extension View {
-    @ViewBuilder
-    func embedInNavigation() -> some View {
-        if #available(iOS 16.0, *) {
-            NavigationStack {
-                self
-            }
-        } else {
-            NavigationView {
-                self
-            }
-        }
     }
 }

@@ -13,7 +13,28 @@ struct PlayerDetailStatsView: View {
     @State private var frames: [CGRect] = []
     var player: PlayerData
 
-    let columns = ["BY YEAR", "TEAM", "MIN", "PTS", "FGM", "FGA", "FG%", "3PM", "3PA", "3P%", "FTM", "FTA", "FT%", "OREB", "DREB", "REB", "AST", "STL", "BLK", "PF"]
+    let columns = [
+        "BY YEAR",
+        "TEAM",
+        "MIN",
+        "PTS",
+        "FGM",
+        "FGA",
+        "FG%",
+        "3PM",
+        "3PA",
+        "3P%",
+        "FTM",
+        "FTA",
+        "FT%",
+        "OREB",
+        "DREB",
+        "REB",
+        "AST",
+        "STL",
+        "BLK",
+        "PF"
+    ]
     let byYearKeyPath = \StatsData.game?.season
     
     @State private var columnWidths: [CGFloat] = Array(repeating: 60, count: 20)

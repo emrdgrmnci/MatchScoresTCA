@@ -17,7 +17,7 @@ struct TeamListFeature: Reducer {
             switch action {
                 case let .fetchTeamResponse(.failure(error)):
                     state.dataLoadingStatus = .error
-                    
+                    state.isLoading = false
                     MatchScoresLogger.log(error, level: .error)
                     MatchScoresLogger.log("DEBUG: getting teams, try again later.", level: .debug)
                     return .none // We don't have any action so, no side-effect to run
@@ -30,9 +30,11 @@ struct TeamListFeature: Reducer {
                     state.teamList = IdentifiedArrayOf(
                         uniqueElements: teamData.data.sorted(by: >)
                     )
+                    state.isLoading = false
                     return .none // We don't have any action so, no side-effect to run
                     
                 case .onAppear:
+                    state.isLoading = true
                     state.dataLoadingStatus = .loading
                     return .run { [page = state.page] send in
                         await send (
@@ -43,25 +45,41 @@ struct TeamListFeature: Reducer {
                     }
                     
                 case let .searchQueryChanged(query):
+                    state.dataLoadingStatus = .loading
+                    state.isLoading = true
                     state.searchQuery = query
-                    guard !query.isEmpty else {
+                    
+                    if query.isEmpty {
+                        state.isLoading = false
                         return .cancel(id: CancelID.team)
+                    } else {
+                        state.isLoading = false
                     }
+//                    guard !query.isEmpty else {
+//                        state.isLoading = false
+//                        return .cancel(id: CancelID.team)
+//                    }
+                    
                     return .none // We don't have any action so, no side-effect to run
                     
                 case let .fetchTeamNextResponse(.failure(error)):
                     state.dataLoadingStatus = .error
+                    state.isLoading = false
                 MatchScoresLogger.log(error, level: .error)
                 MatchScoresLogger.log("DEBUG: getting teams next page, try again later.", level: .debug)
                     return .none
                     
                 case let .fetchTeamNextResponse(.success(teamData)):
+                    state.dataLoadingStatus = .loading
+                    state.isLoading = true
                     state.totalPages = teamData.meta.totalCount
                     state.teamList += IdentifiedArrayOf(uniqueElements: teamData.data.sorted(by: >))
-                    state.dataLoadingStatus = .loading
+                    state.isLoading = false
                     return .none // We don't have any action so, no side-effect to run
                     
                 case .onAppearTeamForNextPage:
+                    state.dataLoadingStatus = .loading
+                    state.isLoading = true
                     guard state.page != state.totalPages else { return .none }
                     state.page += 1
                     
@@ -72,6 +90,12 @@ struct TeamListFeature: Reducer {
                             )
                         )
                     }
+                    
+                case .resetData:
+                    state.teamsData.removeAll()
+                    state.teamList.removeAll()
+                    state.page = 1
+                    return .none
             }
         }
     }
@@ -83,13 +107,10 @@ struct TeamListFeature: Reducer {
         var page = 1 // Int for pagination
         var totalPages: Int? // We'll have Optional Int TotalPages count
         var teamsData: [TeamData] = []
+        var isLoading: Bool = false
         
         var shouldShowError: Bool {
             dataLoadingStatus == .error
-        }
-        
-        var isLoading: Bool {
-            dataLoadingStatus == .loading
         }
         
         var searchResults: IdentifiedArrayOf<TeamData> {
@@ -120,6 +141,7 @@ struct TeamListFeature: Reducer {
         case searchQueryChanged(String)
         case onAppear
         case onAppearTeamForNextPage
+        case resetData
     }
     
     private enum CancelID { case team }

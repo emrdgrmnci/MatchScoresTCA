@@ -11,6 +11,19 @@ public extension View {
     func onFirstAppear(_ action: @escaping () -> ()) -> some View {
         modifier(FirstAppear(action: action))
     }
+    
+    @ViewBuilder
+    func embedInNavigation() -> some View {
+        if #available(iOS 16.0, *) {
+            NavigationStack {
+                self
+            }
+        } else {
+            NavigationView {
+                self
+            }
+        }
+    }
 }
 
 private struct FirstAppear: ViewModifier {

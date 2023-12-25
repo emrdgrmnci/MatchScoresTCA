@@ -35,24 +35,25 @@ struct PlayerListView: View {
                               .padding()
                               .accessibilityIdentifier("playerGrid")
                 }
-                .overlay {
-                    if viewStore.searchResults.isEmpty {
-                        ContentUnavailableView.search
-                    }
-                }
                 .refreshable {
-                    viewStore.send(.onAppearPlayer)
+                    viewStore.send(.resetData) // Reset the data before refreshing
+                    viewStore.send(.onAppear) // Then load new data
                 }
                 .searchable(text: viewStore.binding(
                     get: \.searchQuery, send: PlayerListFeature.Action.searchQueryChanged
                 ), placement: .automatic, prompt: "Search NBA Players")
                 .accessibilityIdentifier("Search NBA Players")
+                .overlay {
+                    if viewStore.searchResults.isEmpty {
+                        ContentUnavailableView.search
+                    }
+                }
             }
             .navigationTitle("Players")
             .toolbarBackground(Color.blue._300, for: .navigationBar)
             .toolbarBackground(Color.blue._300, for: .tabBar)
             .onFirstAppear {
-                viewStore.send(.onAppearPlayer)
+                viewStore.send(.onAppear)
             }
         }
         .background(Color.blue._300)

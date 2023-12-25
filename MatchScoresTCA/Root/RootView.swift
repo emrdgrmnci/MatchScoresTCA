@@ -10,7 +10,7 @@ import ComposableArchitecture
 
 struct RootView: View {
     
-    let store: Store<RootFeature.State, RootFeature.Action>
+    let store: StoreOf<RootFeature>
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in

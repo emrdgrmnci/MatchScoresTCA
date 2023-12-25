@@ -36,7 +36,7 @@ final class PlayerListFeatureTests: XCTestCase {
             }
         }
         
-        await store.send(.onAppearPlayer) {
+        await store.send(.onAppear) {
             $0.dataLoadingStatus = .loading
         }
         

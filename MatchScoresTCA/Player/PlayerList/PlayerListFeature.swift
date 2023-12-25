@@ -11,70 +11,85 @@ import SwiftUI
 /// Type that represents the state of the
 /// This is everything to do its job, including all the state, the view needs, as well as any state that the feature may need to use internally.
 struct PlayerListFeature: Reducer {
+    @Dependency(\.matchScoresClient) var matchScoresClient
     var body: some ReducerOf<PlayerListFeature> {
         Reduce { state, action in
             switch action {
-                case .fetchPlayerResponse(.failure(let error)):
+                case let .fetchPlayerResponse(.failure(error)):
                     state.dataLoadingStatus = .error
+                    state.isLoading = false
                     MatchScoresLogger.log(error, level: .error)
-                    MatchScoresLogger.log("DEBUG: getting players, try again later.", level: .info)
+                    MatchScoresLogger.log("DEBUG: getting players, try again later.", level: .debug)
                     return .none
                     
                 case let .fetchPlayerResponse(.success(playerData)):
+                    state.dataLoadingStatus = .loading
                     state.totalPages = playerData.meta.totalCount
                     state.playersData = playerData.data
                     state.playerList = IdentifiedArrayOf(
                         uniqueElements: playerData.data.sorted(by: >)
                     )
-                    state.dataLoadingStatus = .loading
+                    state.isLoading = false
                     return .none // We don't have any action so, no side-effect to run
                     
                 case let .fetchPlayerNextResponse(.failure(error)):
                     state.dataLoadingStatus = .error
-                    print(error)
-                    print("DEBUG: getting players, try again later.")
+                    state.isLoading = false
+                    MatchScoresLogger.log(error, level: .error)
+                    MatchScoresLogger.log("DEBUG: getting players, try again later.", level: .debug)
                     return .none
                     
                 case let .fetchPlayerNextResponse(.success(playerData)):
                     state.dataLoadingStatus = .loading
+                    state.isLoading = true
                     state.totalPages = playerData.meta.totalCount
                     state.playersData = playerData.data
                     state.playerList += IdentifiedArrayOf(
                         uniqueElements: playerData.data.sorted(by: >)
                     )
+                    state.isLoading = false
                     return .none
                     
-                case .onAppearPlayer:
+                case .onAppear:
+                    state.isLoading = true
                     state.dataLoadingStatus = .loading
                     return .run { [page = state.page] send in
                         await send (
                             .fetchPlayerResponse(
-                                TaskResult { try await MatchScoresClient.liveValue.fetchPlayers(page) }
+                                TaskResult { 
+                                    try await matchScoresClient.fetchPlayers(page)
+                                }
                             )
                         )
                     }
-                    
                 case let .searchQueryChanged(query):
+                    state.dataLoadingStatus = .loading
+                    state.isLoading = true
                     state.searchQuery = query
                     guard !query.isEmpty else {
+                        state.isLoading = false
                         return .cancel(id: CancelID.player)
                     }
                     return .none
                     
-                case .fetchStatsResponse(.failure(let error)):
+                case let .fetchStatsResponse(.failure(error)):
                     state.dataLoadingStatus = .error
-                    print(error)
-                    print("DEBUG: getting stats, try again later.")
+                    state.isLoading = false
+                    MatchScoresLogger.log(error, level: .error)
+                    MatchScoresLogger.log("DEBUG: getting stats, try again later.", level: .debug)
                     return .none
                     
                 case let .fetchStatsResponse(.success(statsData)):
+                    state.dataLoadingStatus = .loading
+                    state.isLoading = false
                     state.statsList = IdentifiedArrayOf(
                         uniqueElements: statsData.data
                     )
-                    state.dataLoadingStatus = .loading
                     return .none
                     
                 case .onAppearPlayerForNextPage:
+                    state.dataLoadingStatus = .loading
+                    state.isLoading = true
                     guard state.page != state.totalPages else { return .none }
                     state.page += 1
                     
@@ -85,6 +100,11 @@ struct PlayerListFeature: Reducer {
                             )
                         )
                     }
+                    
+                case .resetData:
+                    state.playersData.removeAll()
+                    state.playerList.removeAll()
+                    return .none
             }
         }
     }
@@ -97,13 +117,10 @@ struct PlayerListFeature: Reducer {
         var page = 1 // Int for pagination
         var totalPages: Int? // We'll have Optional Int TotalPages count
         var playersData: [PlayerData] = []
+        var isLoading: Bool = false
         
         var shouldShowError: Bool {
             dataLoadingStatus == .error
-        }
-        
-        var isLoading: Bool {
-            dataLoadingStatus == .loading
         }
         
         var searchResults: IdentifiedArrayOf<PlayerData> {
@@ -136,8 +153,9 @@ struct PlayerListFeature: Reducer {
         case fetchPlayerNextResponse(TaskResult<PlayersModel>)
         case fetchStatsResponse(TaskResult<StatsModel>)
         case searchQueryChanged(String)
-        case onAppearPlayer
+        case onAppear
         case onAppearPlayerForNextPage
+        case resetData
     }
     
     private enum CancelID { case player }
