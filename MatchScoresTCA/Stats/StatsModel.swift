@@ -51,7 +51,7 @@ struct Game: Codable, Equatable, Identifiable, Sendable {
     let homeTeamID, homeTeamScore, period: Int?
     let postseason: Bool?
     let season: Int?
-    let status: Status?
+//    let status: Status?
     let time: Time?
     let visitorTeamID, visitorTeamScore: Int?
 
@@ -59,7 +59,7 @@ struct Game: Codable, Equatable, Identifiable, Sendable {
         case id, date
         case homeTeamID = "home_team_id"
         case homeTeamScore = "home_team_score"
-        case period, postseason, season, status, time
+        case period, postseason, season/*, status*/, time
         case visitorTeamID = "visitor_team_id"
         case visitorTeamScore = "visitor_team_score"
     }
@@ -131,7 +131,7 @@ extension StatsModel {
                         period: 4,
                         postseason: true,
                         season: 2,
-                        status: Status.statusFinal,
+//                        status: Status.statusFinal,
                         time: Time.empty,
                         visitorTeamID: 12,
                         visitorTeamScore: 90

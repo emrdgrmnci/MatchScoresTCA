@@ -21,9 +21,12 @@ final class PlayerListFeatureTests: XCTestCase {
                 PlayerListFeature()
             }
         await store.send(.searchQueryChanged("S")) {
+            $0.dataLoadingStatus = .loading
+            $0.isLoading = true
             $0.searchQuery = "S"
         }
         await store.send(.searchQueryChanged("")) {
+            $0.isLoading = false
             $0.searchQuery = ""
         }
     }
@@ -37,10 +40,13 @@ final class PlayerListFeatureTests: XCTestCase {
         }
         
         await store.send(.onAppear) {
+            $0.isLoading = true
             $0.dataLoadingStatus = .loading
         }
         
         await store.receive(.fetchPlayerResponse(.success(PlayersModel.sample))) {
+            $0.dataLoadingStatus = .loading
+            $0.isLoading = false
             $0.totalPages = PlayersModel.sample.meta.totalCount
             $0.playersData = PlayersModel.sample.data
             $0.playerList += IdentifiedArrayOf(uniqueElements: PlayersModel.sample.data.sorted(by: >))

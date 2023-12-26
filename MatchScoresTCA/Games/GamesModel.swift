@@ -22,7 +22,7 @@ struct GameData: Codable, Equatable, Identifiable, Sendable {
     let homeTeamScore, period: Int
     let postseason: Bool
     let season: Int
-    let status: Status
+//    let status: Status
     let visitorTeam: TeamData
     let visitorTeamScore: Int
     
@@ -30,7 +30,7 @@ struct GameData: Codable, Equatable, Identifiable, Sendable {
         case id, date
         case homeTeam = "home_team"
         case homeTeamScore = "home_team_score"
-        case period, postseason, season, status
+        case period, postseason, season/*, status*/
         case visitorTeam = "visitor_team"
         case visitorTeamScore = "visitor_team_score"
     }
@@ -53,13 +53,15 @@ enum Division: String, Codable {
     case northeast = "Northeast"
 }
 
-enum Status: String, Codable {
-    case statusFinal = "Final"
-}
+//enum Status: String, Codable {
+//    case statusFinal = "Final"
+//}
 
 extension GamesModel {
     static var sample: GamesModel {
-        .init(data: [
+        return GamesModel(
+            id: UUID(uuidString: "12345678-1234-1234-1234-1234567890ab")!,
+            data: [
             GameData(
                 id: 2,
                 date: "12.02.2019",
@@ -76,7 +78,7 @@ extension GamesModel {
                 period: 2,
                 postseason: true,
                 season: 4,
-                status: Status.statusFinal,
+//                status: Status.statusFinal,
                 visitorTeam: TeamData(
                     id: 2,
                     abbreviation: "BOS",
@@ -94,6 +96,7 @@ extension GamesModel {
                 nextPage: 2,
                 perPage: 30,
                 totalCount: 45
-              ))
+              )
+        )
     }
 }

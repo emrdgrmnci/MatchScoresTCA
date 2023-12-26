@@ -7,24 +7,47 @@
 
 import XCTest
 import ComposableArchitecture
-
 @testable import MatchScoresTCA
 
 let testGameUUID = UUID(uuidString: "C2A248E6-5CDD-4536-A54C-8E616DB50774")
 
 @MainActor
 final class GameListFeatureTests: XCTestCase {
-
+    
     func testSearchAndClearQuery() async {
         let store = TestStore(
             initialState: GameListFeature.State()) {
                 GameListFeature()
             }
         await store.send(.searchQueryChanged("S")) {
+            $0.dataLoadingStatus = .loading
+            $0.isLoading = true
             $0.searchQuery = "S"
         }
         await store.send(.searchQueryChanged("")) {
+            $0.isLoading = false
             $0.searchQuery = ""
+        }
+    }
+    
+    func testGetGames() async {
+        let store = TestStore(initialState: GameListFeature.State()) {
+            GameListFeature()
+        } withDependencies: {
+            $0.matchScoresClient.fetchGames = { GamesModel.sample }
+        }
+        
+        await store.send(.onAppear) {
+            $0.isLoading = true
+            $0.dataLoadingStatus = .loading
+        }
+        
+        await store.receive(.fetchGameResponse(.success(GamesModel.sample))) {
+            $0.dataLoadingStatus = .loading
+            $0.isLoading = false
+            $0.totalPages = GamesModel.sample.meta.totalCount
+            $0.gamesData = GamesModel.sample.data
+            $0.gameList += IdentifiedArrayOf(uniqueElements: GamesModel.sample.data)
         }
     }
 }

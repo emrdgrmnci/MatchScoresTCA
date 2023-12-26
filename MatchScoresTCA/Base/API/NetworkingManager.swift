@@ -43,7 +43,7 @@ final class NetworkingManager: NetworkingManagerImpl {
         
         let decoder = JSONDecoder()
         let res = try decoder.decode(T.self, from: data)
-        MatchScoresLogger.log("JSON DATA RESPONSE: \(res)", level: .info)
+        debugPrint("JSON DATA RESPONSE: \(res)")
         return res
     }
     

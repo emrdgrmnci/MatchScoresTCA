@@ -11,7 +11,7 @@ import ComposableArchitecture
 struct MatchScoresClient {
     var fetchTeams: @Sendable (Int) async throws -> TeamsModel
     var fetchPlayers: @Sendable (Int) async throws -> PlayersModel
-    var fetchGames: () async throws -> GamesModel
+    var fetchGames: @Sendable () async throws -> GamesModel
     var fetchStats: (String) async throws -> StatsModel
     var error: NetworkingManager.NetworkingError?
 }

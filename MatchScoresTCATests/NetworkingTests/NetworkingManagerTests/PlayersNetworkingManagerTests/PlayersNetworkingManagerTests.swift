@@ -35,6 +35,17 @@ final class PlayersNetworkingManagerTests: XCTestCase {
         XCTAssertEqual(playersResponse?.meta.nextPage, 2, "Next page page should be 2")
         XCTAssertEqual(playersResponse?.meta.perPage, 25, "Page number should be 25")
         XCTAssertEqual(playersResponse?.meta.totalCount, 5130, "Total page count should be 5130")
+        XCTAssertEqual(playersResponse?.data[0].id, 14, "Player ID should be 14")
+        XCTAssertEqual(playersResponse?.data[0].firstName, "Ike", "Player name should be Ike")
+        XCTAssertEqual(playersResponse?.data[0].lastName, "Anigbogu", "Player last name should be Anigbogu")
+        XCTAssertEqual(playersResponse?.data[0].position, "C", "Player position should be 'C'")
+        XCTAssertEqual(playersResponse?.data[0].team.id, 12, "Player team ID should be 12")
+        XCTAssertEqual(playersResponse?.data[0].team.abbreviation, "IND", "Player team abbreviation should be IND")
+        XCTAssertEqual(playersResponse?.data[0].team.city, "Indiana", "Player team city should be Indiana")
+        XCTAssertEqual(playersResponse?.data[0].team.conference, "East", "Player team conference should be East")
+        XCTAssertEqual(playersResponse?.data[0].team.division, "Central", "Player team division should be Central")
+        XCTAssertEqual(playersResponse?.data[0].team.fullName, "Indiana Pacers", "Player team full name should be Indiana Pacers")
+        XCTAssertEqual(playersResponse?.data[0].team.name, "Pacers", "Player team full name should be Pacers")
     }
     
     func test_with_players_model_equal(_ model1: PlayersModel, _ model2: PlayersModel) async throws {

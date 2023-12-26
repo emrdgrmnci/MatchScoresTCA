@@ -25,7 +25,7 @@ final class PlayerListViewUITests: XCTestCase {
         let searchField = app.searchFields["Search NBA Players"]
         XCTAssertTrue(searchField.exists, "Search field does not exist")
         searchField.tap()
-        searchField.typeText("Alex Abrines")
+        searchField.typeText("Victor Alexander")
 
         let predicate = NSPredicate(format: "exists == true")
         let playerGrid = app.otherElements["playerGrid"]
@@ -36,8 +36,8 @@ final class PlayerListViewUITests: XCTestCase {
         XCTAssertEqual(result, .completed, "Grid for displaying players did not load in time")
         
         // Verify if a specific player appears in the search results
-        let specificTeam = app.staticTexts["Alex Abrines"]
-        XCTAssertTrue(specificTeam.exists, "Expected player not found in search results")
+        let specificPlayer = app.staticTexts["Victor Alexander"]
+        XCTAssertTrue(specificPlayer.exists, "Expected player not found in search results")
         
         let cancelButton = app.buttons["Cancel"]
         XCTAssertTrue(cancelButton.exists, "Cancel button does not exist")

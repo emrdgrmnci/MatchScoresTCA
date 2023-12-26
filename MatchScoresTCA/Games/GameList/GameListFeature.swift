@@ -15,18 +15,21 @@ struct GameListFeature: Reducer {
             switch action {
                 case let .fetchGameResponse(.failure(error)):
                     state.dataLoadingStatus = .error
-                MatchScoresLogger.log(error, level: .error)
-                MatchScoresLogger.log("DEBUG: getting games, try again later.", level: .debug)
+                    state.isLoading = false
+                    MatchScoresLogger.log(error, level: .error)
+                    MatchScoresLogger.log("DEBUG: getting games, try again later.", level: .debug)
                     return .none
                     
                 case let .fetchGameResponse(.success(gameData)):
+                    state.dataLoadingStatus = .loading
                     state.totalPages = gameData.meta.totalCount
                     state.gamesData = gameData.data
                     state.gameList = IdentifiedArrayOf(uniqueElements: gameData.data)
-                    state.dataLoadingStatus = .loading
+                    state.isLoading = false
                     return .none
                     
                 case .onAppear:
+                    state.isLoading = true
                     state.dataLoadingStatus = .loading
                     return .run { send in
                         await send (
@@ -38,15 +41,23 @@ struct GameListFeature: Reducer {
                     }
                     
                 case let .searchQueryChanged(query):
+                    state.dataLoadingStatus = .loading
+                    state.isLoading = true
                     state.searchQuery = query
+                    
                     guard !query.isEmpty else {
+                        state.isLoading = false
                         return .cancel(id: CancelID.game)
                     }
                     return .none
                     
                 case let .searchTokenChanged(tokens):
+                    state.dataLoadingStatus = .loading
+                    state.isLoading = true
                     state.tokens = tokens
+                    
                     guard !tokens.isEmpty else {
+                        state.isLoading = false
                         return .cancel(id: CancelID.game)
                     }
                     return .none
@@ -59,23 +70,22 @@ struct GameListFeature: Reducer {
         var gameList: IdentifiedArrayOf<GameData> = []
         var searchQuery = ""
         var totalPages: Int?
-        var gamesData = [GameData]()
+        var gamesData: [GameData] = []
         var tokens: [GameInfoToken] = []
+        var isLoading: Bool = false
+        
         var shouldShowError: Bool {
             dataLoadingStatus == .error
-        }
-        
-        var isLoading: Bool {
-            dataLoadingStatus == .loading
         }
         
         var searchResults: IdentifiedArrayOf<GameData> {
             guard !searchQuery.isEmpty else {
                 return gameList
             }
-            return gameList.filter { $0.homeTeam.fullName.lowercased().contains(searchQuery.lowercased()) || $0.visitorTeam.fullName.lowercased().contains(searchQuery.lowercased()) ||
+            let filteredAndSortedArray = gameList.filter { $0.homeTeam.fullName.lowercased().contains(searchQuery.lowercased()) || $0.visitorTeam.fullName.lowercased().contains(searchQuery.lowercased()) ||
                 $0.date.lowercased().contains(searchQuery.lowercased())
             }
+            return .init(uniqueElements: filteredAndSortedArray)
         }
     }
     
