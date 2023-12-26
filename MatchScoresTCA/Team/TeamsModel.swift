@@ -53,7 +53,7 @@ struct Meta: Codable, Equatable {
 }
 
 extension TeamsModel {
-    static var sample: TeamsModel {
+    static var mockTeamModel: TeamsModel {
         return TeamsModel(
             id: UUID(uuidString: "12345678-1234-1234-1234-1234567890ab")!,
             data: [

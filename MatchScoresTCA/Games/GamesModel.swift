@@ -58,7 +58,7 @@ enum Division: String, Codable {
 //}
 
 extension GamesModel {
-    static var sample: GamesModel {
+    static var mockGameModel: GamesModel {
         return GamesModel(
             id: UUID(uuidString: "12345678-1234-1234-1234-1234567890ab")!,
             data: [

@@ -22,6 +22,16 @@ struct TeamListFeature: Reducer {
                     MatchScoresLogger.log("DEBUG: getting teams, try again later.", level: .debug)
                     return .none // We don't have any action so, no side-effect to run
                     
+                case .onAppear:
+                    state.isLoading = true
+                    state.dataLoadingStatus = .loading
+                    return .run { [page = state.page] send in // Side-effect
+                        await send (
+                            .fetchTeamResponse(
+                                TaskResult { try await matchScoresClient.fetchTeams(page) }
+                            )
+                        )
+                    }
                 case let .fetchTeamResponse(.success(teamData)):
                     state.dataLoadingStatus = .loading
                     state.totalPages =
@@ -32,17 +42,6 @@ struct TeamListFeature: Reducer {
                     )
                     state.isLoading = false
                     return .none // We don't have any action so, no side-effect to run
-                    
-                case .onAppear:
-                    state.isLoading = true
-                    state.dataLoadingStatus = .loading
-                    return .run { [page = state.page] send in
-                        await send (
-                            .fetchTeamResponse(
-                                TaskResult { try await matchScoresClient.fetchTeams(page) }
-                            )
-                        )
-                    }
                     
                 case let .searchQueryChanged(query):
                     state.dataLoadingStatus = .loading
@@ -55,12 +54,8 @@ struct TeamListFeature: Reducer {
                     } else {
                         state.isLoading = false
                     }
-//                    guard !query.isEmpty else {
-//                        state.isLoading = false
-//                        return .cancel(id: CancelID.team)
-//                    }
-                    
-                    return .none // We don't have any action so, no side-effect to run
+                    return .none // We don't have any action so, 
+                    // no side-effect to run
                     
                 case let .fetchTeamNextResponse(.failure(error)):
                     state.dataLoadingStatus = .error
@@ -133,7 +128,7 @@ struct TeamListFeature: Reducer {
     }
     
     /// Listing cases for each thing the user can do in the UI such as fetching API data
-    /// User started typing into searchfield
+    /// User started typing into searchField
     /// Team data shown
     enum Action: Equatable {
         case fetchTeamResponse(TaskResult<TeamsModel>)

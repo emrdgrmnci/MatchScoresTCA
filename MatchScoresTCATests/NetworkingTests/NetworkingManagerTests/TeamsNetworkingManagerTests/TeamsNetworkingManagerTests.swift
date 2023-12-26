@@ -86,7 +86,6 @@ final class TeamsNetworkingManagerTests: XCTestCase {
     }
     
     func test_with_teams_unsuccessful_response_code_in_invalid_range_is_invalid() async {
-        
         let invalidStatusCode = 400
         
         MockURLSessionProtocol.loadingHandler = {
@@ -116,7 +115,6 @@ final class TeamsNetworkingManagerTests: XCTestCase {
                 ),
                 "Error should be a networking error which throws an invalid status code"
             )
-            
         }
     }
     

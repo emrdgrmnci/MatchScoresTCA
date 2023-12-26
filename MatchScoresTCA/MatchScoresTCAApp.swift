@@ -19,13 +19,13 @@ struct MatchScoresTCAApp: App {
                 store: Store(initialState: RootFeature.State()) {
                     RootFeature(
                         fetchTeams: { _ in
-                            TeamsModel.sample
+                            TeamsModel.mockTeamModel
                         },
                         fetchGames: {
-                            GamesModel.sample
+                            GamesModel.mockGameModel
                         },
                         fetchPlayers: { _ in 
-                            PlayersModel.sample
+                            PlayersModel.mockPlayerModel
                         },
                         uuid: { UUID() }
                     )

@@ -35,7 +35,7 @@ final class PlayerListFeatureTests: XCTestCase {
         let store = TestStore(initialState: PlayerListFeature.State()) {
             PlayerListFeature()
         } withDependencies: {
-            $0.matchScoresClient.fetchPlayers = { _ in PlayersModel.sample
+            $0.matchScoresClient.fetchPlayers = { _ in PlayersModel.mockPlayerModel
             }
         }
         
@@ -44,12 +44,12 @@ final class PlayerListFeatureTests: XCTestCase {
             $0.dataLoadingStatus = .loading
         }
         
-        await store.receive(.fetchPlayerResponse(.success(PlayersModel.sample))) {
+        await store.receive(.fetchPlayerResponse(.success(PlayersModel.mockPlayerModel))) {
             $0.dataLoadingStatus = .loading
             $0.isLoading = false
-            $0.totalPages = PlayersModel.sample.meta.totalCount
-            $0.playersData = PlayersModel.sample.data
-            $0.playerList += IdentifiedArrayOf(uniqueElements: PlayersModel.sample.data.sorted(by: >))
+            $0.totalPages = PlayersModel.mockPlayerModel.meta.totalCount
+            $0.playersData = PlayersModel.mockPlayerModel.data
+            $0.playerList += IdentifiedArrayOf(uniqueElements: PlayersModel.mockPlayerModel.data.sorted(by: >))
         }
     }
 }

@@ -106,7 +106,7 @@ struct Team: Codable, Equatable, Identifiable, Sendable {
 }
 
 extension StatsModel {
-    static var sample: StatsModel {
+    static var mockStatsModel: StatsModel {
         .init(
             data: [
                 StatsData(

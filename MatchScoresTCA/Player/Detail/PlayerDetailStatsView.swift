@@ -224,7 +224,7 @@ extension View {
 
 struct PlayerDetailStatsView_Previews: PreviewProvider {
     static var previews: some View {
-        let samplePlayer = PlayersModel.sample
+        let samplePlayer = PlayersModel.mockPlayerModel
         
         return NavigationView {
             PlayerDetailStatsView(player: samplePlayer.data.first!)

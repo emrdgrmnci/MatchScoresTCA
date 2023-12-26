@@ -34,7 +34,7 @@ final class GameListFeatureTests: XCTestCase {
         let store = TestStore(initialState: GameListFeature.State()) {
             GameListFeature()
         } withDependencies: {
-            $0.matchScoresClient.fetchGames = { GamesModel.sample }
+            $0.matchScoresClient.fetchGames = { GamesModel.mockGameModel }
         }
         
         await store.send(.onAppear) {
@@ -42,12 +42,12 @@ final class GameListFeatureTests: XCTestCase {
             $0.dataLoadingStatus = .loading
         }
         
-        await store.receive(.fetchGameResponse(.success(GamesModel.sample))) {
+        await store.receive(.fetchGameResponse(.success(GamesModel.mockGameModel))) {
             $0.dataLoadingStatus = .loading
             $0.isLoading = false
-            $0.totalPages = GamesModel.sample.meta.totalCount
-            $0.gamesData = GamesModel.sample.data
-            $0.gameList += IdentifiedArrayOf(uniqueElements: GamesModel.sample.data)
+            $0.totalPages = GamesModel.mockGameModel.meta.totalCount
+            $0.gamesData = GamesModel.mockGameModel.data
+            $0.gameList += IdentifiedArrayOf(uniqueElements: GamesModel.mockGameModel.data)
         }
     }
 }

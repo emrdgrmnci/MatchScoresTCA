@@ -11,13 +11,15 @@ import XCTest
 final class TeamsNetworkingEndpointTests: XCTestCase {
     
     func test_with_teams_endpoint_request_is_valid() {
-        
         let endpoint = Endpoint.teams(page: 1)
-        
         XCTAssertEqual(endpoint.host, "www.balldontlie.io", "The host should be balldontlie.io")
         XCTAssertEqual(endpoint.path, "/api/v1/teams", "The path should be /api/v1/teams")
         XCTAssertEqual(endpoint.methodType, .GET, "The method type should be GET")
         
-        XCTAssertEqual(endpoint.url?.absoluteString, "https://www.balldontlie.io/api/v1/teams?page=1", "The generated URL doesn't match our endpoint")
+        XCTAssertEqual(
+            endpoint.url?.absoluteString,
+            "https://www.balldontlie.io/api/v1/teams?page=1",
+            "The generated URL doesn't match our endpoint"
+        )
     }
 }

@@ -40,7 +40,7 @@ extension PlayerData: Comparable {
 }
 
 extension PlayersModel {
-    static var sample: PlayersModel {
+    static var mockPlayerModel: PlayersModel {
         .init(
             data: [
                 PlayerData(
