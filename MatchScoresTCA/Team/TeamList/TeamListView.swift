@@ -40,8 +40,10 @@ struct TeamListView: View {
                               .accessibilityIdentifier("teamsGrid")
                 }
                 .refreshable {
-                    viewStore.send(.resetData) // Reset the data before refreshing
-                    viewStore.send(.onAppear) // Then load new data
+                    if viewStore.searchResults.isEmpty && viewStore.isLoading == false {
+                        viewStore.send(.resetData) // Reset the data before refreshing
+                        viewStore.send(.onAppear) // Then load new data
+                    }
                 }
                 .searchable(text: viewStore.binding(
                     get: \.searchQuery, send: TeamListFeature.Action.searchQueryChanged

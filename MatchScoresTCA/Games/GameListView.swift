@@ -52,7 +52,9 @@ struct GameListContentView: View {
             .toolbarBackground(Color.blue._300, for: .tabBar)
             .frame(maxWidth: .infinity)
             .refreshable {
-                store.send(.onAppear)
+                if viewStore.searchResults.isEmpty && viewStore.isLoading == false {
+                    viewStore.send(.onAppear) // Then load new data
+                }
             }
         }
     }
