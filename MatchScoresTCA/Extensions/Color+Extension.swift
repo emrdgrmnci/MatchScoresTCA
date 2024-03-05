@@ -94,7 +94,7 @@ extension Color {
     }
     
     static var greenText: Color {
-        Color("fajr-text")
+        Color("green-text")
     }
     
     static var bannerBG: Color {
